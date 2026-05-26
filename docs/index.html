@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0f172a">
-  <title>Junkyard Hunter's Digest</title>
+  <title>Junkyard Hunter's Digest v3</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -21,6 +21,7 @@
       --red: #ef4444;
       --danger: #f59e0b;
       --info-bg: #1e3a5f;
+      --success-bg: #064e3b;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -65,6 +66,18 @@
     }
     .stat-chip .value { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
     .stat-chip .label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Alert Banner */
+    .alert-banner {
+      background: var(--danger);
+      color: #0f172a;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    .alert-banner.visible { display: block; }
 
     /* View Toggle */
     .view-toggle {
@@ -212,6 +225,7 @@
     }
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
+    .badge-upgrade { background: var(--blue); color: white; }
     .vehicle-meta {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -274,6 +288,7 @@
       transition: border-color 0.2s;
     }
     .part-item.has-margin { border-left: 3px solid var(--green); }
+    .part-item.cat-converter { border-left: 3px solid var(--danger); }
     .part-item.expanded {
       border-color: var(--accent);
       grid-column: 1 / -1;
@@ -293,6 +308,7 @@
     }
     .part-value.positive { color: var(--green); }
     .part-value.negative { color: var(--red); }
+    .part-value.high-value { color: var(--danger); }
     .part-price {
       font-size: 0.7rem;
       color: var(--text-muted);
@@ -354,6 +370,66 @@
       font-size: 0.7rem;
       color: var(--accent);
       margin-bottom: 0.3rem;
+    }
+
+    /* Removal Steps */
+    .removal-steps {
+      background: var(--bg);
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--border);
+    }
+    .removal-steps-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .removal-steps ol {
+      padding-left: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .removal-steps li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* Test at Yard */
+    .yard-test {
+      background: var(--success-bg);
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .yard-test-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 0.2rem;
+    }
+    .yard-test-text {
+      font-size: 0.75rem;
+      color: var(--text);
+    }
+
+    /* Factory Upgrade Alert */
+    .factory-upgrade {
+      background: var(--info-bg);
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--blue);
+    }
+    .factory-upgrade-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.2rem;
+    }
+    .factory-upgrade-text {
+      font-size: 0.75rem;
+      color: var(--text);
     }
 
     .detail-summary {
@@ -441,8 +517,8 @@
 </head>
 <body>
   <div class="header">
-    <h1>🔧 Junkyard Hunter's Digest</h1>
-    <div class="subtitle">Cagle's U Pull It — Live Research + Part Locations</div>
+    <h1>🔧 Junkyard Hunter's Digest v3</h1>
+    <div class="subtitle">Cagle's U Pull It — Research + Location Intel + Tools</div>
     <div class="update" id="update-time">Loading...</div>
   </div>
 
@@ -476,6 +552,7 @@
     <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
     <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
+    <button class="filter-btn" data-filter="cat" onclick="setFilter('cat')">🐱 Cats</button>
   </div>
 
   <!-- Yard Map View -->
@@ -502,14 +579,12 @@
   <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
 
   <div class="footer">
-    <div>Tap vehicle → see parts. Tap part → see location, tools, time estimate.</div>
+    <div>Tap vehicle → see parts. Tap part → see location, tools, removal steps, test procedures.</div>
     <div style="margin-top: 0.3rem">Part locations sourced from repair manuals & pull videos. Verify for your year/trim.</div>
   </div>
 
   <script>
     let allVehicles = [];
-    let partLocations = {};
-    let yardMap = {};
     let currentFilter = 'all';
     let currentView = 'list';
     let expandedCard = null;
@@ -517,7 +592,6 @@
 
     async function loadData() {
       try {
-        // Load research data
         const resp = await fetch('research_data.json?t=' + Date.now());
         const data = await resp.json();
         allVehicles = data.vehicles || [];
@@ -527,20 +601,6 @@
         document.getElementById('stat-new').textContent = data.stats.new;
         document.getElementById('stat-avg').textContent = '$' + Math.round(data.stats.avg_margin);
         document.getElementById('stat-best').textContent = '$' + Math.round(data.stats.best_margin);
-
-        // Load part locations
-        const locResp = await fetch('part_locations.json?t=' + Date.now());
-        if (locResp.ok) {
-          partLocations = (await locResp.json());
-          delete partLocations._meta;
-        }
-
-        // Load yard map
-        const mapResp = await fetch('yard_map.json?t=' + Date.now());
-        if (mapResp.ok) {
-          const mapData = await mapResp.json();
-          yardMap = mapData.rows || {};
-        }
 
         renderVehicles();
         renderYardMap();
@@ -589,6 +649,7 @@
         case 'new': filtered = filtered.filter(v => v.is_new); break;
         case 'hv': filtered = filtered.filter(v => v.is_hv); break;
         case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
+        case 'cat': filtered = filtered.filter(v => v.parts['catalytic converter']?.est_margin > 50); break;
       }
 
       return filtered;
@@ -609,11 +670,8 @@
       const toolsNeeded = new Set();
       filtered.forEach(v => {
         Object.entries(v.parts || {}).forEach(([name, data]) => {
-          if (data.est_margin >= 30) {
-            const loc = partLocations[name];
-            if (loc && loc.tools) {
-              loc.tools.forEach(t => toolsNeeded.add(t));
-            }
+          if (data.est_margin >= 30 && data.tools) {
+            data.tools.forEach(t => toolsNeeded.add(t));
           }
         });
       });
@@ -639,6 +697,7 @@
                 <div class="badges">
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
+                  ${hasUpgradePotential(v) ? '<span class="badge badge-upgrade">⚡</span>' : ''}
                 </div>
               </div>
               <div class="vehicle-meta">
@@ -654,7 +713,7 @@
             <div class="detail-section">
               <div class="detail-section-title">⚙️ Parts</div>
               <div class="parts-grid">
-                ${renderParts(v.parts, v.year + ' ' + v.make + ' ' + v.model)}
+                ${renderParts(v.parts)}
               </div>
             </div>
             <div class="detail-summary">
@@ -672,7 +731,11 @@
       `).join('');
     }
 
-    function renderParts(parts, vehicleName) {
+    function hasUpgradePotential(v) {
+      return Object.values(v.parts).some(p => p.factory_upgrade);
+    }
+
+    function renderParts(parts) {
       const partNames = {
         'instrument cluster': 'Instrument Cluster',
         'ECU': 'ECU',
@@ -688,46 +751,52 @@
         'seat control': 'Seat Control',
         'alternator': 'Alternator',
         'MAF sensor': 'MAF Sensor',
-        'radio nav': 'Radio / Nav'
+        'radio nav': 'Radio / Nav',
+        'catalytic converter': '🐱 Cat Converter',
+        'A/C compressor': 'A/C Compressor',
+        'power steering pump': 'P/S Pump',
+        'wheels alloy set': 'Alloy Wheels',
+        'fog lights': 'Fog Lights',
+        'TPMS sensors': 'TPMS Sensors',
+        'backup camera': 'Backup Camera'
       };
 
       return Object.entries(parts).map(([name, data]) => {
-        const hasData = data.active && data.active.avg;
         const margin = data.est_margin || 0;
         const avg = data.active ? data.active.avg : 0;
-        const loc = partLocations[name];
+        const isCat = name === 'catalytic converter';
+        const isHighValue = margin >= 200;
 
         let locationHtml = '';
-        if (loc) {
-          const confidenceClass = loc.confidence === 'high' ? 'confidence-high' :
-                                    loc.confidence === 'medium' ? 'confidence-medium' : 'confidence-low';
-          const confidenceText = loc.confidence === 'high' ? '✓ High confidence' :
-                                 loc.confidence === 'medium' ? '⚠ Medium confidence — verify' : '✗ Low confidence';
-
+        if (data.location) {
           locationHtml = `
             <div class="part-location">
               <div class="part-location-title">📍 Location</div>
-              <div class="part-location-text">${loc.location}</div>
-              <div class="part-location-text" style="margin-top:0.2rem; font-size:0.75rem;">🔧 Access: ${loc.access}</div>
-              <div class="part-confidence ${confidenceClass}">${confidenceText}</div>
+              <div class="part-location-text">${data.location}</div>
+              ${data.tools ? `<div class="tools-list">${data.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>` : ''}
+              ${data.time ? `<div class="part-time">⏱️ ${data.time}</div>` : ''}
+              ${data.notes ? `<div class="part-notes">💡 ${data.notes}</div>` : ''}
             </div>
-            <div class="part-time">⏱️ ${loc.time || '5-10 min'}</div>
-            ${loc.tools ? `<div class="tools-list">${loc.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>` : ''}
-            ${loc.notes ? `<div class="part-notes">💡 ${loc.notes}</div>` : ''}
           `;
         }
 
         return `
-          <div class="part-item ${hasData && margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)">
+          <div class="part-item ${margin > 0 ? 'has-margin' : ''} ${isCat ? 'cat-converter' : ''}" onclick="togglePart(this, event)">
             <div class="part-header">
               <span class="part-name">${partNames[name] || name}</span>
-              <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''}">
+              <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''} ${isHighValue ? 'high-value' : ''}">
                 ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
               </span>
             </div>
             ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)} · cost $${data.yard_cost}</span>` : ''}
             <div class="part-detail">
               ${locationHtml}
+              ${data.factory_upgrade ? `
+                <div class="factory-upgrade">
+                  <div class="factory-upgrade-title">⚡ Factory Upgrade Potential</div>
+                  <div class="factory-upgrade-text">${data.factory_upgrade}</div>
+                </div>
+              ` : ''}
             </div>
           </div>
         `;
@@ -765,7 +834,6 @@
       const sortedRows = Object.keys(rowData).sort((a, b) => parseInt(a) - parseInt(b));
 
       container.innerHTML = sortedRows.map(row => {
-        const rowInfo = yardMap[row] || {};
         const vehicles = rowData[row];
         const newCount = vehicles.filter(v => v.is_new).length;
         const profitable = vehicles.filter(v => v.best_margin >= 50);
@@ -774,7 +842,7 @@
           <div class="map-row">
             <div class="map-row-header">
               <span class="map-row-title">Row ${row}</span>
-              <span class="map-row-zone">${rowInfo.zone || ''} · ${vehicles.length} vehicles${newCount > 0 ? ` · ${newCount} new` : ''}</span>
+              <span class="map-row-zone">${vehicles.length} vehicles${newCount > 0 ? ` · ${newCount} new` : ''}</span>
             </div>
             <div class="map-vehicles">
               ${vehicles.map(v => `
@@ -783,7 +851,6 @@
                 </span>
               `).join('')}
             </div>
-            ${rowInfo.notes ? `<div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">💡 ${rowInfo.notes}</div>` : ''}
           </div>
         `;
       }).join('');
