@@ -20,6 +20,7 @@
       --blue: #60a5fa;
       --red: #ef4444;
       --danger: #f59e0b;
+      --info-bg: #1e3a5f;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -65,6 +66,31 @@
     .stat-chip .value { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
     .stat-chip .label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
+    /* View Toggle */
+    .view-toggle {
+      display: flex;
+      padding: 0.75rem;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .view-btn {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .view-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 600;
+      border-color: var(--accent);
+    }
+
     /* Filters */
     .filters {
       padding: 0.75rem;
@@ -101,10 +127,52 @@
       font-size: 0.85rem;
       outline: none;
     }
-    .search-input::placeholder { color: var(--text-muted); }
+
+    /* Yard Map */
+    .yard-map {
+      display: none;
+      padding: 0.75rem;
+    }
+    .yard-map.active { display: block; }
+    .map-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+    }
+    .map-row-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .map-row-title {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .map-row-zone {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .map-vehicles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .map-vehicle-chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    .map-vehicle-chip.new { border-color: var(--green); color: var(--green); }
+    .map-vehicle-chip.profitable { border-color: var(--accent); }
 
     /* Vehicle List */
     .vehicle-list { padding: 0.5rem; }
+    .vehicle-list.hidden { display: none; }
 
     .vehicle-card {
       background: var(--card);
@@ -134,8 +202,6 @@
       gap: 0.4rem;
       flex-wrap: wrap;
     }
-    .vehicle-title .year-make { white-space: nowrap; }
-    .vehicle-title .model { color: var(--text-muted); font-weight: 400; }
     .badges { display: flex; gap: 0.3rem; flex-shrink: 0; }
     .badge {
       font-size: 0.6rem;
@@ -143,7 +209,6 @@
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
     }
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
@@ -178,35 +243,117 @@
     }
     .vehicle-card.expanded .vehicle-detail { display: block; }
 
-    .detail-grid {
+    .detail-section {
+      margin-bottom: 1rem;
+    }
+    .detail-section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .parts-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.4rem;
     }
+    @media (min-width: 600px) {
+      .parts-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     .part-item {
       background: var(--bg);
       border-radius: 8px;
       padding: 0.5rem 0.6rem;
       border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s;
     }
     .part-item.has-margin { border-left: 3px solid var(--green); }
-    .part-item.no-data { opacity: 0.5; }
+    .part-item.expanded {
+      border-color: var(--accent);
+      grid-column: 1 / -1;
+    }
+    .part-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .part-name {
       font-size: 0.75rem;
       color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.1rem;
     }
     .part-value {
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--text);
     }
     .part-value.positive { color: var(--green); }
     .part-value.negative { color: var(--red); }
     .part-price {
       font-size: 0.7rem;
       color: var(--text-muted);
+    }
+
+    /* Part Detail (location + tools) */
+    .part-detail {
+      display: none;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border);
+    }
+    .part-item.expanded .part-detail { display: block; }
+
+    .part-location {
+      background: var(--info-bg);
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .part-location-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.2rem;
+    }
+    .part-location-text {
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+    .part-confidence {
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+    }
+    .confidence-high { color: var(--green); }
+    .confidence-medium { color: var(--danger); }
+    .confidence-low { color: var(--red); }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .tool-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .part-notes {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .part-time {
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
     }
 
     .detail-summary {
@@ -221,7 +368,26 @@
     .summary-item .sum-val { font-size: 1rem; font-weight: 700; color: var(--accent); }
     .summary-item .sum-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
 
-    /* Scroll to top */
+    /* Tools Summary Section */
+    .tools-summary {
+      background: var(--info-bg);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .tools-summary-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .tools-list-compact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    /* Scroll top */
     .scroll-top {
       position: fixed;
       bottom: 1rem;
@@ -242,7 +408,6 @@
     }
     .scroll-top.visible { display: flex; }
 
-    /* Loading */
     .loading {
       text-align: center;
       padding: 3rem 1rem;
@@ -265,7 +430,6 @@
       color: var(--text-muted);
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 1.5rem;
@@ -273,16 +437,12 @@
       font-size: 0.75rem;
       border-top: 1px solid var(--border);
     }
-
-    @media (min-width: 600px) {
-      .detail-grid { grid-template-columns: repeat(3, 1fr); }
-    }
   </style>
 </head>
 <body>
   <div class="header">
     <h1>🔧 Junkyard Hunter's Digest</h1>
-    <div class="subtitle">Cagle's U Pull It — Live Research Data</div>
+    <div class="subtitle">Cagle's U Pull It — Live Research + Part Locations</div>
     <div class="update" id="update-time">Loading...</div>
   </div>
 
@@ -305,14 +465,28 @@
     </div>
   </div>
 
-  <div class="filters">
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="setView('list')">📋 Vehicle List</button>
+    <button class="view-btn" onclick="setView('map')">🗺️ Yard Map</button>
+  </div>
+
+  <div class="filters" id="list-filters">
     <input type="text" class="search-input" id="search-input" placeholder="Search make, model, year...">
     <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
-    <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New Only</button>
-    <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">High-Value</button>
+    <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
+    <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
   </div>
 
+  <!-- Yard Map View -->
+  <div class="yard-map" id="yard-map">
+    <div class="loading" id="map-loading">
+      <div class="loading-spinner"></div>
+      <div>Loading yard map...</div>
+    </div>
+  </div>
+
+  <!-- Vehicle List View -->
   <div class="vehicle-list" id="vehicle-list">
     <div class="loading">
       <div class="loading-spinner"></div>
@@ -328,19 +502,24 @@
   <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
 
   <div class="footer">
-    <div>Research includes: ECU, ABS, Throttle Body, Amplifiers, BCM, TCM, HID Ballasts, Turbochargers, and more</div>
-    <div style="margin-top: 0.3rem">Generated by Junkyard Arbitrage Bot</div>
+    <div>Tap vehicle → see parts. Tap part → see location, tools, time estimate.</div>
+    <div style="margin-top: 0.3rem">Part locations sourced from repair manuals & pull videos. Verify for your year/trim.</div>
   </div>
 
   <script>
     let allVehicles = [];
+    let partLocations = {};
+    let yardMap = {};
     let currentFilter = 'all';
+    let currentView = 'list';
     let expandedCard = null;
+    let expandedPart = null;
 
     async function loadData() {
       try {
-        const response = await fetch('research_data.json?t=' + Date.now());
-        const data = await response.json();
+        // Load research data
+        const resp = await fetch('research_data.json?t=' + Date.now());
+        const data = await resp.json();
         allVehicles = data.vehicles || [];
 
         document.getElementById('update-time').textContent = 'Updated: ' + data.date;
@@ -349,16 +528,41 @@
         document.getElementById('stat-avg').textContent = '$' + Math.round(data.stats.avg_margin);
         document.getElementById('stat-best').textContent = '$' + Math.round(data.stats.best_margin);
 
+        // Load part locations
+        const locResp = await fetch('part_locations.json?t=' + Date.now());
+        if (locResp.ok) {
+          partLocations = (await locResp.json());
+          delete partLocations._meta;
+        }
+
+        // Load yard map
+        const mapResp = await fetch('yard_map.json?t=' + Date.now());
+        if (mapResp.ok) {
+          const mapData = await mapResp.json();
+          yardMap = mapData.rows || {};
+        }
+
         renderVehicles();
+        renderYardMap();
       } catch (e) {
         console.error('Failed to load:', e);
         document.getElementById('vehicle-list').innerHTML = `
           <div class="empty-state">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">⚠️</div>
-            <div>Failed to load research data.<br>Check your connection and try again.</div>
+            <div>Failed to load data.</div>
           </div>
         `;
       }
+    }
+
+    function setView(view) {
+      currentView = view;
+      document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.getElementById('vehicle-list').classList.toggle('hidden', view !== 'list');
+      document.getElementById('yard-map').classList.toggle('active', view === 'map');
+      document.getElementById('list-filters').style.display = view === 'list' ? 'flex' : 'none';
     }
 
     function setFilter(filter) {
@@ -382,15 +586,9 @@
       }
 
       switch (currentFilter) {
-        case 'new':
-          filtered = filtered.filter(v => v.is_new);
-          break;
-        case 'hv':
-          filtered = filtered.filter(v => v.is_hv);
-          break;
-        case 'profitable':
-          filtered = filtered.filter(v => v.best_margin >= 50);
-          break;
+        case 'new': filtered = filtered.filter(v => v.is_new); break;
+        case 'hv': filtered = filtered.filter(v => v.is_hv); break;
+        case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
       }
 
       return filtered;
@@ -407,13 +605,37 @@
       }
       document.getElementById('empty-state').style.display = 'none';
 
-      container.innerHTML = filtered.map(v => `
-        <div class="vehicle-card" id="card-${v.year}-${v.make}-${v.model}" onclick="toggleCard(this)">
+      // Calculate tools needed for profitable parts
+      const toolsNeeded = new Set();
+      filtered.forEach(v => {
+        Object.entries(v.parts || {}).forEach(([name, data]) => {
+          if (data.est_margin >= 30) {
+            const loc = partLocations[name];
+            if (loc && loc.tools) {
+              loc.tools.forEach(t => toolsNeeded.add(t));
+            }
+          }
+        });
+      });
+
+      let toolsHtml = '';
+      if (toolsNeeded.size > 0) {
+        toolsHtml = `
+          <div class="tools-summary">
+            <div class="tools-summary-title">🧰 Tools Needed (for profitable parts)</div>
+            <div class="tools-list-compact">
+              ${Array.from(toolsNeeded).map(t => `<span class="tool-chip">${t}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = toolsHtml + filtered.map(v => `
+        <div class="vehicle-card" id="card-${v.year}-${v.make}-${v.model}" onclick="toggleCard(this, event)">
           <div class="vehicle-header">
             <div class="vehicle-info">
               <div class="vehicle-title">
-                <span class="year-make">${v.year} ${v.make}</span>
-                <span class="model">${v.model}</span>
+                <span>${v.year} ${v.make} ${v.model}</span>
                 <div class="badges">
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
@@ -421,17 +643,19 @@
               </div>
               <div class="vehicle-meta">
                 Row <span class="row">${v.yard_row}</span> · Arrived ${v.arrival_date}
-                · ${Object.keys(v.parts).filter(p => v.parts[p].est_margin > 0).length} parts with data
               </div>
             </div>
             <div class="vehicle-margin">
               <div class="margin-value">+$${Math.round(v.best_margin)}</div>
-              <div class="margin-label">Best</div>
+              <div class="margin-label">Best Margin</div>
             </div>
           </div>
           <div class="vehicle-detail">
-            <div class="detail-grid">
-              ${renderParts(v.parts)}
+            <div class="detail-section">
+              <div class="detail-section-title">⚙️ Parts</div>
+              <div class="parts-grid">
+                ${renderParts(v.parts, v.year + ' ' + v.make + ' ' + v.model)}
+              </div>
             </div>
             <div class="detail-summary">
               <div class="summary-item">
@@ -440,11 +664,7 @@
               </div>
               <div class="summary-item">
                 <div class="sum-val">${Object.keys(v.parts).length}</div>
-                <div class="sum-label">Parts Researched</div>
-              </div>
-              <div class="summary-item">
-                <div class="sum-val">${Object.keys(v.parts).filter(p => v.parts[p].est_margin > 0).length}</div>
-                <div class="sum-label">With Data</div>
+                <div class="sum-label">Parts</div>
               </div>
             </div>
           </div>
@@ -452,10 +672,10 @@
       `).join('');
     }
 
-    function renderParts(parts) {
+    function renderParts(parts, vehicleName) {
       const partNames = {
         'instrument cluster': 'Instrument Cluster',
-        'ECU': 'ECU / Computer',
+        'ECU': 'ECU',
         'ABS module': 'ABS Module',
         'throttle body': 'Throttle Body',
         'amplifier': 'Amplifier',
@@ -475,22 +695,47 @@
         const hasData = data.active && data.active.avg;
         const margin = data.est_margin || 0;
         const avg = data.active ? data.active.avg : 0;
+        const loc = partLocations[name];
 
-        if (!hasData && margin <= 0) return '';
+        let locationHtml = '';
+        if (loc) {
+          const confidenceClass = loc.confidence === 'high' ? 'confidence-high' :
+                                    loc.confidence === 'medium' ? 'confidence-medium' : 'confidence-low';
+          const confidenceText = loc.confidence === 'high' ? '✓ High confidence' :
+                                 loc.confidence === 'medium' ? '⚠ Medium confidence — verify' : '✗ Low confidence';
+
+          locationHtml = `
+            <div class="part-location">
+              <div class="part-location-title">📍 Location</div>
+              <div class="part-location-text">${loc.location}</div>
+              <div class="part-location-text" style="margin-top:0.2rem; font-size:0.75rem;">🔧 Access: ${loc.access}</div>
+              <div class="part-confidence ${confidenceClass}">${confidenceText}</div>
+            </div>
+            <div class="part-time">⏱️ ${loc.time || '5-10 min'}</div>
+            ${loc.tools ? `<div class="tools-list">${loc.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>` : ''}
+            ${loc.notes ? `<div class="part-notes">💡 ${loc.notes}</div>` : ''}
+          `;
+        }
 
         return `
-          <div class="part-item ${hasData ? 'has-margin' : 'no-data'}">
-            <span class="part-name">${partNames[name] || name}</span>
-            <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''}">
-              ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
-            </span>
-            ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)}</span>` : ''}
+          <div class="part-item ${hasData && margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)">
+            <div class="part-header">
+              <span class="part-name">${partNames[name] || name}</span>
+              <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''}">
+                ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
+              </span>
+            </div>
+            ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)} · cost $${data.yard_cost}</span>` : ''}
+            <div class="part-detail">
+              ${locationHtml}
+            </div>
           </div>
         `;
       }).join('');
     }
 
-    function toggleCard(card) {
+    function toggleCard(card, event) {
+      if (event.target.closest('.part-item')) return;
       if (expandedCard && expandedCard !== card) {
         expandedCard.classList.remove('expanded');
       }
@@ -498,26 +743,67 @@
       expandedCard = card.classList.contains('expanded') ? card : null;
     }
 
+    function togglePart(part, event) {
+      event.stopPropagation();
+      if (expandedPart && expandedPart !== part) {
+        expandedPart.classList.remove('expanded');
+      }
+      part.classList.toggle('expanded');
+      expandedPart = part.classList.contains('expanded') ? part : null;
+    }
+
+    function renderYardMap() {
+      const container = document.getElementById('yard-map');
+      const rowData = {};
+
+      allVehicles.forEach(v => {
+        const row = v.yard_row || 'Unknown';
+        if (!rowData[row]) rowData[row] = [];
+        rowData[row].push(v);
+      });
+
+      const sortedRows = Object.keys(rowData).sort((a, b) => parseInt(a) - parseInt(b));
+
+      container.innerHTML = sortedRows.map(row => {
+        const rowInfo = yardMap[row] || {};
+        const vehicles = rowData[row];
+        const newCount = vehicles.filter(v => v.is_new).length;
+        const profitable = vehicles.filter(v => v.best_margin >= 50);
+
+        return `
+          <div class="map-row">
+            <div class="map-row-header">
+              <span class="map-row-title">Row ${row}</span>
+              <span class="map-row-zone">${rowInfo.zone || ''} · ${vehicles.length} vehicles${newCount > 0 ? ` · ${newCount} new` : ''}</span>
+            </div>
+            <div class="map-vehicles">
+              ${vehicles.map(v => `
+                <span class="map-vehicle-chip ${v.is_new ? 'new' : ''} ${v.best_margin >= 50 ? 'profitable' : ''}">
+                  ${v.year} ${v.make} ${v.model}${v.best_margin >= 50 ? ' (+$' + Math.round(v.best_margin) + ')' : ''}
+                </span>
+              `).join('')}
+            </div>
+            ${rowInfo.notes ? `<div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">💡 ${rowInfo.notes}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Search debounce
     let searchTimeout;
     document.getElementById('search-input').addEventListener('input', () => {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(renderVehicles, 300);
     });
 
-    // Scroll top button
     window.addEventListener('scroll', () => {
       document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 400);
     });
 
-    // Load data on start
     loadData();
-
-    // Refresh every 5 minutes
     setInterval(loadData, 300000);
   </script>
 </body>

@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "source": "Repair manuals, YouTube pull videos, eBay listing photos",
+    "confidence": "High for engine bay, Medium for interior modules, Verify for trim-specific parts",
+    "last_updated": "2026-05-25"
+  },
+  "instrument cluster": {
+    "location": "Behind dashboard, center of steering column",
+    "access": "Remove trim bezel (snap clips), 2-4 screws, disconnect harness",
+    "tools": ["Phillips screwdriver", "Trim removal tool", "Flashlight"],
+    "time": "5-10 min",
+    "confidence": "high",
+    "notes": "Watch for hidden screws behind dash trim. Some require steering wheel drop."
+  },
+  "ECU": {
+    "location": "Engine bay passenger side firewall OR behind glove box",
+    "access": "Remove plastic cover (clips) OR remove glove box (2 screws)",
+    "tools": ["10mm socket", "Trim tool", "Flashlight"],
+    "time": "5-15 min",
+    "confidence": "medium",
+    "notes": "Location varies by make. Honda/Acura: passenger kick panel. Toyota: engine bay. GM: engine bay."
+  },
+  "ABS module": {
+    "location": "Engine bay, mounted to master cylinder/brake booster",
+    "access": "Remove cover, disconnect brake lines (do NOT mix up!)",
+    "tools": ["10mm socket", "Brake line wrench (flare nut)", "Rags/catch pan"],
+    "time": "10-20 min",
+    "confidence": "high",
+    "notes": "Brake fluid will leak. Bring rags. Do NOT cross-thread lines on removal."
+  },
+  "throttle body": {
+    "location": "Intake manifold, top/front of engine",
+    "access": "Remove intake hose, 4 bolts, disconnect harness",
+    "tools": ["10mm socket", "Flathead screwdriver", "Throttle body cleaner (optional)"],
+    "time": "5-10 min",
+    "confidence": "high",
+    "notes": "Very accessible. Often has coolant lines attached (pinch clamps)."
+  },
+  "amplifier": {
+    "location": "Trunk/rear cargo area OR under passenger seat OR behind glove box",
+    "access": "Remove trunk panel clips OR lift seat forward OR remove glove box",
+    "tools": ["Trim removal tool", "10mm socket", "Flashlight"],
+    "time": "5-15 min",
+    "confidence": "medium",
+    "notes": "Bose/BOSE: often in trunk. Harman Kardon: under seat. Mark Levinson: trunk or rear deck. Verify with trunk panel removal first."
+  },
+  "BCM": {
+    "location": "Under driver dash OR behind glove box OR left of steering column",
+    "access": "Remove lower dash panel (2-3 screws), locate module with multiple harnesses",
+    "tools": ["7mm socket", "Trim tool", "Flashlight", "Inspection mirror"],
+    "time": "10-20 min",
+    "confidence": "medium",
+    "notes": "Usually black box with 3-5 large connectors. Label connectors with tape before removal."
+  },
+  "TCM": {
+    "location": "Passenger footwell OR engine bay on transmission OR under center console",
+    "access": "Remove kick panel OR transmission cover OR console trim",
+    "tools": ["10mm socket", "Trim tool", "Flashlight"],
+    "time": "10-20 min",
+    "confidence": "medium",
+    "notes": "Often integrated with ECU on newer cars. Check eBay listing photos to confirm separate module."
+  },
+  "HID ballast": {
+    "location": "Under headlight assembly OR behind bumper cover OR near headlight base",
+    "access": "Open hood, look for rectangular box attached to headlight wiring",
+    "tools": ["Phillips screwdriver", "Trim tool"],
+    "time": "3-5 min",
+    "confidence": "high",
+    "notes": "Small black box ~3x5 inches. Often attached to headlight housing or frame rail. Don't confuse with headlight module."
+  },
+  "climate control": {
+    "location": "Center dash behind radio OR integrated with radio bezel",
+    "access": "Remove radio trim (snap clips), 4 screws, disconnect harness",
+    "tools": ["Trim tool", "Phillips screwdriver", "Flashlight"],
+    "time": "10-15 min",
+    "confidence": "high",
+    "notes": "Often includes blend door actuators. Pull the whole panel as assembly."
+  },
+  "fuel pump": {
+    "location": "Top of fuel tank, under rear seat OR trunk floor panel",
+    "access": "Lift rear seat (clips) OR remove trunk panel, disconnect fuel lines",
+    "tools": ["Phillips screwdriver", "Fuel line disconnect tool", "Rags", "Hammer + chisel (for ring)"],
+    "time": "15-30 min",
+    "confidence": "high",
+    "notes": "Tank may be 1/4 full = heavy. Fuel vapors = NO SPARKS. Ring retainer may be rusted."
+  },
+  "turbocharger": {
+    "location": "Exhaust manifold side, center of engine bay",
+    "access": "Remove heat shield, intake tubing, exhaust flange bolts",
+    "tools": ["13mm socket", "14mm socket", "PB Blaster", "Extensions", "Swivel socket"],
+    "time": "30-60 min",
+    "confidence": "high",
+    "notes": "Rusty exhaust bolts = PB Blaster first. Heavy part. Oil/coolant lines attached."
+  },
+  "seat control": {
+    "location": "Under driver seat OR integrated into seat base",
+    "access": "Slide seat all the way back, look underneath for small black box",
+    "tools": ["10mm socket", "Trim tool"],
+    "time": "5-10 min",
+    "confidence": "medium",
+    "notes": "Memory seat cars always have module. Base models may not. Check for heated seat buttons as indicator."
+  },
+  "alternator": {
+    "location": "Front of engine, driven by serpentine belt",
+    "access": "Remove belt (tensioner), 2-3 bolts, disconnect harness",
+    "tools": ["15mm socket", "Serpentine belt tool", "10mm socket"],
+    "time": "10-20 min",
+    "confidence": "high",
+    "notes": "Very accessible on most cars. Note belt routing before removal."
+  },
+  "MAF sensor": {
+    "location": "Intake duct between air filter and throttle body",
+    "access": "Unclip sensor from intake tube, disconnect harness",
+    "tools": ["Flathead screwdriver (hose clamp)", "Torx bits (some)", "MAF cleaner (optional)"],
+    "time": "2-5 min",
+    "confidence": "high",
+    "notes": "Easiest pull on the list. Don't touch sensor wires."
+  },
+  "radio nav": {
+    "location": "Center dash, behind bezel",
+    "access": "Remove dash trim (clips), 4 mounting screws, disconnect harness/antenna",
+    "tools": ["Trim removal tool", "7mm socket", "Radio removal keys (some)", "Flashlight"],
+    "time": "10-20 min",
+    "confidence": "high",
+    "notes": "Premium nav units often have separate DVD drive below. Pull both. GPS antenna on dash top."
+  }
+}

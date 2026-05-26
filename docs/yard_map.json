@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "yard": "Cagle's U Pull It",
+    "address": "Cartersville, GA",
+    "layout": "Rows numbered roughly 1-60, newer imports toward front (rows 30-38), trucks/SUVs toward back (rows 1-2, 53, 59-60)",
+    "last_updated": "2026-05-25"
+  },
+  "rows": {
+    "1": {"zone": "Trucks / SUVs", "surface": "Gravel", "notes": "Full-size trucks, Tahoe, Suburban"},
+    "2": {"zone": "Trucks / SUVs", "surface": "Gravel", "notes": "Ram, F-150, heavy trucks"},
+    "17": {"zone": "Domestic Cars", "surface": "Gravel", "notes": "Ford Fusion, Taurus, Escape"},
+    "30": {"zone": "Imports / Compact", "surface": "Gravel", "notes": "Honda, Toyota, VW, Kia, Mini — newer arrivals"},
+    "38": {"zone": "Luxury Imports", "surface": "Gravel", "notes": "BMW, Acura TSX — prime hunting ground"},
+    "53": {"zone": "Domestic Cars / SUVs", "surface": "Gravel", "notes": "Chevy Malibu, Impala, Trailblazer — high volume"},
+    "59": {"zone": "SUVs / Trucks", "surface": "Gravel", "notes": "Jeep Grand Cherokee, older SUVs"},
+    "60": {"zone": "Vans / Minivans", "surface": "Gravel", "notes": "Dodge Grand Caravan, Chrysler, PT Cruiser"}
+  },
+  "current_vehicles": {
+    "Row 1": ["2003 CHEVROLET TAHOE", "2005 DODGE RAM 1500"],
+    "Row 2": ["2002 DODGE RAM 1500", "2005 FORD F-150"],
+    "Row 17": ["2010 FORD FUSION", "2004 FORD ESCAPE", "2013 FORD TAURUS", "2011 FORD FUSION"],
+    "Row 30": ["2008 HONDA ELEMENT", "1981 HONDA ACCORD", "2006 HYUNDAI SONATA", "2004 KIA SEDONA", "2014 KIA SOUL", "1998 LEXUS ES 300", "2000 LEXUS RX 300", "2015 MINI COOPER", "1990 MITSUBISHI GALANT", "2008 NISSAN SENTRA", "2004 NISSAN QUEST", "2023 TOYOTA CAMRY", "2010 TOYOTA HIGHLANDER", "1998 TOYOTA SIENNA", "2006 TOYOTA SIENNA", "2007 VOLKSWAGEN JETTA", "1987 VOLKSWAGEN CABRIOLET"],
+    "Row 38": ["2004 ACURA TSX", "2006 BMW 330I", "2011 BMW 328"],
+    "Row 53": ["2005 CHEVROLET MALIBU", "2012 CHEVROLET TRAVERSE", "2019 CHEVROLET IMPALA", "2009 CHEVROLET MALIBU", "2008 CHEVROLET IMPALA", "2003 CHEVROLET TRAILBLAZER", "2009 CHEVROLET MALIBU", "1998 CHEVROLET S10", "2014 CHEVROLET EQUINOX", "2011 CHEVROLET MALIBU", "1996 CHEVROLET BLAZER"],
+    "Row 59": ["1999 JEEP GRAND CHEROKEE"],
+    "Row 60": ["2002 CHRYSLER PT CRUISER", "2010 DODGE GRAND CARAVAN", "2008 DODGE CALIBER"]
+  }
+}
