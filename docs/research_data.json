@@ -1,1 +1,7459 @@
-{"date":"2026-05-25","stats":{"total":30,"avg_margin":160,"best_margin":409,"total_parts":450},"vehicles":[],"message":"Live data loads from research_output_latest.json"}
+{
+  "date": "2026-05-25",
+  "yard": "Cagle's",
+  "stats": {
+    "total": 47,
+    "new": 26,
+    "hv": 7,
+    "avg_margin": 195.1,
+    "best_margin": 1485.5,
+    "total_parts": 617
+  },
+  "vehicles": [
+    {
+      "year": "2023",
+      "make": "TOYOTA",
+      "model": "CAMRY",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 1485.5,
+      "total_margin": 2595.9600000000005,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 137.34,
+            "median": 130.99,
+            "min": 65.0,
+            "max": 205.39,
+            "count": 20
+          },
+          "est_margin": 82.19,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 154.78,
+            "median": 135.99,
+            "min": 68.6,
+            "max": 295.99,
+            "count": 20
+          },
+          "est_margin": 92.36,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 141.06,
+            "median": 157.99,
+            "min": 26.4,
+            "max": 296.64,
+            "count": 20
+          },
+          "est_margin": 80.42,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 89.1,
+            "median": 87.98,
+            "min": 32.0,
+            "max": 154.99,
+            "count": 20
+          },
+          "est_margin": 45.22,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 124.52,
+            "median": 31.34,
+            "min": 26.24,
+            "max": 498.75,
+            "count": 20
+          },
+          "est_margin": 66.03,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 137.7,
+            "median": 134.25,
+            "min": 42.49,
+            "max": 218.99,
+            "count": 20
+          },
+          "est_margin": 82.5,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 1750.35,
+            "median": 1750.35,
+            "min": 1750.35,
+            "max": 1750.35,
+            "count": 1
+          },
+          "est_margin": 1485.5,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 70.68,
+            "median": 95.39,
+            "min": 18.0,
+            "max": 119.0,
+            "count": 4
+          },
+          "est_margin": 29.19,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 113.16,
+            "median": 80.99,
+            "min": 34.39,
+            "max": 249.99,
+            "count": 20
+          },
+          "est_margin": 61.15,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 123.53,
+            "median": 111.5,
+            "min": 60.0,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 75.17,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 224.92,
+            "median": 190.38,
+            "min": 77.83,
+            "max": 383.8,
+            "count": 20
+          },
+          "est_margin": 163.38,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 94.63,
+            "median": 95.4,
+            "min": 60.0,
+            "max": 121.9,
+            "count": 20
+          },
+          "est_margin": 45.03,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 74.87,
+            "median": 76.49,
+            "min": 55.8,
+            "max": 100.99,
+            "count": 20
+          },
+          "est_margin": 37.84,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 330.21,
+            "median": 299.99,
+            "min": 224.99,
+            "max": 699.0,
+            "count": 20
+          },
+          "est_margin": 249.98,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2007",
+      "make": "VOLKSWAGEN",
+      "model": "JETTA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 457.38,
+      "total_margin": 1065.2,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 70.76,
+            "median": 60.15,
+            "min": 37.99,
+            "max": 149.95,
+            "count": 20
+          },
+          "est_margin": 24.26,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 90.83,
+            "median": 80.0,
+            "min": 34.99,
+            "max": 225.99,
+            "count": 20
+          },
+          "est_margin": 36.72,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 107.68,
+            "median": 110.15,
+            "min": 49.99,
+            "max": 159.99,
+            "count": 20
+          },
+          "est_margin": 51.38,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 53.82,
+            "median": 49.93,
+            "min": 24.99,
+            "max": 97.94,
+            "count": 20
+          },
+          "est_margin": 14.52,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 43.53,
+            "median": 31.47,
+            "min": 10.5,
+            "max": 169.99,
+            "count": 15
+          },
+          "est_margin": -4.43,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 163.07,
+            "median": 190.65,
+            "min": 73.49,
+            "max": 237.59,
+            "count": 20
+          },
+          "est_margin": 104.57,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 568.6,
+            "median": 674.68,
+            "min": 24.0,
+            "max": 1279.99,
+            "count": 20
+          },
+          "est_margin": 457.38,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 109.79,
+            "median": 99.68,
+            "min": 39.95,
+            "max": 235.19,
+            "count": 20
+          },
+          "est_margin": 63.22,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 54.81,
+            "median": 59.95,
+            "min": 24.99,
+            "max": 75.0,
+            "count": 20
+          },
+          "est_margin": 10.38,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 66.98,
+            "median": 69.0,
+            "min": 37.46,
+            "max": 146.94,
+            "count": 20
+          },
+          "est_margin": 25.97,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 213.72,
+            "median": 212.21,
+            "min": 99.0,
+            "max": 335.0,
+            "count": 20
+          },
+          "est_margin": 123.64,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 93.07,
+            "median": 40.72,
+            "min": 10.5,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 48.67,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 75.91,
+            "median": 53.99,
+            "min": 20.0,
+            "max": 234.49,
+            "count": 20
+          },
+          "est_margin": 28.74,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 58.25,
+            "median": 48.99,
+            "min": 23.25,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 23.38,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 108.16,
+            "median": 100.0,
+            "min": 12.0,
+            "max": 208.02,
+            "count": 20
+          },
+          "est_margin": 56.8,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2008",
+      "make": "CHEVROLET",
+      "model": "IMPALA",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 409.22,
+      "total_margin": 707.45,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 60.04,
+            "median": 59.95,
+            "min": 26.0,
+            "max": 85.68,
+            "count": 20
+          },
+          "est_margin": 14.93,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 78.98,
+            "median": 53.95,
+            "min": 20.0,
+            "max": 268.12,
+            "count": 20
+          },
+          "est_margin": 26.41,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 53.56,
+            "median": 41.0,
+            "min": 28.0,
+            "max": 200.0,
+            "count": 20
+          },
+          "est_margin": 4.3,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 42.6,
+            "median": 31.93,
+            "min": 25.6,
+            "max": 92.92,
+            "count": 20
+          },
+          "est_margin": 4.76,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 94.83,
+            "median": 79.99,
+            "min": 18.95,
+            "max": 160.99,
+            "count": 20
+          },
+          "est_margin": 40.2,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 63.05,
+            "median": 55.99,
+            "min": 23.0,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 17.55,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 37.83,
+            "median": 24.95,
+            "min": 17.97,
+            "max": 123.18,
+            "count": 20
+          },
+          "est_margin": -4.39,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 507.49,
+            "median": 594.99,
+            "min": 419.99,
+            "max": 594.99,
+            "count": 2
+          },
+          "est_margin": 409.22,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 40.63,
+            "median": 34.23,
+            "min": 19.99,
+            "max": 99.95,
+            "count": 20
+          },
+          "est_margin": -1.95,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 84.97,
+            "median": 80.0,
+            "min": 38.95,
+            "max": 175.93,
+            "count": 20
+          },
+          "est_margin": 41.62,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 76.4,
+            "median": 79.13,
+            "min": 44.97,
+            "max": 83.73,
+            "count": 13
+          },
+          "est_margin": 4.17,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 126.03,
+            "median": 110.0,
+            "min": 34.95,
+            "max": 190.65,
+            "count": 11
+          },
+          "est_margin": 77.35,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 63.79,
+            "median": 62.47,
+            "min": 31.82,
+            "max": 95.25,
+            "count": 20
+          },
+          "est_margin": 18.2,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.36,
+            "median": 23.25,
+            "min": 15.0,
+            "max": 34.62,
+            "count": 20
+          },
+          "est_margin": -6.98,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 114.21,
+            "median": 109.99,
+            "min": 32.99,
+            "max": 300.0,
+            "count": 12
+          },
+          "est_margin": 62.06,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2010",
+      "make": "FORD",
+      "model": "FOCUS",
+      "yard_row": "17",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 364.71,
+      "total_margin": 732.97,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 64.86,
+            "median": 64.08,
+            "min": 29.25,
+            "max": 100.08,
+            "count": 20
+          },
+          "est_margin": 19.13,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 57.86,
+            "median": 52.24,
+            "min": 18.9,
+            "max": 135.79,
+            "count": 20
+          },
+          "est_margin": 8.04,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 110.75,
+            "median": 102.17,
+            "min": 49.99,
+            "max": 220.99,
+            "count": 20
+          },
+          "est_margin": 54.05,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 41.45,
+            "median": 32.98,
+            "min": 27.0,
+            "max": 103.93,
+            "count": 20
+          },
+          "est_margin": 3.76,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 81.68,
+            "median": 90.39,
+            "min": 46.44,
+            "max": 99.9,
+            "count": 4
+          },
+          "est_margin": 28.76,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 94.82,
+            "median": 75.08,
+            "min": 47.0,
+            "max": 188.05,
+            "count": 9
+          },
+          "est_margin": 45.19,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 462.08,
+            "median": 473.1,
+            "min": 350.55,
+            "max": 540.55,
+            "count": 5
+          },
+          "est_margin": 364.71,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 45.75,
+            "median": 43.83,
+            "min": 24.99,
+            "max": 60.44,
+            "count": 12
+          },
+          "est_margin": 7.5,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 42.85,
+            "median": 36.95,
+            "min": 24.47,
+            "max": 85.98,
+            "count": 20
+          },
+          "est_margin": -0.02,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 70.58,
+            "median": 76.47,
+            "min": 36.0,
+            "max": 113.7,
+            "count": 20
+          },
+          "est_margin": 29.1,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 148.42,
+            "median": 134.26,
+            "min": 11.88,
+            "max": 396.0,
+            "count": 20
+          },
+          "est_margin": 66.83,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 56.0,
+            "median": 42.0,
+            "min": 34.23,
+            "max": 123.8,
+            "count": 5
+          },
+          "est_margin": 16.42,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 70.35,
+            "median": 72.8,
+            "min": 40.0,
+            "max": 100.0,
+            "count": 20
+          },
+          "est_margin": 23.9,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 26.31,
+            "median": 22.14,
+            "min": 13.85,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": -4.41,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 123.34,
+            "median": 112.98,
+            "min": 11.6,
+            "max": 237.25,
+            "count": 13
+          },
+          "est_margin": 70.01,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2010",
+      "make": "TOYOTA",
+      "model": "HIGHLANDER",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 358.77,
+      "total_margin": 1357.8899999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 101.14,
+            "median": 98.02,
+            "min": 40.0,
+            "max": 239.0,
+            "count": 20
+          },
+          "est_margin": 50.69,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 119.01,
+            "median": 109.99,
+            "min": 50.0,
+            "max": 329.99,
+            "count": 20
+          },
+          "est_margin": 61.24,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 323.79,
+            "median": 142.49,
+            "min": 60.0,
+            "max": 1399.99,
+            "count": 20
+          },
+          "est_margin": 239.4,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 51.69,
+            "median": 33.53,
+            "min": 28.8,
+            "max": 154.99,
+            "count": 20
+          },
+          "est_margin": 12.67,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 175.73,
+            "median": 148.75,
+            "min": 109.99,
+            "max": 389.99,
+            "count": 20
+          },
+          "est_margin": 110.59,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 87.35,
+            "median": 82.5,
+            "min": 35.15,
+            "max": 174.99,
+            "count": 13
+          },
+          "est_margin": 38.69,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 399.9,
+            "median": 399.9,
+            "min": 399.9,
+            "max": 399.9,
+            "count": 1
+          },
+          "est_margin": 310.61,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 15.49,
+            "median": 18.99,
+            "min": 11.99,
+            "max": 18.99,
+            "count": 2
+          },
+          "est_margin": -18.82,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 94.1,
+            "median": 98.99,
+            "min": 23.9,
+            "max": 179.99,
+            "count": 20
+          },
+          "est_margin": 44.57,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 104.9,
+            "median": 101.24,
+            "min": 39.0,
+            "max": 167.99,
+            "count": 20
+          },
+          "est_margin": 58.96,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 127.83,
+            "median": 174.0,
+            "min": 39.99,
+            "max": 195.0,
+            "count": 6
+          },
+          "est_margin": 48.91,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 47.5,
+            "median": 59.99,
+            "min": 19.99,
+            "max": 75.05,
+            "count": 5
+          },
+          "est_margin": 9.03,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.63,
+            "median": 95.0,
+            "min": 57.2,
+            "max": 178.99,
+            "count": 20
+          },
+          "est_margin": 38.94,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 24.07,
+            "median": 23.25,
+            "min": 5.99,
+            "max": 48.83,
+            "count": 20
+          },
+          "est_margin": -6.36,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 455.25,
+            "median": 446.25,
+            "min": 35.0,
+            "max": 749.99,
+            "count": 20
+          },
+          "est_margin": 358.77,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "1987",
+      "make": "VOLKSWAGEN",
+      "model": "CABRIOLET",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 287.5,
+      "total_margin": 624.11,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 120.0,
+            "median": 200.0,
+            "min": 40.0,
+            "max": 200.0,
+            "count": 2
+          },
+          "est_margin": 67.1,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 50.0,
+            "median": 50.0,
+            "min": 50.0,
+            "max": 50.0,
+            "count": 1
+          },
+          "est_margin": 1.2,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 50.0,
+            "median": 50.0,
+            "min": 50.0,
+            "max": 50.0,
+            "count": 1
+          },
+          "est_margin": 11.2,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 18.14,
+            "median": 19.79,
+            "min": 16.49,
+            "max": 19.79,
+            "count": 2
+          },
+          "est_margin": -21.52,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 46.22,
+            "median": 20.89,
+            "min": 15.49,
+            "max": 179.95,
+            "count": 14
+          },
+          "est_margin": 7.91,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 139.92,
+            "median": 82.98,
+            "min": 82.98,
+            "max": 253.79,
+            "count": 3
+          },
+          "est_margin": 59.43,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 21.99,
+            "median": 21.99,
+            "min": 21.99,
+            "max": 21.99,
+            "count": 1
+          },
+          "est_margin": -13.17,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 42.46,
+            "median": 31.5,
+            "min": 9.38,
+            "max": 152.69,
+            "count": 20
+          },
+          "est_margin": -0.36,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 289.79,
+            "median": 250.0,
+            "min": 225.0,
+            "max": 449.99,
+            "count": 9
+          },
+          "est_margin": 224.82,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 373.33,
+            "median": 373.33,
+            "min": 373.33,
+            "max": 373.33,
+            "count": 1
+          },
+          "est_margin": 287.5,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2013",
+      "make": "FORD",
+      "model": "TAURUS",
+      "yard_row": "17",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 257.67,
+      "total_margin": 965.02,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 100.87,
+            "median": 59.49,
+            "min": 25.99,
+            "max": 342.76,
+            "count": 20
+          },
+          "est_margin": 50.46,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 38.73,
+            "median": 38.53,
+            "min": 19.0,
+            "max": 90.0,
+            "count": 20
+          },
+          "est_margin": -8.6,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 41.5,
+            "median": 41.0,
+            "min": 34.8,
+            "max": 45.55,
+            "count": 20
+          },
+          "est_margin": -6.2,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 38.98,
+            "median": 35.48,
+            "min": 17.0,
+            "max": 64.99,
+            "count": 20
+          },
+          "est_margin": 1.61,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 87.2,
+            "median": 80.0,
+            "min": 54.99,
+            "max": 148.9,
+            "count": 20
+          },
+          "est_margin": 33.56,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 105.12,
+            "median": 109.99,
+            "min": 34.99,
+            "max": 300.0,
+            "count": 20
+          },
+          "est_margin": 54.15,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 339.05,
+            "median": 568.1,
+            "min": 110.0,
+            "max": 568.1,
+            "count": 2
+          },
+          "est_margin": 257.67,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 153.7,
+            "median": 114.99,
+            "min": 21.98,
+            "max": 599.0,
+            "count": 20
+          },
+          "est_margin": 101.42,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 129.48,
+            "median": 115.0,
+            "min": 15.95,
+            "max": 259.0,
+            "count": 18
+          },
+          "est_margin": 75.35,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 69.56,
+            "median": 76.5,
+            "min": 43.2,
+            "max": 85.88,
+            "count": 20
+          },
+          "est_margin": 28.22,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 215.74,
+            "median": 186.0,
+            "min": 60.0,
+            "max": 399.99,
+            "count": 20
+          },
+          "est_margin": 125.39,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 102.44,
+            "median": 101.99,
+            "min": 48.0,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 56.82,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 89.2,
+            "median": 89.99,
+            "min": 56.0,
+            "max": 145.0,
+            "count": 20
+          },
+          "est_margin": 40.3,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 24.93,
+            "median": 22.14,
+            "min": 19.99,
+            "max": 45.0,
+            "count": 20
+          },
+          "est_margin": -5.61,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 227.33,
+            "median": 132.48,
+            "min": 35.0,
+            "max": 749.99,
+            "count": 20
+          },
+          "est_margin": 160.48,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2004",
+      "make": "FORD",
+      "model": "ESCAPE",
+      "yard_row": "17",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 255.4,
+      "total_margin": 492.87,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 77.16,
+            "median": 65.95,
+            "min": 41.97,
+            "max": 125.0,
+            "count": 20
+          },
+          "est_margin": 29.83,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 36.42,
+            "median": 35.95,
+            "min": 22.39,
+            "max": 59.97,
+            "count": 20
+          },
+          "est_margin": -10.61,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 87.51,
+            "median": 95.7,
+            "min": 43.95,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 33.83,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 45.51,
+            "median": 47.7,
+            "min": 29.74,
+            "max": 75.9,
+            "count": 20
+          },
+          "est_margin": 7.29,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 53.09,
+            "median": 49.99,
+            "min": 30.0,
+            "max": 103.0,
+            "count": 8
+          },
+          "est_margin": 3.89,
+          "yard_cost": 30
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 44.1,
+            "median": 44.1,
+            "min": 44.1,
+            "max": 44.1,
+            "count": 1
+          },
+          "est_margin": 6.07,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 52.46,
+            "median": 53.95,
+            "min": 27.26,
+            "max": 79.96,
+            "count": 20
+          },
+          "est_margin": 8.34,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 67.52,
+            "median": 71.95,
+            "min": 30.0,
+            "max": 120.89,
+            "count": 20
+          },
+          "est_margin": 26.44,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 365.17,
+            "median": 599.99,
+            "min": 130.34,
+            "max": 599.99,
+            "count": 2
+          },
+          "est_margin": 255.4,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 148.16,
+            "median": 190.65,
+            "min": 37.79,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 96.6,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 82.7,
+            "median": 94.5,
+            "min": 45.0,
+            "max": 119.7,
+            "count": 20
+          },
+          "est_margin": 34.65,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 26.45,
+            "median": 23.25,
+            "min": 17.6,
+            "max": 54.99,
+            "count": 20
+          },
+          "est_margin": -4.29,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 49.12,
+            "median": 90.0,
+            "min": 8.23,
+            "max": 90.0,
+            "count": 2
+          },
+          "est_margin": 5.43,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "1990",
+      "make": "MITSUBISHI",
+      "model": "GALANT",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 240.13,
+      "total_margin": 538.77,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 65.26,
+            "median": 76.0,
+            "min": 27.85,
+            "max": 92.19,
+            "count": 4
+          },
+          "est_margin": 19.48,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 181.62,
+            "median": 90.0,
+            "min": 58.99,
+            "max": 600.0,
+            "count": 8
+          },
+          "est_margin": 115.71,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 324.63,
+            "median": 316.44,
+            "min": 18.99,
+            "max": 810.34,
+            "count": 5
+          },
+          "est_margin": 240.13,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 81.75,
+            "median": 112.5,
+            "min": 50.99,
+            "max": 112.5,
+            "count": 2
+          },
+          "est_margin": 38.82,
+          "yard_cost": 20
+        },
+        "TCM": {
+          "active": {
+            "avg": 52.68,
+            "median": 35.0,
+            "min": 27.99,
+            "max": 210.0,
+            "count": 10
+          },
+          "est_margin": 8.53,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 56.47,
+            "median": 59.95,
+            "min": 52.99,
+            "max": 59.95,
+            "count": 2
+          },
+          "est_margin": 11.83,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 135.7,
+            "median": 135.7,
+            "min": 135.7,
+            "max": 135.7,
+            "count": 1
+          },
+          "est_margin": 85.76,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 82.98,
+            "median": 82.98,
+            "min": 82.98,
+            "max": 82.98,
+            "count": 2
+          },
+          "est_margin": 9.89,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 17.99,
+            "median": 17.99,
+            "min": 17.99,
+            "max": 17.99,
+            "count": 1
+          },
+          "est_margin": -16.65,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 71.92,
+            "median": 81.99,
+            "min": 48.29,
+            "max": 89.99,
+            "count": 6
+          },
+          "est_margin": 25.27,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2006",
+      "make": "TOYOTA",
+      "model": "SIENNA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 238.69,
+      "total_margin": 654.1200000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 73.35,
+            "median": 79.0,
+            "min": 31.41,
+            "max": 150.48,
+            "count": 20
+          },
+          "est_margin": 26.51,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 65.0,
+            "median": 66.5,
+            "min": 32.0,
+            "max": 139.99,
+            "count": 20
+          },
+          "est_margin": 14.25,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 102.06,
+            "median": 108.0,
+            "min": 73.0,
+            "max": 120.0,
+            "count": 20
+          },
+          "est_margin": 46.49,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 47.43,
+            "median": 48.48,
+            "min": 31.93,
+            "max": 73.14,
+            "count": 20
+          },
+          "est_margin": 8.96,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 76.46,
+            "median": 72.0,
+            "min": 48.0,
+            "max": 100.0,
+            "count": 5
+          },
+          "est_margin": 24.22,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 97.41,
+            "median": 99.99,
+            "min": 55.0,
+            "max": 169.33,
+            "count": 8
+          },
+          "est_margin": 47.45,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 221.44,
+            "median": 399.9,
+            "min": 42.99,
+            "max": 399.9,
+            "count": 2
+          },
+          "est_margin": 155.35,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 59.67,
+            "median": 59.95,
+            "min": 29.99,
+            "max": 112.84,
+            "count": 20
+          },
+          "est_margin": 19.61,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 37.18,
+            "median": 19.99,
+            "min": 14.79,
+            "max": 110.67,
+            "count": 20
+          },
+          "est_margin": -4.95,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 81.88,
+            "median": 80.0,
+            "min": 47.16,
+            "max": 150.0,
+            "count": 20
+          },
+          "est_margin": 38.94,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 92.21,
+            "median": 95.25,
+            "min": 57.49,
+            "max": 161.11,
+            "count": 20
+          },
+          "est_margin": 42.92,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 26.41,
+            "median": 23.25,
+            "min": 19.0,
+            "max": 48.83,
+            "count": 20
+          },
+          "est_margin": -4.32,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 317.23,
+            "median": 333.99,
+            "min": 31.49,
+            "max": 649.99,
+            "count": 20
+          },
+          "est_margin": 238.69,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2002",
+      "make": "DODGE",
+      "model": "RAM 1500",
+      "yard_row": "2",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 235.1,
+      "total_margin": 757.67,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 107.96,
+            "median": 87.96,
+            "min": 20.0,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 56.63,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 179.62,
+            "median": 150.0,
+            "min": 97.49,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 113.97,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 110.02,
+            "median": 99.98,
+            "min": 52.24,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 53.42,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 75.52,
+            "median": 75.9,
+            "min": 26.4,
+            "max": 101.94,
+            "count": 20
+          },
+          "est_margin": 33.4,
+          "yard_cost": 20
+        },
+        "BCM": {
+          "active": {
+            "avg": 91.68,
+            "median": 89.99,
+            "min": 41.56,
+            "max": 158.65,
+            "count": 20
+          },
+          "est_margin": 42.46,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 56.42,
+            "median": 50.0,
+            "min": 10.53,
+            "max": 132.0,
+            "count": 20
+          },
+          "est_margin": 11.79,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 93.39,
+            "median": 69.0,
+            "min": 39.33,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 43.95,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 75.51,
+            "median": 78.02,
+            "min": 23.62,
+            "max": 133.0,
+            "count": 20
+          },
+          "est_margin": 33.39,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 76.77,
+            "median": 79.13,
+            "min": 73.44,
+            "max": 79.13,
+            "count": 4
+          },
+          "est_margin": 4.49,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 149.67,
+            "median": 179.47,
+            "min": 55.38,
+            "max": 303.94,
+            "count": 10
+          },
+          "est_margin": 97.91,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 78.69,
+            "median": 85.39,
+            "min": 49.99,
+            "max": 102.19,
+            "count": 20
+          },
+          "est_margin": 31.16,
+          "yard_cost": 25
+        },
+        "radio nav": {
+          "active": {
+            "avg": 313.1,
+            "median": 297.99,
+            "min": 201.6,
+            "max": 397.99,
+            "count": 5
+          },
+          "est_margin": 235.1,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2012",
+      "make": "CHEVROLET",
+      "model": "TRAVERSE",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 209.0,
+      "total_margin": 600.31,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 73.44,
+            "median": 65.0,
+            "min": 25.0,
+            "max": 150.48,
+            "count": 20
+          },
+          "est_margin": 26.59,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 81.22,
+            "median": 79.95,
+            "min": 22.9,
+            "max": 159.59,
+            "count": 20
+          },
+          "est_margin": 28.36,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 66.42,
+            "median": 79.0,
+            "min": 25.0,
+            "max": 115.64,
+            "count": 20
+          },
+          "est_margin": 15.49,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 33.05,
+            "median": 31.93,
+            "min": 21.6,
+            "max": 49.99,
+            "count": 20
+          },
+          "est_margin": -3.55,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 110.83,
+            "median": 107.99,
+            "min": 83.0,
+            "max": 149.35,
+            "count": 20
+          },
+          "est_margin": 54.12,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 72.03,
+            "median": 65.22,
+            "min": 33.99,
+            "max": 212.97,
+            "count": 20
+          },
+          "est_margin": 25.37,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 283.1,
+            "median": 368.55,
+            "min": 32.63,
+            "max": 446.08,
+            "count": 5
+          },
+          "est_margin": 209.0,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 35.0,
+            "median": 35.0,
+            "min": 35.0,
+            "max": 35.0,
+            "count": 1
+          },
+          "est_margin": -1.85,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 40.02,
+            "median": 34.23,
+            "min": 22.0,
+            "max": 92.28,
+            "count": 20
+          },
+          "est_margin": -2.48,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 115.73,
+            "median": 78.0,
+            "min": 32.99,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 68.39,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 102.78,
+            "median": 64.59,
+            "min": 27.99,
+            "max": 349.9,
+            "count": 20
+          },
+          "est_margin": 57.12,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.92,
+            "median": 86.02,
+            "min": 45.0,
+            "max": 150.12,
+            "count": 20
+          },
+          "est_margin": 39.19,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.64,
+            "median": 23.25,
+            "min": 19.0,
+            "max": 42.0,
+            "count": 20
+          },
+          "est_margin": -6.73,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 147.8,
+            "median": 163.36,
+            "min": 65.5,
+            "max": 189.99,
+            "count": 20
+          },
+          "est_margin": 91.29,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "1974",
+      "make": "FORD",
+      "model": "LTD CROWN VICTORIA",
+      "yard_row": "17",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 199.34,
+      "total_margin": 264.48,
+      "parts": {
+        "fuel pump": {
+          "active": {
+            "avg": 112.0,
+            "median": 194.0,
+            "min": 30.0,
+            "max": 194.0,
+            "count": 2
+          },
+          "est_margin": 65.14,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 272.0,
+            "median": 194.0,
+            "min": 50.0,
+            "max": 744.0,
+            "count": 4
+          },
+          "est_margin": 199.34,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2009",
+      "make": "CHEVROLET",
+      "model": "MALIBU",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 188.04,
+      "total_margin": 600.8399999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 79.41,
+            "median": 80.99,
+            "min": 44.21,
+            "max": 114.99,
+            "count": 20
+          },
+          "est_margin": 31.79,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 51.57,
+            "median": 40.45,
+            "min": 17.49,
+            "max": 248.12,
+            "count": 20
+          },
+          "est_margin": 2.57,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 57.23,
+            "median": 43.05,
+            "min": 27.0,
+            "max": 115.0,
+            "count": 20
+          },
+          "est_margin": 7.49,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 40.46,
+            "median": 35.48,
+            "min": 22.49,
+            "max": 61.54,
+            "count": 20
+          },
+          "est_margin": 2.9,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 122.99,
+            "median": 125.99,
+            "min": 116.99,
+            "max": 125.99,
+            "count": 3
+          },
+          "est_margin": 64.7,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 81.65,
+            "median": 70.0,
+            "min": 49.26,
+            "max": 180.0,
+            "count": 20
+          },
+          "est_margin": 33.74,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 57.34,
+            "median": 52.44,
+            "min": 18.86,
+            "max": 254.15,
+            "count": 20
+          },
+          "est_margin": 12.59,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 253.27,
+            "median": 265.0,
+            "min": 70.0,
+            "max": 598.17,
+            "count": 8
+          },
+          "est_margin": 188.04,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 51.35,
+            "median": 41.99,
+            "min": 9.5,
+            "max": 139.95,
+            "count": 20
+          },
+          "est_margin": 7.37,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 81.07,
+            "median": 76.0,
+            "min": 44.95,
+            "max": 135.2,
+            "count": 20
+          },
+          "est_margin": 38.23,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 89.45,
+            "median": 83.73,
+            "min": 44.87,
+            "max": 200.0,
+            "count": 10
+          },
+          "est_margin": 15.52,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 139.7,
+            "median": 190.65,
+            "min": 41.79,
+            "max": 215.65,
+            "count": 15
+          },
+          "est_margin": 89.24,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 156.36,
+            "median": 71.05,
+            "min": 35.69,
+            "max": 553.35,
+            "count": 20
+          },
+          "est_margin": 98.73,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.38,
+            "median": 22.14,
+            "min": 22.14,
+            "max": 30.0,
+            "count": 20
+          },
+          "est_margin": -6.96,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 59.99,
+            "median": 59.99,
+            "min": 59.99,
+            "max": 59.99,
+            "count": 1
+          },
+          "est_margin": 14.89,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2009",
+      "make": "CHEVROLET",
+      "model": "MALIBU",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 188.04,
+      "total_margin": 601.7099999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 80.29,
+            "median": 84.99,
+            "min": 44.21,
+            "max": 114.99,
+            "count": 20
+          },
+          "est_margin": 32.55,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 51.57,
+            "median": 40.45,
+            "min": 17.49,
+            "max": 248.12,
+            "count": 20
+          },
+          "est_margin": 2.57,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 57.23,
+            "median": 43.05,
+            "min": 27.0,
+            "max": 115.0,
+            "count": 20
+          },
+          "est_margin": 7.49,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 40.59,
+            "median": 35.48,
+            "min": 22.49,
+            "max": 61.54,
+            "count": 20
+          },
+          "est_margin": 3.01,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 122.99,
+            "median": 125.99,
+            "min": 116.99,
+            "max": 125.99,
+            "count": 3
+          },
+          "est_margin": 64.7,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 81.65,
+            "median": 70.0,
+            "min": 49.26,
+            "max": 180.0,
+            "count": 20
+          },
+          "est_margin": 33.74,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 57.34,
+            "median": 52.44,
+            "min": 18.86,
+            "max": 254.15,
+            "count": 20
+          },
+          "est_margin": 12.59,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 253.27,
+            "median": 265.0,
+            "min": 70.0,
+            "max": 598.17,
+            "count": 8
+          },
+          "est_margin": 188.04,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 51.35,
+            "median": 41.99,
+            "min": 9.5,
+            "max": 139.95,
+            "count": 20
+          },
+          "est_margin": 7.37,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 81.07,
+            "median": 76.0,
+            "min": 44.95,
+            "max": 135.2,
+            "count": 20
+          },
+          "est_margin": 38.23,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 89.45,
+            "median": 83.73,
+            "min": 44.87,
+            "max": 200.0,
+            "count": 10
+          },
+          "est_margin": 15.52,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 139.7,
+            "median": 190.65,
+            "min": 41.79,
+            "max": 215.65,
+            "count": 15
+          },
+          "est_margin": 89.24,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 156.36,
+            "median": 71.05,
+            "min": 35.69,
+            "max": 553.35,
+            "count": 20
+          },
+          "est_margin": 98.73,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.38,
+            "median": 22.14,
+            "min": 22.14,
+            "max": 30.0,
+            "count": 20
+          },
+          "est_margin": -6.96,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 59.99,
+            "median": 59.99,
+            "min": 59.99,
+            "max": 59.99,
+            "count": 1
+          },
+          "est_margin": 14.89,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2011",
+      "make": "CHEVROLET",
+      "model": "MALIBU",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 188.04,
+      "total_margin": 413.57999999999987,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 79.41,
+            "median": 80.99,
+            "min": 44.21,
+            "max": 114.99,
+            "count": 20
+          },
+          "est_margin": 31.79,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 59.91,
+            "median": 40.45,
+            "min": 17.95,
+            "max": 248.12,
+            "count": 20
+          },
+          "est_margin": 9.82,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 45.71,
+            "median": 41.0,
+            "min": 28.0,
+            "max": 134.1,
+            "count": 20
+          },
+          "est_margin": -2.53,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 42.11,
+            "median": 43.54,
+            "min": 22.49,
+            "max": 64.62,
+            "count": 20
+          },
+          "est_margin": 4.34,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 64.72,
+            "median": 64.0,
+            "min": 24.9,
+            "max": 97.99,
+            "count": 11
+          },
+          "est_margin": 14.01,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 76.04,
+            "median": 70.55,
+            "min": 49.26,
+            "max": 126.67,
+            "count": 20
+          },
+          "est_margin": 28.85,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 55.33,
+            "median": 52.44,
+            "min": 14.0,
+            "max": 254.15,
+            "count": 20
+          },
+          "est_margin": 10.84,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 253.27,
+            "median": 265.0,
+            "min": 70.0,
+            "max": 598.17,
+            "count": 8
+          },
+          "est_margin": 188.04,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 47.01,
+            "median": 41.99,
+            "min": 9.5,
+            "max": 109.95,
+            "count": 20
+          },
+          "est_margin": 3.6,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 66.18,
+            "median": 62.1,
+            "min": 46.95,
+            "max": 86.56,
+            "count": 20
+          },
+          "est_margin": 25.28,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 92.4,
+            "median": 79.13,
+            "min": 44.87,
+            "max": 200.0,
+            "count": 7
+          },
+          "est_margin": 18.09,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 124.87,
+            "median": 115.0,
+            "min": 41.79,
+            "max": 215.65,
+            "count": 18
+          },
+          "est_margin": 76.34,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 65.46,
+            "median": 65.0,
+            "min": 35.69,
+            "max": 99.17,
+            "count": 20
+          },
+          "est_margin": 19.65,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 24.42,
+            "median": 23.25,
+            "min": 22.14,
+            "max": 34.99,
+            "count": 20
+          },
+          "est_margin": -6.05,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 33.12,
+            "median": 25.49,
+            "min": 25.49,
+            "max": 60.0,
+            "count": 5
+          },
+          "est_margin": -8.49,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2014",
+      "make": "CHEVROLET",
+      "model": "EQUINOX",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 185.26,
+      "total_margin": 618.05,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 50.72,
+            "median": 42.15,
+            "min": 28.54,
+            "max": 100.7,
+            "count": 20
+          },
+          "est_margin": 6.83,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 55.6,
+            "median": 36.0,
+            "min": 18.36,
+            "max": 164.24,
+            "count": 20
+          },
+          "est_margin": 6.07,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 96.86,
+            "median": 107.0,
+            "min": 54.99,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 41.97,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 39.36,
+            "median": 31.93,
+            "min": 22.5,
+            "max": 53.39,
+            "count": 20
+          },
+          "est_margin": 1.94,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 52.77,
+            "median": 49.99,
+            "min": 19.99,
+            "max": 152.99,
+            "count": 20
+          },
+          "est_margin": 3.61,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 61.85,
+            "median": 55.0,
+            "min": 24.5,
+            "max": 155.98,
+            "count": 20
+          },
+          "est_margin": 16.51,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 255.82,
+            "median": 239.0,
+            "min": 32.63,
+            "max": 488.04,
+            "count": 10
+          },
+          "est_margin": 185.26,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 181.15,
+            "median": 80.0,
+            "min": 10.0,
+            "max": 598.17,
+            "count": 12
+          },
+          "est_margin": 125.3,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 102.14,
+            "median": 101.99,
+            "min": 33.99,
+            "max": 300.19,
+            "count": 16
+          },
+          "est_margin": 51.56,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 86.82,
+            "median": 65.0,
+            "min": 43.05,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 43.23,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 94.84,
+            "median": 72.95,
+            "min": 39.99,
+            "max": 215.67,
+            "count": 12
+          },
+          "est_margin": 20.21,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 117.02,
+            "median": 100.0,
+            "min": 45.0,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 69.51,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 59.46,
+            "median": 55.42,
+            "min": 40.0,
+            "max": 95.25,
+            "count": 20
+          },
+          "est_margin": 14.43,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 24.56,
+            "median": 22.14,
+            "min": 19.79,
+            "max": 45.0,
+            "count": 20
+          },
+          "est_margin": -5.93,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 86.04,
+            "median": 80.49,
+            "min": 29.99,
+            "max": 151.99,
+            "count": 20
+          },
+          "est_margin": 37.55,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2004",
+      "make": "ACURA",
+      "model": "TSX",
+      "yard_row": "38",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 184.99,
+      "total_margin": 725.0400000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 109.09,
+            "median": 106.88,
+            "min": 55.0,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 57.61,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 181.78,
+            "median": 150.0,
+            "min": 75.0,
+            "max": 499.95,
+            "count": 20
+          },
+          "est_margin": 115.85,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 116.8,
+            "median": 109.24,
+            "min": 30.0,
+            "max": 279.73,
+            "count": 20
+          },
+          "est_margin": 59.32,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 77.01,
+            "median": 49.0,
+            "min": 29.99,
+            "max": 400.0,
+            "count": 20
+          },
+          "est_margin": 34.7,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 84.91,
+            "median": 86.1,
+            "min": 40.0,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 31.57,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 62.14,
+            "median": 69.99,
+            "min": 41.99,
+            "max": 70.0,
+            "count": 7
+          },
+          "est_margin": 16.76,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 111.38,
+            "median": 86.84,
+            "min": 36.74,
+            "max": 499.99,
+            "count": 20
+          },
+          "est_margin": 64.6,
+          "yard_cost": 20
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 76.88,
+            "median": 76.0,
+            "min": 43.95,
+            "max": 157.28,
+            "count": 20
+          },
+          "est_margin": 34.59,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 43.74,
+            "median": 49.99,
+            "min": 19.99,
+            "max": 65.0,
+            "count": 4
+          },
+          "est_margin": 5.75,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 76.39,
+            "median": 79.65,
+            "min": 20.0,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 29.16,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 134.99,
+            "median": 134.99,
+            "min": 134.99,
+            "max": 134.99,
+            "count": 1
+          },
+          "est_margin": 90.14,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 255.5,
+            "median": 299.99,
+            "min": 19.99,
+            "max": 450.0,
+            "count": 7
+          },
+          "est_margin": 184.99,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": true
+    },
+    {
+      "year": "2004",
+      "make": "NISSAN",
+      "model": "QUEST",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 176.97,
+      "total_margin": 581.9499999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 128.64,
+            "median": 129.9,
+            "min": 19.8,
+            "max": 308.47,
+            "count": 20
+          },
+          "est_margin": 74.62,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 121.76,
+            "median": 95.0,
+            "min": 59.12,
+            "max": 434.34,
+            "count": 20
+          },
+          "est_margin": 63.63,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 125.68,
+            "median": 134.17,
+            "min": 40.0,
+            "max": 249.99,
+            "count": 20
+          },
+          "est_margin": 67.04,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 46.49,
+            "median": 44.99,
+            "min": 19.99,
+            "max": 99.0,
+            "count": 20
+          },
+          "est_margin": 8.15,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 66.88,
+            "median": 65.55,
+            "min": 17.0,
+            "max": 139.0,
+            "count": 19
+          },
+          "est_margin": 15.89,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 80.97,
+            "median": 70.0,
+            "min": 33.71,
+            "max": 190.65,
+            "count": 19
+          },
+          "est_margin": 33.14,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 246.29,
+            "median": 226.1,
+            "min": 151.05,
+            "max": 496.38,
+            "count": 6
+          },
+          "est_margin": 176.97,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 41.65,
+            "median": 41.65,
+            "min": 41.65,
+            "max": 41.65,
+            "count": 1
+          },
+          "est_margin": 3.94,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 72.16,
+            "median": 60.41,
+            "min": 22.5,
+            "max": 192.37,
+            "count": 18
+          },
+          "est_margin": 25.48,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 65.25,
+            "median": 65.96,
+            "min": 42.95,
+            "max": 83.19,
+            "count": 20
+          },
+          "est_margin": 24.47,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 63.06,
+            "median": 45.0,
+            "min": 29.0,
+            "max": 215.65,
+            "count": 10
+          },
+          "est_margin": 22.56,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 94.17,
+            "median": 95.25,
+            "min": 50.0,
+            "max": 143.7,
+            "count": 20
+          },
+          "est_margin": 44.63,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 24.54,
+            "median": 23.25,
+            "min": 13.85,
+            "max": 41.97,
+            "count": 20
+          },
+          "est_margin": -5.95,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 74.34,
+            "median": 69.0,
+            "min": 39.99,
+            "max": 117.89,
+            "count": 11
+          },
+          "est_margin": 27.38,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2008",
+      "make": "HONDA",
+      "model": "ELEMENT",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 175.63,
+      "total_margin": 538.45,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 130.46,
+            "median": 119.99,
+            "min": 50.0,
+            "max": 250.02,
+            "count": 20
+          },
+          "est_margin": 76.2,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 133.98,
+            "median": 133.0,
+            "min": 39.99,
+            "max": 249.0,
+            "count": 12
+          },
+          "est_margin": 74.26,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 129.58,
+            "median": 107.99,
+            "min": 16.0,
+            "max": 319.0,
+            "count": 20
+          },
+          "est_margin": 70.43,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 58.52,
+            "median": 59.0,
+            "min": 29.99,
+            "max": 99.9,
+            "count": 20
+          },
+          "est_margin": 18.61,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 91.11,
+            "median": 59.99,
+            "min": 34.0,
+            "max": 285.0,
+            "count": 9
+          },
+          "est_margin": 36.97,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 48.89,
+            "median": 47.96,
+            "min": 35.0,
+            "max": 60.0,
+            "count": 5
+          },
+          "est_margin": 5.23,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 239.0,
+            "median": 239.0,
+            "min": 239.0,
+            "max": 239.0,
+            "count": 1
+          },
+          "est_margin": 175.63,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 58.01,
+            "median": 50.0,
+            "min": 27.0,
+            "max": 149.0,
+            "count": 20
+          },
+          "est_margin": 13.17,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 55.88,
+            "median": 50.09,
+            "min": 38.24,
+            "max": 80.0,
+            "count": 20
+          },
+          "est_margin": 16.32,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 80.11,
+            "median": 76.11,
+            "min": 50.0,
+            "max": 149.84,
+            "count": 20
+          },
+          "est_margin": 32.4,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 51.37,
+            "median": 35.08,
+            "min": 19.99,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 17.39,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 44.99,
+            "median": 44.99,
+            "min": 44.99,
+            "max": 44.99,
+            "count": 1
+          },
+          "est_margin": 1.84,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2019",
+      "make": "CHEVROLET",
+      "model": "IMPALA",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 160.07,
+      "total_margin": 617.2300000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 52.86,
+            "median": 42.15,
+            "min": 37.59,
+            "max": 169.28,
+            "count": 20
+          },
+          "est_margin": 8.69,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 43.45,
+            "median": 38.53,
+            "min": 18.99,
+            "max": 93.84,
+            "count": 20
+          },
+          "est_margin": -4.5,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 51.39,
+            "median": 41.0,
+            "min": 36.8,
+            "max": 130.0,
+            "count": 20
+          },
+          "est_margin": 2.41,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 33.15,
+            "median": 31.93,
+            "min": 28.0,
+            "max": 49.93,
+            "count": 20
+          },
+          "est_margin": -3.46,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 171.82,
+            "median": 150.0,
+            "min": 118.0,
+            "max": 249.99,
+            "count": 20
+          },
+          "est_margin": 107.18,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 90.29,
+            "median": 77.5,
+            "min": 40.0,
+            "max": 249.99,
+            "count": 20
+          },
+          "est_margin": 41.25,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 226.86,
+            "median": 239.0,
+            "min": 30.0,
+            "max": 488.04,
+            "count": 8
+          },
+          "est_margin": 160.07,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 107.93,
+            "median": 79.99,
+            "min": 50.99,
+            "max": 385.0,
+            "count": 20
+          },
+          "est_margin": 61.6,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 44.16,
+            "median": 35.14,
+            "min": 28.0,
+            "max": 100.7,
+            "count": 20
+          },
+          "est_margin": 1.12,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 75.5,
+            "median": 76.99,
+            "min": 40.0,
+            "max": 180.9,
+            "count": 20
+          },
+          "est_margin": 33.38,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 193.97,
+            "median": 311.53,
+            "min": 76.41,
+            "max": 311.53,
+            "count": 2
+          },
+          "est_margin": 106.45,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 81.04,
+            "median": 69.99,
+            "min": 39.49,
+            "max": 190.65,
+            "count": 9
+          },
+          "est_margin": 38.2,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 73.04,
+            "median": 78.03,
+            "min": 40.0,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 26.24,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.76,
+            "median": 23.25,
+            "min": 22.14,
+            "max": 42.0,
+            "count": 20
+          },
+          "est_margin": -6.63,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 94.86,
+            "median": 55.0,
+            "min": 26.99,
+            "max": 254.93,
+            "count": 6
+          },
+          "est_margin": 45.23,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2006",
+      "make": "BMW",
+      "model": "330I",
+      "yard_row": "38",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 157.37,
+      "total_margin": 543.9599999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 98.18,
+            "median": 82.82,
+            "min": 16.99,
+            "max": 195.99,
+            "count": 20
+          },
+          "est_margin": 48.12,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 98.98,
+            "median": 69.99,
+            "min": 37.99,
+            "max": 239.97,
+            "count": 20
+          },
+          "est_margin": 43.81,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 94.47,
+            "median": 76.99,
+            "min": 41.0,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 39.89,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 47.09,
+            "median": 35.0,
+            "min": 22.51,
+            "max": 130.0,
+            "count": 20
+          },
+          "est_margin": 8.67,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 98.99,
+            "median": 70.39,
+            "min": 53.21,
+            "max": 189.99,
+            "count": 20
+          },
+          "est_margin": 43.82,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 78.96,
+            "median": 67.5,
+            "min": 34.45,
+            "max": 190.65,
+            "count": 20
+          },
+          "est_margin": 31.4,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 43.92,
+            "median": 35.2,
+            "min": 24.9,
+            "max": 125.0,
+            "count": 20
+          },
+          "est_margin": 0.91,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 63.59,
+            "median": 44.99,
+            "min": 18.75,
+            "max": 199.0,
+            "count": 20
+          },
+          "est_margin": 23.02,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 45.15,
+            "median": 44.99,
+            "min": 16.8,
+            "max": 89.96,
+            "count": 20
+          },
+          "est_margin": 1.98,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 80.46,
+            "median": 73.47,
+            "min": 33.29,
+            "max": 149.99,
+            "count": 20
+          },
+          "est_margin": 37.7,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 94.85,
+            "median": 59.99,
+            "min": 15.0,
+            "max": 450.0,
+            "count": 20
+          },
+          "est_margin": 20.22,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 41.96,
+            "median": 46.71,
+            "min": 8.99,
+            "max": 66.56,
+            "count": 20
+          },
+          "est_margin": 4.21,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 88.8,
+            "median": 85.99,
+            "min": 63.57,
+            "max": 139.99,
+            "count": 20
+          },
+          "est_margin": 39.96,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 80.67,
+            "median": 71.24,
+            "min": 22.14,
+            "max": 169.86,
+            "count": 20
+          },
+          "est_margin": 42.88,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 223.76,
+            "median": 249.0,
+            "min": 59.95,
+            "max": 425.0,
+            "count": 20
+          },
+          "est_margin": 157.37,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": true
+    },
+    {
+      "year": "2015",
+      "make": "MINI",
+      "model": "COOPER",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 155.02,
+      "total_margin": 863.75,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 93.33,
+            "median": 94.87,
+            "min": 44.4,
+            "max": 185.59,
+            "count": 20
+          },
+          "est_margin": 43.9,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 180.0,
+            "median": 150.0,
+            "min": 87.99,
+            "max": 370.0,
+            "count": 20
+          },
+          "est_margin": 114.3,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 81.89,
+            "median": 59.14,
+            "min": 30.0,
+            "max": 280.0,
+            "count": 20
+          },
+          "est_margin": 28.94,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 68.98,
+            "median": 59.99,
+            "min": 31.5,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 27.71,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 179.83,
+            "median": 159.0,
+            "min": 104.5,
+            "max": 389.9,
+            "count": 20
+          },
+          "est_margin": 114.15,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 141.76,
+            "median": 119.95,
+            "min": 58.49,
+            "max": 299.0,
+            "count": 20
+          },
+          "est_margin": 86.03,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 91.6,
+            "median": 85.05,
+            "min": 36.39,
+            "max": 250.0,
+            "count": 20
+          },
+          "est_margin": 42.39,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 72.76,
+            "median": 51.95,
+            "min": 18.48,
+            "max": 297.5,
+            "count": 20
+          },
+          "est_margin": 31.0,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 50.33,
+            "median": 46.91,
+            "min": 13.94,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 6.49,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 86.33,
+            "median": 79.99,
+            "min": 40.0,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 42.81,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 204.35,
+            "median": 192.0,
+            "min": 39.99,
+            "max": 427.49,
+            "count": 20
+          },
+          "est_margin": 115.48,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 35.02,
+            "median": 34.99,
+            "min": 11.24,
+            "max": 63.2,
+            "count": 20
+          },
+          "est_margin": -1.83,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.12,
+            "median": 86.4,
+            "min": 59.75,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 38.49,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 53.07,
+            "median": 44.99,
+            "min": 15.0,
+            "max": 119.99,
+            "count": 20
+          },
+          "est_margin": 18.87,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 221.06,
+            "median": 200.0,
+            "min": 89.99,
+            "max": 459.99,
+            "count": 20
+          },
+          "est_margin": 155.02,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2005",
+      "make": "FORD",
+      "model": "F-150",
+      "yard_row": "2",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 150.52,
+      "total_margin": 648.84,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 119.16,
+            "median": 133.21,
+            "min": 42.0,
+            "max": 179.99,
+            "count": 20
+          },
+          "est_margin": 66.37,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 77.5,
+            "median": 67.96,
+            "min": 36.0,
+            "max": 170.0,
+            "count": 20
+          },
+          "est_margin": 25.12,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 84.65,
+            "median": 94.99,
+            "min": 16.0,
+            "max": 147.49,
+            "count": 20
+          },
+          "est_margin": 31.35,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 47.43,
+            "median": 36.73,
+            "min": 23.52,
+            "max": 159.0,
+            "count": 20
+          },
+          "est_margin": 8.96,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 122.28,
+            "median": 105.0,
+            "min": 58.59,
+            "max": 200.0,
+            "count": 7
+          },
+          "est_margin": 64.08,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 106.53,
+            "median": 106.75,
+            "min": 52.49,
+            "max": 202.5,
+            "count": 12
+          },
+          "est_margin": 55.38,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 76.77,
+            "median": 75.0,
+            "min": 41.59,
+            "max": 110.3,
+            "count": 20
+          },
+          "est_margin": 29.49,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 65.6,
+            "median": 62.1,
+            "min": 24.99,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 24.77,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 184.22,
+            "median": 79.13,
+            "min": 79.13,
+            "max": 599.99,
+            "count": 5
+          },
+          "est_margin": 97.97,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 119.42,
+            "median": 99.99,
+            "min": 34.5,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 71.6,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 74.03,
+            "median": 65.95,
+            "min": 48.0,
+            "max": 165.0,
+            "count": 20
+          },
+          "est_margin": 27.11,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 26.92,
+            "median": 23.25,
+            "min": 13.85,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": -3.88,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 215.89,
+            "median": 84.77,
+            "min": 6.26,
+            "max": 685.0,
+            "count": 10
+          },
+          "est_margin": 150.52,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2014",
+      "make": "KIA",
+      "model": "SOUL",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 147.82,
+      "total_margin": 519.2600000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 52.19,
+            "median": 42.15,
+            "min": 28.5,
+            "max": 150.0,
+            "count": 20
+          },
+          "est_margin": 8.11,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 43.05,
+            "median": 38.53,
+            "min": 22.0,
+            "max": 100.1,
+            "count": 20
+          },
+          "est_margin": -4.85,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 46.85,
+            "median": 41.0,
+            "min": 41.0,
+            "max": 89.0,
+            "count": 20
+          },
+          "est_margin": -1.54,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 31.64,
+            "median": 31.93,
+            "min": 24.0,
+            "max": 35.48,
+            "count": 20
+          },
+          "est_margin": -4.77,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 185.64,
+            "median": 140.0,
+            "min": 92.0,
+            "max": 499.99,
+            "count": 17
+          },
+          "est_margin": 119.21,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 57.81,
+            "median": 53.59,
+            "min": 26.59,
+            "max": 99.95,
+            "count": 20
+          },
+          "est_margin": 12.99,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 60.0,
+            "median": 60.0,
+            "min": 60.0,
+            "max": 60.0,
+            "count": 1
+          },
+          "est_margin": 14.9,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 207.04,
+            "median": 239.95,
+            "min": 14.99,
+            "max": 313.41,
+            "count": 8
+          },
+          "est_margin": 147.82,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 56.14,
+            "median": 57.2,
+            "min": 22.19,
+            "max": 107.99,
+            "count": 20
+          },
+          "est_margin": 11.54,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 80.34,
+            "median": 71.94,
+            "min": 44.0,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 37.6,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 130.8,
+            "median": 127.0,
+            "min": 82.98,
+            "max": 212.41,
+            "count": 11
+          },
+          "est_margin": 51.5,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 72.71,
+            "median": 61.19,
+            "min": 30.0,
+            "max": 135.0,
+            "count": 10
+          },
+          "est_margin": 30.96,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 73.83,
+            "median": 70.0,
+            "min": 36.0,
+            "max": 166.99,
+            "count": 20
+          },
+          "est_margin": 26.93,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 39.4,
+            "median": 45.0,
+            "min": 24.18,
+            "max": 52.49,
+            "count": 4
+          },
+          "est_margin": 6.98,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 114.0,
+            "median": 109.99,
+            "min": 38.36,
+            "max": 249.99,
+            "count": 20
+          },
+          "est_margin": 61.88,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2003",
+      "make": "CHEVROLET",
+      "model": "TRAILBLAZER",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 146.6,
+      "total_margin": 392.67,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 92.27,
+            "median": 84.65,
+            "min": 50.0,
+            "max": 199.95,
+            "count": 20
+          },
+          "est_margin": 42.97,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 48.08,
+            "median": 44.85,
+            "min": 26.99,
+            "max": 94.43,
+            "count": 20
+          },
+          "est_margin": -0.47,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 96.99,
+            "median": 99.0,
+            "min": 22.0,
+            "max": 202.5,
+            "count": 20
+          },
+          "est_margin": 42.08,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 43.17,
+            "median": 42.04,
+            "min": 30.0,
+            "max": 79.44,
+            "count": 20
+          },
+          "est_margin": 5.26,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 87.06,
+            "median": 80.99,
+            "min": 80.29,
+            "max": 99.9,
+            "count": 3
+          },
+          "est_margin": 33.44,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 50.67,
+            "median": 49.99,
+            "min": 3.79,
+            "max": 125.99,
+            "count": 20
+          },
+          "est_margin": 6.78,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 35.0,
+            "median": 35.0,
+            "min": 35.0,
+            "max": 35.0,
+            "count": 1
+          },
+          "est_margin": -6.85,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 56.98,
+            "median": 55.99,
+            "min": 12.95,
+            "max": 149.95,
+            "count": 20
+          },
+          "est_margin": 12.27,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 91.85,
+            "median": 74.33,
+            "min": 44.09,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 47.61,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 91.43,
+            "median": 89.0,
+            "min": 39.95,
+            "max": 266.25,
+            "count": 20
+          },
+          "est_margin": 47.24,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 73.7,
+            "median": 74.84,
+            "min": 29.95,
+            "max": 95.25,
+            "count": 20
+          },
+          "est_margin": 26.82,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 18.64,
+            "median": 21.71,
+            "min": 14.0,
+            "max": 23.85,
+            "count": 4
+          },
+          "est_margin": -11.08,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 211.38,
+            "median": 174.99,
+            "min": 83.75,
+            "max": 600.0,
+            "count": 10
+          },
+          "est_margin": 146.6,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2003",
+      "make": "CHEVROLET",
+      "model": "TAHOE",
+      "yard_row": "1",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 142.11,
+      "total_margin": 673.7299999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 132.87,
+            "median": 134.1,
+            "min": 69.99,
+            "max": 202.45,
+            "count": 20
+          },
+          "est_margin": 78.3,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 80.67,
+            "median": 90.0,
+            "min": 18.0,
+            "max": 193.51,
+            "count": 20
+          },
+          "est_margin": 27.88,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 137.59,
+            "median": 152.1,
+            "min": 49.5,
+            "max": 198.89,
+            "count": 20
+          },
+          "est_margin": 77.4,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 54.18,
+            "median": 52.25,
+            "min": 26.88,
+            "max": 92.59,
+            "count": 20
+          },
+          "est_margin": 14.84,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 129.5,
+            "median": 125.55,
+            "min": 29.95,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 70.36,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 65.46,
+            "median": 50.0,
+            "min": 28.99,
+            "max": 119.11,
+            "count": 20
+          },
+          "est_margin": 19.65,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 59.91,
+            "median": 48.6,
+            "min": 32.63,
+            "max": 149.95,
+            "count": 10
+          },
+          "est_margin": 14.82,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 83.54,
+            "median": 69.95,
+            "min": 29.0,
+            "max": 152.99,
+            "count": 20
+          },
+          "est_margin": 35.38,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 77.51,
+            "median": 71.92,
+            "min": 46.3,
+            "max": 159.99,
+            "count": 20
+          },
+          "est_margin": 35.13,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 121.94,
+            "median": 79.13,
+            "min": 79.13,
+            "max": 335.99,
+            "count": 6
+          },
+          "est_margin": 43.79,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 115.24,
+            "median": 89.99,
+            "min": 40.99,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 67.96,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 81.37,
+            "median": 79.42,
+            "min": 45.0,
+            "max": 124.9,
+            "count": 20
+          },
+          "est_margin": 33.49,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 45.88,
+            "median": 40.0,
+            "min": 18.72,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 12.62,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 206.22,
+            "median": 139.0,
+            "min": 44.95,
+            "max": 600.0,
+            "count": 15
+          },
+          "est_margin": 142.11,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "1996",
+      "make": "CHEVROLET",
+      "model": "BLAZER",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 123.78,
+      "total_margin": 279.39000000000004,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 101.77,
+            "median": 99.95,
+            "min": 42.5,
+            "max": 244.99,
+            "count": 20
+          },
+          "est_margin": 51.24,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 73.56,
+            "median": 59.99,
+            "min": 36.9,
+            "max": 225.0,
+            "count": 20
+          },
+          "est_margin": 21.7,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 139.26,
+            "median": 140.69,
+            "min": 60.0,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 78.86,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 58.2,
+            "median": 59.0,
+            "min": 30.95,
+            "max": 117.89,
+            "count": 20
+          },
+          "est_margin": 18.33,
+          "yard_cost": 20
+        },
+        "BCM": {
+          "active": {
+            "avg": 12.95,
+            "median": 12.95,
+            "min": 12.95,
+            "max": 12.95,
+            "count": 1
+          },
+          "est_margin": -26.03,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 72.83,
+            "median": 85.0,
+            "min": 11.95,
+            "max": 109.95,
+            "count": 20
+          },
+          "est_margin": 26.06,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 179.4,
+            "median": 85.0,
+            "min": 28.5,
+            "max": 878.5,
+            "count": 19
+          },
+          "est_margin": 123.78,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 15.29,
+            "median": 17.99,
+            "min": 12.59,
+            "max": 17.99,
+            "count": 2
+          },
+          "est_margin": -49.0,
+          "yard_cost": 50
+        },
+        "alternator": {
+          "active": {
+            "avg": 73.08,
+            "median": 64.0,
+            "min": 49.99,
+            "max": 118.7,
+            "count": 20
+          },
+          "est_margin": 26.28,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 40.77,
+            "median": 35.0,
+            "min": 16.99,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 8.17,
+          "yard_cost": 15
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "1998",
+      "make": "TOYOTA",
+      "model": "SIENNA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 116.05,
+      "total_margin": 367.84999999999997,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 103.05,
+            "median": 84.0,
+            "min": 59.99,
+            "max": 355.46,
+            "count": 20
+          },
+          "est_margin": 52.35,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 93.64,
+            "median": 69.99,
+            "min": 22.5,
+            "max": 250.0,
+            "count": 14
+          },
+          "est_margin": 39.17,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 182.01,
+            "median": 180.49,
+            "min": 99.99,
+            "max": 327.99,
+            "count": 20
+          },
+          "est_margin": 116.05,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 71.4,
+            "median": 69.99,
+            "min": 46.95,
+            "max": 101.99,
+            "count": 20
+          },
+          "est_margin": 29.82,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 45.2,
+            "median": 41.65,
+            "min": 5.0,
+            "max": 100.0,
+            "count": 19
+          },
+          "est_margin": -2.98,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 92.71,
+            "median": 99.95,
+            "min": 56.99,
+            "max": 135.0,
+            "count": 20
+          },
+          "est_margin": 43.36,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 15.49,
+            "median": 18.99,
+            "min": 11.99,
+            "max": 18.99,
+            "count": 2
+          },
+          "est_margin": -18.82,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 56.82,
+            "median": 60.0,
+            "min": 12.95,
+            "max": 88.94,
+            "count": 17
+          },
+          "est_margin": 12.13,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 97.8,
+            "median": 88.7,
+            "min": 39.95,
+            "max": 240.99,
+            "count": 20
+          },
+          "est_margin": 52.79,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 71.2,
+            "median": 70.0,
+            "min": 18.0,
+            "max": 221.37,
+            "count": 20
+          },
+          "est_margin": 24.64,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 53.61,
+            "median": 39.99,
+            "min": 20.0,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 19.34,
+          "yard_cost": 15
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2005",
+      "make": "CHEVROLET",
+      "model": "MALIBU",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 115.08,
+      "total_margin": 381.35,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 50.68,
+            "median": 45.0,
+            "min": 28.0,
+            "max": 112.56,
+            "count": 20
+          },
+          "est_margin": 6.79,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 48.84,
+            "median": 35.0,
+            "min": 22.49,
+            "max": 119.97,
+            "count": 20
+          },
+          "est_margin": 0.19,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 73.63,
+            "median": 66.99,
+            "min": 43.95,
+            "max": 124.69,
+            "count": 20
+          },
+          "est_margin": 21.76,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 66.92,
+            "median": 57.64,
+            "min": 31.93,
+            "max": 192.22,
+            "count": 20
+          },
+          "est_margin": 25.92,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 95.0,
+            "median": 95.0,
+            "min": 95.0,
+            "max": 95.0,
+            "count": 1
+          },
+          "est_margin": 40.35,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 89.12,
+            "median": 63.74,
+            "min": 36.91,
+            "max": 221.2,
+            "count": 20
+          },
+          "est_margin": 40.23,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 56.97,
+            "median": 55.06,
+            "min": 19.99,
+            "max": 116.41,
+            "count": 13
+          },
+          "est_margin": 12.26,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 59.79,
+            "median": 53.99,
+            "min": 34.99,
+            "max": 130.0,
+            "count": 16
+          },
+          "est_margin": 14.72,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 75.11,
+            "median": 72.22,
+            "min": 39.6,
+            "max": 150.27,
+            "count": 20
+          },
+          "est_margin": 33.05,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 106.69,
+            "median": 103.84,
+            "min": 75.36,
+            "max": 200.0,
+            "count": 6
+          },
+          "est_margin": 30.52,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 169.4,
+            "median": 190.65,
+            "min": 63.25,
+            "max": 215.65,
+            "count": 11
+          },
+          "est_margin": 115.08,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 80.58,
+            "median": 78.89,
+            "min": 50.0,
+            "max": 149.7,
+            "count": 20
+          },
+          "est_margin": 32.8,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 23.09,
+            "median": 23.25,
+            "min": 19.99,
+            "max": 31.88,
+            "count": 20
+          },
+          "est_margin": -7.21,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 59.99,
+            "median": 59.99,
+            "min": 59.99,
+            "max": 59.99,
+            "count": 1
+          },
+          "est_margin": 14.89,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2009",
+      "make": "GMC",
+      "model": "ACADIA",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 110.81,
+      "total_margin": 565.45,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 95.87,
+            "median": 80.0,
+            "min": 34.0,
+            "max": 164.88,
+            "count": 20
+          },
+          "est_margin": 46.11,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 59.13,
+            "median": 55.0,
+            "min": 26.95,
+            "max": 142.43,
+            "count": 20
+          },
+          "est_margin": 9.14,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 61.37,
+            "median": 49.99,
+            "min": 32.0,
+            "max": 112.46,
+            "count": 20
+          },
+          "est_margin": 11.09,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 40.05,
+            "median": 31.93,
+            "min": 27.0,
+            "max": 138.4,
+            "count": 20
+          },
+          "est_margin": 2.54,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 110.45,
+            "median": 107.99,
+            "min": 85.0,
+            "max": 144.99,
+            "count": 20
+          },
+          "est_margin": 53.79,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 68.76,
+            "median": 67.22,
+            "min": 22.0,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 22.52,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 170.24,
+            "median": 109.99,
+            "min": 32.18,
+            "max": 368.55,
+            "count": 3
+          },
+          "est_margin": 110.81,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 54.95,
+            "median": 44.99,
+            "min": 19.99,
+            "max": 145.43,
+            "count": 20
+          },
+          "est_margin": 15.51,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 70.34,
+            "median": 69.99,
+            "min": 22.75,
+            "max": 139.97,
+            "count": 20
+          },
+          "est_margin": 23.9,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 73.7,
+            "median": 74.32,
+            "min": 38.95,
+            "max": 150.0,
+            "count": 20
+          },
+          "est_margin": 31.82,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 104.22,
+            "median": 79.13,
+            "min": 79.13,
+            "max": 200.0,
+            "count": 5
+          },
+          "est_margin": 28.37,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 125.84,
+            "median": 115.99,
+            "min": 38.99,
+            "max": 219.65,
+            "count": 20
+          },
+          "est_margin": 77.18,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 74.33,
+            "median": 75.0,
+            "min": 41.99,
+            "max": 119.0,
+            "count": 20
+          },
+          "est_margin": 27.37,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 37.62,
+            "median": 23.25,
+            "min": 20.0,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 5.43,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 157.67,
+            "median": 155.99,
+            "min": 36.0,
+            "max": 332.49,
+            "count": 20
+          },
+          "est_margin": 99.87,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "1999",
+      "make": "JEEP",
+      "model": "GRAND CHEROKEE",
+      "yard_row": "59",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 110.05,
+      "total_margin": 567.2800000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 89.25,
+            "median": 69.99,
+            "min": 31.72,
+            "max": 172.08,
+            "count": 20
+          },
+          "est_margin": 40.35,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 175.12,
+            "median": 199.95,
+            "min": 69.97,
+            "max": 265.99,
+            "count": 20
+          },
+          "est_margin": 110.05,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 82.49,
+            "median": 74.99,
+            "min": 52.0,
+            "max": 169.99,
+            "count": 20
+          },
+          "est_margin": 29.47,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 56.68,
+            "median": 54.99,
+            "min": 28.95,
+            "max": 107.47,
+            "count": 20
+          },
+          "est_margin": 17.01,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 58.85,
+            "median": 59.5,
+            "min": 35.57,
+            "max": 98.95,
+            "count": 20
+          },
+          "est_margin": 8.9,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 130.62,
+            "median": 112.45,
+            "min": 13.99,
+            "max": 249.95,
+            "count": 15
+          },
+          "est_margin": 76.34,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 50.06,
+            "median": 44.99,
+            "min": 14.95,
+            "max": 170.99,
+            "count": 20
+          },
+          "est_margin": 6.25,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 64.28,
+            "median": 59.99,
+            "min": 39.95,
+            "max": 109.99,
+            "count": 20
+          },
+          "est_margin": 18.62,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 79.64,
+            "median": 80.02,
+            "min": 33.0,
+            "max": 139.99,
+            "count": 20
+          },
+          "est_margin": 36.99,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 159.19,
+            "median": 203.09,
+            "min": 79.13,
+            "max": 223.51,
+            "count": 6
+          },
+          "est_margin": 76.2,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 49.28,
+            "median": 48.0,
+            "min": 15.99,
+            "max": 92.47,
+            "count": 13
+          },
+          "est_margin": 10.57,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 67.64,
+            "median": 67.99,
+            "min": 14.99,
+            "max": 107.0,
+            "count": 20
+          },
+          "est_margin": 21.55,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 114.16,
+            "median": 120.88,
+            "min": 107.45,
+            "max": 120.88,
+            "count": 4
+          },
+          "est_margin": 72.02,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 92.25,
+            "median": 90.0,
+            "min": 76.74,
+            "max": 110.0,
+            "count": 3
+          },
+          "est_margin": 42.96,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2000",
+      "make": "LEXUS",
+      "model": "RX 300",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 109.4,
+      "total_margin": 467.23,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 68.27,
+            "median": 55.0,
+            "min": 30.8,
+            "max": 136.08,
+            "count": 20
+          },
+          "est_margin": 22.09,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 97.72,
+            "median": 80.0,
+            "min": 39.99,
+            "max": 250.0,
+            "count": 20
+          },
+          "est_margin": 42.72,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 70.65,
+            "median": 67.95,
+            "min": 33.75,
+            "max": 120.0,
+            "count": 20
+          },
+          "est_margin": 19.17,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 80.97,
+            "median": 67.5,
+            "min": 43.95,
+            "max": 169.95,
+            "count": 20
+          },
+          "est_margin": 38.14,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 77.62,
+            "median": 89.99,
+            "min": 16.95,
+            "max": 134.98,
+            "count": 4
+          },
+          "est_margin": 25.23,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 79.51,
+            "median": 79.99,
+            "min": 49.0,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 31.87,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 112.18,
+            "median": 41.95,
+            "min": 11.99,
+            "max": 679.99,
+            "count": 14
+          },
+          "est_margin": 65.3,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 34.99,
+            "median": 34.99,
+            "min": 34.99,
+            "max": 34.99,
+            "count": 2
+          },
+          "est_margin": -6.86,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 101.54,
+            "median": 103.93,
+            "min": 5.95,
+            "max": 329.64,
+            "count": 18
+          },
+          "est_margin": 56.04,
+          "yard_cost": 20
+        },
+        "seat control": {
+          "active": {
+            "avg": 44.2,
+            "median": 39.97,
+            "min": 19.97,
+            "max": 100.09,
+            "count": 20
+          },
+          "est_margin": 6.15,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.11,
+            "median": 95.25,
+            "min": 21.56,
+            "max": 125.95,
+            "count": 20
+          },
+          "est_margin": 38.49,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 53.78,
+            "median": 39.99,
+            "min": 11.49,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 19.49,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 168.62,
+            "median": 125.99,
+            "min": 70.0,
+            "max": 383.99,
+            "count": 20
+          },
+          "est_margin": 109.4,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": true
+    },
+    {
+      "year": "2005",
+      "make": "DODGE",
+      "model": "RAM 1500",
+      "yard_row": "1",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 106.43,
+      "total_margin": 606.77,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 104.54,
+            "median": 99.99,
+            "min": 20.0,
+            "max": 183.74,
+            "count": 20
+          },
+          "est_margin": 53.65,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 100.07,
+            "median": 89.99,
+            "min": 43.0,
+            "max": 229.99,
+            "count": 20
+          },
+          "est_margin": 44.76,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 123.48,
+            "median": 115.0,
+            "min": 55.0,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 65.13,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 50.03,
+            "median": 52.43,
+            "min": 31.93,
+            "max": 75.59,
+            "count": 20
+          },
+          "est_margin": 11.23,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 116.96,
+            "median": 116.96,
+            "min": 116.96,
+            "max": 116.96,
+            "count": 1
+          },
+          "est_margin": 59.46,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 99.52,
+            "median": 84.59,
+            "min": 41.56,
+            "max": 223.84,
+            "count": 20
+          },
+          "est_margin": 49.28,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 108.68,
+            "median": 108.68,
+            "min": 108.68,
+            "max": 108.68,
+            "count": 1
+          },
+          "est_margin": 57.25,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 10.0,
+            "median": 10.0,
+            "min": 10.0,
+            "max": 10.0,
+            "count": 1
+          },
+          "est_margin": -23.6,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 102.33,
+            "median": 100.0,
+            "min": 39.99,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 51.73,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 64.61,
+            "median": 72.5,
+            "min": 24.23,
+            "max": 108.0,
+            "count": 20
+          },
+          "est_margin": 23.91,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 71.26,
+            "median": 79.13,
+            "min": 22.58,
+            "max": 83.73,
+            "count": 8
+          },
+          "est_margin": -0.3,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 125.81,
+            "median": 168.75,
+            "min": 55.38,
+            "max": 190.65,
+            "count": 6
+          },
+          "est_margin": 77.15,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 78.15,
+            "median": 81.0,
+            "min": 40.76,
+            "max": 99.17,
+            "count": 20
+          },
+          "est_margin": 30.69,
+          "yard_cost": 25
+        },
+        "radio nav": {
+          "active": {
+            "avg": 165.21,
+            "median": 131.0,
+            "min": 59.99,
+            "max": 397.99,
+            "count": 20
+          },
+          "est_margin": 106.43,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2013",
+      "make": "VOLVO",
+      "model": "S60",
+      "yard_row": "38",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 101.86,
+      "total_margin": 607.9699999999999,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 63.68,
+            "median": 50.0,
+            "min": 23.91,
+            "max": 137.69,
+            "count": 20
+          },
+          "est_margin": 18.1,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 42.92,
+            "median": 38.53,
+            "min": 25.64,
+            "max": 93.24,
+            "count": 20
+          },
+          "est_margin": -4.96,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 70.53,
+            "median": 63.74,
+            "min": 31.16,
+            "max": 155.01,
+            "count": 20
+          },
+          "est_margin": 19.06,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 43.77,
+            "median": 33.53,
+            "min": 29.95,
+            "max": 128.24,
+            "count": 20
+          },
+          "est_margin": 5.78,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 165.7,
+            "median": 149.99,
+            "min": 37.5,
+            "max": 389.99,
+            "count": 20
+          },
+          "est_margin": 101.86,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 89.21,
+            "median": 100.09,
+            "min": 41.77,
+            "max": 135.0,
+            "count": 4
+          },
+          "est_margin": 40.31,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 132.58,
+            "median": 119.0,
+            "min": 102.79,
+            "max": 194.0,
+            "count": 7
+          },
+          "est_margin": 78.04,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 146.58,
+            "median": 69.95,
+            "min": 17.94,
+            "max": 976.5,
+            "count": 20
+          },
+          "est_margin": 95.22,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 89.47,
+            "median": 74.72,
+            "min": 18.0,
+            "max": 329.95,
+            "count": 20
+          },
+          "est_margin": 40.54,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 79.03,
+            "median": 85.0,
+            "min": 31.49,
+            "max": 153.02,
+            "count": 20
+          },
+          "est_margin": 36.46,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 159.29,
+            "median": 157.5,
+            "min": 46.55,
+            "max": 260.0,
+            "count": 20
+          },
+          "est_margin": 76.28,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 25.2,
+            "median": 27.54,
+            "min": 2.7,
+            "max": 79.99,
+            "count": 20
+          },
+          "est_margin": -10.38,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 64.88,
+            "median": 59.95,
+            "min": 30.8,
+            "max": 105.45,
+            "count": 20
+          },
+          "est_margin": 19.15,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 86.26,
+            "median": 105.85,
+            "min": 23.25,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 47.75,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 94.32,
+            "median": 76.58,
+            "min": 44.99,
+            "max": 240.59,
+            "count": 20
+          },
+          "est_margin": 44.76,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": true
+    },
+    {
+      "year": "2010",
+      "make": "FORD",
+      "model": "FUSION",
+      "yard_row": "17",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 95.13,
+      "total_margin": 421.29,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 58.55,
+            "median": 50.0,
+            "min": 40.0,
+            "max": 92.88,
+            "count": 20
+          },
+          "est_margin": 13.64,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 51.91,
+            "median": 44.11,
+            "min": 24.0,
+            "max": 137.97,
+            "count": 20
+          },
+          "est_margin": 2.86,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 104.4,
+            "median": 99.99,
+            "min": 67.24,
+            "max": 199.99,
+            "count": 20
+          },
+          "est_margin": 48.53,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 34.62,
+            "median": 31.93,
+            "min": 24.0,
+            "max": 49.93,
+            "count": 20
+          },
+          "est_margin": -2.18,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 73.31,
+            "median": 75.0,
+            "min": 31.0,
+            "max": 110.0,
+            "count": 20
+          },
+          "est_margin": 21.48,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 100.17,
+            "median": 75.0,
+            "min": 22.49,
+            "max": 244.0,
+            "count": 20
+          },
+          "est_margin": 49.85,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 100.75,
+            "median": 99.99,
+            "min": 64.0,
+            "max": 150.0,
+            "count": 20
+          },
+          "est_margin": 50.35,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 57.83,
+            "median": 44.95,
+            "min": 34.98,
+            "max": 125.95,
+            "count": 16
+          },
+          "est_margin": 18.01,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 55.29,
+            "median": 41.97,
+            "min": 15.3,
+            "max": 149.59,
+            "count": 20
+          },
+          "est_margin": 10.8,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 65.25,
+            "median": 62.1,
+            "min": 33.56,
+            "max": 107.86,
+            "count": 20
+          },
+          "est_margin": 24.47,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 95.08,
+            "median": 79.13,
+            "min": 11.88,
+            "max": 255.37,
+            "count": 20
+          },
+          "est_margin": 20.42,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 146.47,
+            "median": 168.0,
+            "min": 29.95,
+            "max": 230.65,
+            "count": 20
+          },
+          "est_margin": 95.13,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 68.9,
+            "median": 67.88,
+            "min": 49.99,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 22.64,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 40.76,
+            "median": 24.6,
+            "min": 13.46,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 8.16,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 85.55,
+            "median": 79.99,
+            "min": 29.99,
+            "max": 284.91,
+            "count": 20
+          },
+          "est_margin": 37.13,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "1981",
+      "make": "HONDA",
+      "model": "ACCORD",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 93.98,
+      "total_margin": 205.08999999999997,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 150.9,
+            "median": 149.99,
+            "min": 8.99,
+            "max": 427.5,
+            "count": 6
+          },
+          "est_margin": 93.98,
+          "yard_cost": 25
+        },
+        "throttle body": {
+          "active": {
+            "avg": 64.5,
+            "median": 89.99,
+            "min": 39.0,
+            "max": 89.99,
+            "count": 2
+          },
+          "est_margin": 23.81,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 96.0,
+            "median": 140.0,
+            "min": 52.0,
+            "max": 140.0,
+            "count": 2
+          },
+          "est_margin": 46.22,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 58.0,
+            "median": 59.0,
+            "min": 55.0,
+            "max": 59.99,
+            "count": 3
+          },
+          "est_margin": 18.16,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 69.22,
+            "median": 67.5,
+            "min": 35.0,
+            "max": 90.0,
+            "count": 15
+          },
+          "est_margin": 22.92,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2011",
+      "make": "FORD",
+      "model": "FUSION",
+      "yard_row": "17",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 89.01,
+      "total_margin": 461.08000000000004,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 55.25,
+            "median": 44.0,
+            "min": 24.99,
+            "max": 107.28,
+            "count": 20
+          },
+          "est_margin": 10.77,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 70.96,
+            "median": 45.25,
+            "min": 31.35,
+            "max": 325.0,
+            "count": 20
+          },
+          "est_margin": 19.44,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 108.29,
+            "median": 112.0,
+            "min": 73.8,
+            "max": 159.94,
+            "count": 20
+          },
+          "est_margin": 51.91,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 35.93,
+            "median": 33.71,
+            "min": 24.0,
+            "max": 49.93,
+            "count": 20
+          },
+          "est_margin": -1.04,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 71.77,
+            "median": 73.49,
+            "min": 31.0,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 20.14,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 119.25,
+            "median": 89.99,
+            "min": 22.49,
+            "max": 244.0,
+            "count": 15
+          },
+          "est_margin": 66.45,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 106.96,
+            "median": 99.99,
+            "min": 64.0,
+            "max": 200.0,
+            "count": 20
+          },
+          "est_margin": 55.76,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 57.83,
+            "median": 44.95,
+            "min": 34.98,
+            "max": 125.95,
+            "count": 16
+          },
+          "est_margin": 18.01,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 72.97,
+            "median": 69.97,
+            "min": 34.23,
+            "max": 159.4,
+            "count": 11
+          },
+          "est_margin": 26.18,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 57.15,
+            "median": 62.1,
+            "min": 33.56,
+            "max": 89.89,
+            "count": 20
+          },
+          "est_margin": 17.42,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 83.95,
+            "median": 79.13,
+            "min": 11.88,
+            "max": 178.79,
+            "count": 20
+          },
+          "est_margin": 10.74,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 139.44,
+            "median": 168.0,
+            "min": 29.95,
+            "max": 230.65,
+            "count": 20
+          },
+          "est_margin": 89.01,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 70.58,
+            "median": 71.25,
+            "min": 50.0,
+            "max": 129.99,
+            "count": 20
+          },
+          "est_margin": 24.1,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 27.58,
+            "median": 24.6,
+            "min": 13.46,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": -3.31,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 106.67,
+            "median": 87.0,
+            "min": 24.72,
+            "max": 397.99,
+            "count": 20
+          },
+          "est_margin": 55.5,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2001",
+      "make": "VOLVO",
+      "model": "V40",
+      "yard_row": "38",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 88.95,
+      "total_margin": 442.74,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 51.9,
+            "median": 52.95,
+            "min": 12.5,
+            "max": 153.93,
+            "count": 20
+          },
+          "est_margin": 7.85,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 58.18,
+            "median": 44.56,
+            "min": 13.23,
+            "max": 121.28,
+            "count": 13
+          },
+          "est_margin": 8.32,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 150.86,
+            "median": 42.68,
+            "min": 29.0,
+            "max": 515.28,
+            "count": 8
+          },
+          "est_margin": 88.95,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 61.24,
+            "median": 54.99,
+            "min": 29.0,
+            "max": 175.0,
+            "count": 20
+          },
+          "est_margin": 20.98,
+          "yard_cost": 20
+        },
+        "TCM": {
+          "active": {
+            "avg": 52.52,
+            "median": 49.88,
+            "min": 28.0,
+            "max": 89.03,
+            "count": 6
+          },
+          "est_margin": 8.39,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 126.12,
+            "median": 129.99,
+            "min": 100.0,
+            "max": 144.5,
+            "count": 4
+          },
+          "est_margin": 72.42,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 91.15,
+            "median": 85.95,
+            "min": 14.0,
+            "max": 146.08,
+            "count": 20
+          },
+          "est_margin": 47.0,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 154.38,
+            "median": 169.98,
+            "min": 24.99,
+            "max": 281.48,
+            "count": 20
+          },
+          "est_margin": 72.01,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 34.89,
+            "median": 34.89,
+            "min": 34.89,
+            "max": 34.89,
+            "count": 1
+          },
+          "est_margin": -1.95,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 85.98,
+            "median": 89.9,
+            "min": 40.0,
+            "max": 126.57,
+            "count": 20
+          },
+          "est_margin": 37.5,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 77.67,
+            "median": 83.54,
+            "min": 27.49,
+            "max": 129.99,
+            "count": 6
+          },
+          "est_margin": 40.27,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 90.0,
+            "median": 90.0,
+            "min": 90.0,
+            "max": 90.0,
+            "count": 1
+          },
+          "est_margin": 41.0,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": true
+    },
+    {
+      "year": "2000",
+      "make": "FORD",
+      "model": "F-150",
+      "yard_row": "1",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 88.59,
+      "total_margin": 455.52,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 90.2,
+            "median": 99.99,
+            "min": 29.95,
+            "max": 143.49,
+            "count": 20
+          },
+          "est_margin": 41.17,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 79.21,
+            "median": 70.95,
+            "min": 29.0,
+            "max": 170.0,
+            "count": 20
+          },
+          "est_margin": 26.61,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 150.45,
+            "median": 153.17,
+            "min": 69.99,
+            "max": 258.9,
+            "count": 20
+          },
+          "est_margin": 88.59,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 76.99,
+            "median": 52.49,
+            "min": 27.95,
+            "max": 231.57,
+            "count": 20
+          },
+          "est_margin": 34.68,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 57.64,
+            "median": 52.0,
+            "min": 40.22,
+            "max": 89.99,
+            "count": 5
+          },
+          "est_margin": 7.85,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 71.56,
+            "median": 62.99,
+            "min": 30.35,
+            "max": 138.5,
+            "count": 20
+          },
+          "est_margin": 24.96,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 29.99,
+            "median": 29.99,
+            "min": 29.99,
+            "max": 29.99,
+            "count": 1
+          },
+          "est_margin": -11.21,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 56.23,
+            "median": 59.99,
+            "min": 29.95,
+            "max": 94.99,
+            "count": 20
+          },
+          "est_margin": 11.62,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 91.01,
+            "median": 80.0,
+            "min": 24.0,
+            "max": 399.99,
+            "count": 20
+          },
+          "est_margin": 46.88,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 153.0,
+            "median": 79.13,
+            "min": 75.36,
+            "max": 599.99,
+            "count": 7
+          },
+          "est_margin": 70.81,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 72.06,
+            "median": 79.23,
+            "min": 24.0,
+            "max": 120.0,
+            "count": 4
+          },
+          "est_margin": 30.39,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 72.58,
+            "median": 73.94,
+            "min": 49.99,
+            "max": 91.99,
+            "count": 20
+          },
+          "est_margin": 25.84,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 66.45,
+            "median": 105.85,
+            "min": 19.76,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 30.51,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 73.7,
+            "median": 50.0,
+            "min": 6.26,
+            "max": 383.5,
+            "count": 17
+          },
+          "est_margin": 26.82,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2004",
+      "make": "FORD",
+      "model": "F-150",
+      "yard_row": "2",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 82.24,
+      "total_margin": 478.23,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 114.39,
+            "median": 114.02,
+            "min": 57.95,
+            "max": 155.51,
+            "count": 20
+          },
+          "est_margin": 62.22,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 79.83,
+            "median": 74.25,
+            "min": 34.99,
+            "max": 170.0,
+            "count": 20
+          },
+          "est_margin": 27.15,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 137.17,
+            "median": 139.99,
+            "min": 42.95,
+            "max": 219.99,
+            "count": 20
+          },
+          "est_margin": 77.04,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 53.1,
+            "median": 37.95,
+            "min": 23.52,
+            "max": 189.99,
+            "count": 20
+          },
+          "est_margin": 13.9,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 63.81,
+            "median": 60.0,
+            "min": 35.0,
+            "max": 99.9,
+            "count": 6
+          },
+          "est_margin": 13.21,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 82.28,
+            "median": 74.5,
+            "min": 39.0,
+            "max": 202.5,
+            "count": 20
+          },
+          "est_margin": 34.28,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 58.9,
+            "median": 50.0,
+            "min": 34.99,
+            "max": 100.7,
+            "count": 20
+          },
+          "est_margin": 13.94,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 61.27,
+            "median": 70.99,
+            "min": 24.0,
+            "max": 135.31,
+            "count": 20
+          },
+          "est_margin": 21.0,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 143.77,
+            "median": 79.13,
+            "min": 75.36,
+            "max": 599.99,
+            "count": 8
+          },
+          "est_margin": 62.78,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 89.83,
+            "median": 74.99,
+            "min": 25.0,
+            "max": 215.65,
+            "count": 20
+          },
+          "est_margin": 45.85,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 75.39,
+            "median": 71.42,
+            "min": 40.0,
+            "max": 165.0,
+            "count": 20
+          },
+          "est_margin": 28.29,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 27.16,
+            "median": 22.14,
+            "min": 13.85,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": -3.67,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 137.4,
+            "median": 58.95,
+            "min": 6.26,
+            "max": 685.0,
+            "count": 20
+          },
+          "est_margin": 82.24,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "1998",
+      "make": "CHEVROLET",
+      "model": "S10",
+      "yard_row": "53",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 80.94,
+      "total_margin": 242.38,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 135.91,
+            "median": 110.7,
+            "min": 44.99,
+            "max": 399.95,
+            "count": 20
+          },
+          "est_margin": 80.94,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 49.61,
+            "median": 46.99,
+            "min": 20.0,
+            "max": 122.5,
+            "count": 20
+          },
+          "est_margin": 0.86,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 112.07,
+            "median": 84.0,
+            "min": 33.95,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 55.2,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 56.06,
+            "median": 55.0,
+            "min": 24.95,
+            "max": 81.9,
+            "count": 20
+          },
+          "est_margin": 16.47,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 79.99,
+            "median": 79.99,
+            "min": 79.99,
+            "max": 79.99,
+            "count": 1
+          },
+          "est_margin": 27.29,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 65.11,
+            "median": 49.0,
+            "min": 26.99,
+            "max": 134.9,
+            "count": 20
+          },
+          "est_margin": 19.35,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 38.95,
+            "median": 39.95,
+            "min": 22.5,
+            "max": 62.5,
+            "count": 20
+          },
+          "est_margin": -3.41,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 83.23,
+            "median": 83.19,
+            "min": 30.0,
+            "max": 138.89,
+            "count": 20
+          },
+          "est_margin": 40.11,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 12.59,
+            "median": 12.59,
+            "min": 12.59,
+            "max": 12.59,
+            "count": 2
+          },
+          "est_margin": -51.35,
+          "yard_cost": 50
+        },
+        "alternator": {
+          "active": {
+            "avg": 71.59,
+            "median": 71.48,
+            "min": 45.0,
+            "max": 105.54,
+            "count": 20
+          },
+          "est_margin": 24.98,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 68.09,
+            "median": 79.88,
+            "min": 20.0,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 31.94,
+          "yard_cost": 15
+        }
+      },
+      "is_new": false,
+      "is_hv": false
+    },
+    {
+      "year": "2004",
+      "make": "KIA",
+      "model": "SEDONA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 76.39,
+      "total_margin": 351.17,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 65.36,
+            "median": 56.88,
+            "min": 29.9,
+            "max": 261.28,
+            "count": 20
+          },
+          "est_margin": 19.56,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 136.43,
+            "median": 89.95,
+            "min": 32.99,
+            "max": 950.0,
+            "count": 15
+          },
+          "est_margin": 76.39,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 78.32,
+            "median": 79.99,
+            "min": 74.99,
+            "max": 79.99,
+            "count": 3
+          },
+          "est_margin": 25.84,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 93.31,
+            "median": 100.0,
+            "min": 15.0,
+            "max": 135.7,
+            "count": 20
+          },
+          "est_margin": 48.88,
+          "yard_cost": 20
+        },
+        "BCM": {
+          "active": {
+            "avg": 44.99,
+            "median": 44.99,
+            "min": 44.99,
+            "max": 44.99,
+            "count": 1
+          },
+          "est_margin": 1.84,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 46.62,
+            "median": 33.8,
+            "min": 20.0,
+            "max": 139.45,
+            "count": 20
+          },
+          "est_margin": 3.26,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 86.74,
+            "median": 90.0,
+            "min": 55.71,
+            "max": 138.7,
+            "count": 14
+          },
+          "est_margin": 43.16,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 80.52,
+            "median": 120.74,
+            "min": 40.3,
+            "max": 120.74,
+            "count": 2
+          },
+          "est_margin": 7.75,
+          "yard_cost": 50
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.22,
+            "median": 89.96,
+            "min": 12.72,
+            "max": 124.5,
+            "count": 20
+          },
+          "est_margin": 38.58,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 55.2,
+            "median": 44.99,
+            "min": 18.99,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 20.72,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 117.8,
+            "median": 90.0,
+            "min": 56.25,
+            "max": 249.95,
+            "count": 4
+          },
+          "est_margin": 65.19,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2011",
+      "make": "BMW",
+      "model": "328",
+      "yard_row": "38",
+      "arrival_date": "05/12/2026",
+      "yard": "Cagle's",
+      "best_margin": 71.65,
+      "total_margin": 501.2600000000001,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 76.01,
+            "median": 49.5,
+            "min": 42.15,
+            "max": 185.4,
+            "count": 20
+          },
+          "est_margin": 28.83,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 69.6,
+            "median": 47.49,
+            "min": 29.0,
+            "max": 239.99,
+            "count": 20
+          },
+          "est_margin": 18.25,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 89.57,
+            "median": 89.95,
+            "min": 24.99,
+            "max": 230.0,
+            "count": 20
+          },
+          "est_margin": 35.63,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 33.88,
+            "median": 31.93,
+            "min": 25.49,
+            "max": 66.4,
+            "count": 20
+          },
+          "est_margin": -2.82,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 120.68,
+            "median": 116.0,
+            "min": 55.0,
+            "max": 265.45,
+            "count": 20
+          },
+          "est_margin": 62.69,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 81.91,
+            "median": 79.0,
+            "min": 20.99,
+            "max": 134.99,
+            "count": 20
+          },
+          "est_margin": 33.96,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 119.48,
+            "median": 65.0,
+            "min": 19.99,
+            "max": 599.99,
+            "count": 20
+          },
+          "est_margin": 71.65,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 52.07,
+            "median": 42.0,
+            "min": 25.0,
+            "max": 104.97,
+            "count": 20
+          },
+          "est_margin": 8.0,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 79.23,
+            "median": 74.99,
+            "min": 39.99,
+            "max": 149.99,
+            "count": 20
+          },
+          "est_margin": 36.63,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 145.93,
+            "median": 161.0,
+            "min": 19.95,
+            "max": 329.0,
+            "count": 20
+          },
+          "est_margin": 64.66,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 39.61,
+            "median": 35.0,
+            "min": 7.5,
+            "max": 99.0,
+            "count": 20
+          },
+          "est_margin": 2.16,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 87.02,
+            "median": 86.4,
+            "min": 67.95,
+            "max": 114.0,
+            "count": 20
+          },
+          "est_margin": 38.41,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 72.03,
+            "median": 72.0,
+            "min": 40.0,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 35.37,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 120.85,
+            "median": 113.99,
+            "min": 44.22,
+            "max": 211.52,
+            "count": 20
+          },
+          "est_margin": 67.84,
+          "yard_cost": 25
+        }
+      },
+      "is_new": false,
+      "is_hv": true
+    },
+    {
+      "year": "1998",
+      "make": "LEXUS",
+      "model": "ES 300",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 65.85,
+      "total_margin": 263.31,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 66.83,
+            "median": 39.98,
+            "min": 18.0,
+            "max": 189.95,
+            "count": 20
+          },
+          "est_margin": 20.84,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 76.01,
+            "median": 69.99,
+            "min": 24.49,
+            "max": 200.0,
+            "count": 19
+          },
+          "est_margin": 23.83,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 49.81,
+            "median": 43.95,
+            "min": 17.5,
+            "max": 95.63,
+            "count": 20
+          },
+          "est_margin": 1.03,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 56.22,
+            "median": 59.15,
+            "min": 19.19,
+            "max": 114.74,
+            "count": 20
+          },
+          "est_margin": 16.61,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 64.14,
+            "median": 59.99,
+            "min": 29.0,
+            "max": 149.99,
+            "count": 12
+          },
+          "est_margin": 13.5,
+          "yard_cost": 30
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 15.49,
+            "median": 18.99,
+            "min": 11.99,
+            "max": 18.99,
+            "count": 2
+          },
+          "est_margin": -18.82,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 73.16,
+            "median": 62.95,
+            "min": 59.52,
+            "max": 166.66,
+            "count": 13
+          },
+          "est_margin": 26.35,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 91.29,
+            "median": 110.7,
+            "min": 3.9,
+            "max": 225.0,
+            "count": 20
+          },
+          "est_margin": 47.12,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 57.02,
+            "median": 79.13,
+            "min": 34.9,
+            "max": 79.13,
+            "count": 2
+          },
+          "est_margin": -12.69,
+          "yard_cost": 50
+        },
+        "seat control": {
+          "active": {
+            "avg": 112.82,
+            "median": 215.65,
+            "min": 9.99,
+            "max": 215.65,
+            "count": 4
+          },
+          "est_margin": 65.85,
+          "yard_cost": 20
+        },
+        "alternator": {
+          "active": {
+            "avg": 77.28,
+            "median": 79.99,
+            "min": 18.0,
+            "max": 118.7,
+            "count": 20
+          },
+          "est_margin": 29.93,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 49.78,
+            "median": 40.0,
+            "min": 19.98,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 16.01,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 81.67,
+            "median": 80.0,
+            "min": 75.0,
+            "max": 90.0,
+            "count": 3
+          },
+          "est_margin": 33.75,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": true
+    },
+    {
+      "year": "2006",
+      "make": "HYUNDAI",
+      "model": "SONATA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 52.68,
+      "total_margin": 226.16,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 61.22,
+            "median": 59.99,
+            "min": 30.0,
+            "max": 136.08,
+            "count": 20
+          },
+          "est_margin": 15.96,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 42.03,
+            "median": 38.53,
+            "min": 18.99,
+            "max": 119.97,
+            "count": 20
+          },
+          "est_margin": -5.73,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 74.35,
+            "median": 61.12,
+            "min": 30.0,
+            "max": 228.77,
+            "count": 20
+          },
+          "est_margin": 22.38,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 33.96,
+            "median": 32.0,
+            "min": 20.0,
+            "max": 52.47,
+            "count": 20
+          },
+          "est_margin": -2.75,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 88.87,
+            "median": 89.99,
+            "min": 39.99,
+            "max": 154.99,
+            "count": 17
+          },
+          "est_margin": 35.02,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 67.13,
+            "median": 51.5,
+            "min": 28.99,
+            "max": 134.9,
+            "count": 20
+          },
+          "est_margin": 21.1,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 103.42,
+            "median": 92.64,
+            "min": 82.29,
+            "max": 142.43,
+            "count": 5
+          },
+          "est_margin": 52.68,
+          "yard_cost": 25
+        },
+        "HID ballast": {
+          "active": {
+            "avg": 26.25,
+            "median": 26.25,
+            "min": 26.25,
+            "max": 26.25,
+            "count": 6
+          },
+          "est_margin": -9.46,
+          "yard_cost": 20
+        },
+        "climate control": {
+          "active": {
+            "avg": 55.04,
+            "median": 55.0,
+            "min": 30.0,
+            "max": 79.95,
+            "count": 20
+          },
+          "est_margin": 10.58,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 85.15,
+            "median": 81.0,
+            "min": 50.95,
+            "max": 179.0,
+            "count": 20
+          },
+          "est_margin": 41.78,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 76.67,
+            "median": 79.13,
+            "min": 67.91,
+            "max": 82.98,
+            "count": 3
+          },
+          "est_margin": 4.4,
+          "yard_cost": 50
+        },
+        "alternator": {
+          "active": {
+            "avg": 68.4,
+            "median": 72.0,
+            "min": 40.99,
+            "max": 101.99,
+            "count": 20
+          },
+          "est_margin": 22.21,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 43.96,
+            "median": 38.99,
+            "min": 21.59,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": 10.95,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 50.97,
+            "median": 50.97,
+            "min": 50.97,
+            "max": 50.97,
+            "count": 1
+          },
+          "est_margin": 7.04,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    },
+    {
+      "year": "2008",
+      "make": "NISSAN",
+      "model": "SENTRA",
+      "yard_row": "30",
+      "arrival_date": "05/19/2026",
+      "yard": "Cagle's",
+      "best_margin": 45.71,
+      "total_margin": 258.07,
+      "parts": {
+        "instrument cluster": {
+          "active": {
+            "avg": 66.04,
+            "median": 67.89,
+            "min": 40.0,
+            "max": 121.68,
+            "count": 20
+          },
+          "est_margin": 20.15,
+          "yard_cost": 25
+        },
+        "ECU": {
+          "active": {
+            "avg": 80.82,
+            "median": 71.18,
+            "min": 30.99,
+            "max": 271.15,
+            "count": 20
+          },
+          "est_margin": 28.01,
+          "yard_cost": 30
+        },
+        "ABS module": {
+          "active": {
+            "avg": 48.66,
+            "median": 41.0,
+            "min": 30.0,
+            "max": 99.99,
+            "count": 20
+          },
+          "est_margin": 0.03,
+          "yard_cost": 30
+        },
+        "throttle body": {
+          "active": {
+            "avg": 46.18,
+            "median": 32.0,
+            "min": 20.0,
+            "max": 217.75,
+            "count": 20
+          },
+          "est_margin": 7.88,
+          "yard_cost": 20
+        },
+        "amplifier": {
+          "active": {
+            "avg": 75.13,
+            "median": 72.45,
+            "min": 24.95,
+            "max": 139.0,
+            "count": 9
+          },
+          "est_margin": 23.06,
+          "yard_cost": 30
+        },
+        "BCM": {
+          "active": {
+            "avg": 92.86,
+            "median": 88.82,
+            "min": 49.95,
+            "max": 191.15,
+            "count": 19
+          },
+          "est_margin": 43.49,
+          "yard_cost": 25
+        },
+        "TCM": {
+          "active": {
+            "avg": 95.41,
+            "median": 65.0,
+            "min": 44.99,
+            "max": 359.99,
+            "count": 20
+          },
+          "est_margin": 45.71,
+          "yard_cost": 25
+        },
+        "climate control": {
+          "active": {
+            "avg": 46.96,
+            "median": 42.46,
+            "min": 22.5,
+            "max": 87.94,
+            "count": 20
+          },
+          "est_margin": 3.56,
+          "yard_cost": 25
+        },
+        "fuel pump": {
+          "active": {
+            "avg": 87.16,
+            "median": 80.0,
+            "min": 46.95,
+            "max": 299.99,
+            "count": 20
+          },
+          "est_margin": 43.53,
+          "yard_cost": 20
+        },
+        "turbocharger": {
+          "active": {
+            "avg": 79.17,
+            "median": 82.98,
+            "min": 75.36,
+            "max": 82.98,
+            "count": 2
+          },
+          "est_margin": 6.58,
+          "yard_cost": 50
+        },
+        "alternator": {
+          "active": {
+            "avg": 68.58,
+            "median": 67.2,
+            "min": 40.0,
+            "max": 153.98,
+            "count": 20
+          },
+          "est_margin": 22.36,
+          "yard_cost": 25
+        },
+        "MAF sensor": {
+          "active": {
+            "avg": 25.96,
+            "median": 22.14,
+            "min": 12.0,
+            "max": 105.85,
+            "count": 20
+          },
+          "est_margin": -4.71,
+          "yard_cost": 15
+        },
+        "radio nav": {
+          "active": {
+            "avg": 64.05,
+            "median": 50.67,
+            "min": 49.88,
+            "max": 91.6,
+            "count": 3
+          },
+          "est_margin": 18.42,
+          "yard_cost": 25
+        }
+      },
+      "is_new": true,
+      "is_hv": false
+    }
+  ]
+}
