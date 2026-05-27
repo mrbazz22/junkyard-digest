@@ -129,6 +129,20 @@
       border-color: var(--accent);
       font-weight: 600;
     }
+    .sort-select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      min-width: 150px;
+    }
+    .sort-select option {
+      background: var(--card);
+      color: var(--text);
+    }
     .search-input {
       flex: 1;
       min-width: 120px;
@@ -577,7 +591,11 @@
     <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
     <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
-
+    <select class="sort-select" id="sort-select" onchange="setSort(this.value)">
+      <option value="margin_desc">Sort: Best Margin ↓</option>
+      <option value="arrival_desc">Sort: Arrival Date ↓</option>
+      <option value="arrival_asc">Sort: Arrival Date ↑</option>
+    </select>
   </div>
 
   <!-- Yard Map View -->
@@ -612,6 +630,7 @@
     let allVehicles = [];
     let partLocations = {};
     let currentFilter = 'all';
+    let currentSort = 'margin_desc';
     let currentView = 'list';
     let expandedCard = null;
     let expandedPart = null;
@@ -667,6 +686,24 @@
       renderVehicles();
     }
 
+    function setSort(sort) {
+      currentSort = sort;
+      renderVehicles();
+    }
+
+    function parseDate(dateStr) {
+      if (!dateStr) return 0;
+      // Handle MM/DD/YYYY format
+      const parts = dateStr.split('/');
+      if (parts.length === 3) {
+        const month = parseInt(parts[0], 10) - 1;
+        const day = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
+        return new Date(year, month, day).getTime();
+      }
+      return new Date(dateStr).getTime() || 0;
+    }
+
     function getFilteredVehicles() {
       let filtered = [...allVehicles];
       const search = document.getElementById('search-input').value.toLowerCase();
@@ -683,6 +720,27 @@
         case 'new': filtered = filtered.filter(v => v.is_new); break;
         case 'hv': filtered = filtered.filter(v => v.is_hv); break;
         case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
+      }
+
+      // Sort
+      switch (currentSort) {
+        case 'arrival_desc':
+          filtered.sort((a, b) => {
+            const da = parseDate(a.arrival_date);
+            const db = parseDate(b.arrival_date);
+            return db - da || b.best_margin - a.best_margin;
+          });
+          break;
+        case 'arrival_asc':
+          filtered.sort((a, b) => {
+            const da = parseDate(a.arrival_date);
+            const db = parseDate(b.arrival_date);
+            return da - db || b.best_margin - a.best_margin;
+          });
+          break;
+        default: // margin_desc
+          filtered.sort((a, b) => b.best_margin - a.best_margin);
+          break;
       }
 
       return filtered;
