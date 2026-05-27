@@ -288,7 +288,6 @@
       transition: border-color 0.2s;
     }
     .part-item.has-margin { border-left: 3px solid var(--green); }
-    .part-item.cat-converter { border-left: 3px solid var(--danger); }
     .part-item.expanded {
       border-color: var(--accent);
       grid-column: 1 / -1;
@@ -578,7 +577,7 @@
     <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
     <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
-    <button class="filter-btn" data-filter="cat" onclick="setFilter('cat')">🐱 Cats</button>
+
   </div>
 
   <!-- Yard Map View -->
@@ -684,7 +683,6 @@
         case 'new': filtered = filtered.filter(v => v.is_new); break;
         case 'hv': filtered = filtered.filter(v => v.is_hv); break;
         case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
-        case 'cat': filtered = filtered.filter(v => v.parts['catalytic converter']?.est_margin > 50); break;
       }
 
       return filtered;
@@ -787,7 +785,6 @@
         'alternator': 'Alternator',
         'MAF sensor': 'MAF Sensor',
         'radio nav': 'Radio / Nav',
-        'catalytic converter': '🐱 Cat Converter',
         'A/C compressor': 'A/C Compressor',
         'power steering pump': 'P/S Pump',
         'wheels alloy set': 'Alloy Wheels',
@@ -799,7 +796,6 @@
       return Object.entries(parts).map(([name, data]) => {
         const margin = data.est_margin || 0;
         const avg = data.active ? data.active.avg : 0;
-        const isCat = name === 'catalytic converter';
         const isHighValue = margin >= 200;
 
         let locationHtml = '';
@@ -816,7 +812,7 @@
         }
 
         return `
-          <div class="part-item ${margin > 0 ? 'has-margin' : ''} ${isCat ? 'cat-converter' : ''}" onclick="togglePart(this, event)" data-part-name="${name}">
+          <div class="part-item ${margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)" data-part-name="${name}">
             <div class="part-header">
               <span class="part-name">${partNames[name] || name}</span>
               <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''} ${isHighValue ? 'high-value' : ''}">
