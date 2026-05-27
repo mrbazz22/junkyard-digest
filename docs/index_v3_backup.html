@@ -513,32 +513,6 @@
       font-size: 0.75rem;
       border-top: 1px solid var(--border);
     }
-  
-    /* Enriched Part Details */
-    .part-access, .part-tools, .part-steps, .part-test, .part-failures, .part-notes, .part-time, .part-confidence {
-      margin-top: 0.5rem;
-      padding: 0.5rem;
-      background: rgba(30,58,95,0.3);
-      border-radius: 6px;
-    }
-    .part-access { border-left: 3px solid var(--blue); }
-    .part-tools { border-left: 3px solid var(--accent); }
-    .part-steps { border-left: 3px solid var(--green); }
-    .part-test { border-left: 3px solid var(--green); background: rgba(6,78,59,0.3); }
-    .part-failures { border-left: 3px solid var(--red); background: rgba(239,68,68,0.1); }
-    .part-notes { border-left: 3px solid var(--danger); }
-    .part-time { border-left: 3px solid var(--accent); }
-    .part-confidence { border-left: 3px solid var(--blue); }
-    .warning-title { font-size: 0.75rem; font-weight: 600; color: var(--red); margin-bottom: 0.2rem; }
-    .warning-text { font-size: 0.75rem; color: var(--text); }
-    .steps-list { list-style: none; counter-reset: step; }
-    .steps-list li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.75rem; color: var(--text); }
-    .steps-list li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0.3rem; width: 1.1rem; height: 1.1rem; background: var(--green); color: white; border-radius: 50%; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .confidence-badge { display: inline-block; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
-    .confidence-high { background: var(--green); color: white; }
-    .confidence-medium { background: var(--danger); color: #0f172a; }
-    .confidence-low { background: var(--red); color: white; }
-
   </style>
 </head>
 <body>
@@ -611,7 +585,6 @@
 
   <script>
     let allVehicles = [];
-    let partLocations = {};
     let currentFilter = 'all';
     let currentView = 'list';
     let expandedCard = null;
@@ -619,17 +592,9 @@
 
     async function loadData() {
       try {
-        const [vehicleResp, locationResp] = await Promise.all([
-          fetch('research_data.json?t=' + Date.now()),
-          fetch('part_locations.json?t=' + Date.now()).catch(() => null)
-        ]);
-        const data = await vehicleResp.json();
+        const resp = await fetch('research_data.json?t=' + Date.now());
+        const data = await resp.json();
         allVehicles = data.vehicles || [];
-        if (locationResp && locationResp.ok) {
-          const locData = await locationResp.json();
-          const { _meta, ...parts } = locData;
-          partLocations = parts;
-        }
 
         document.getElementById('update-time').textContent = 'Updated: ' + data.date;
         document.getElementById('stat-total').textContent = data.stats.total;
@@ -816,7 +781,7 @@
         }
 
         return `
-          <div class="part-item ${margin > 0 ? 'has-margin' : ''} ${isCat ? 'cat-converter' : ''}" onclick="togglePart(this, event)" data-part-name="${name}">
+          <div class="part-item ${margin > 0 ? 'has-margin' : ''} ${isCat ? 'cat-converter' : ''}" onclick="togglePart(this, event)">
             <div class="part-header">
               <span class="part-name">${partNames[name] || name}</span>
               <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''} ${isHighValue ? 'high-value' : ''}">
@@ -854,32 +819,6 @@
       }
       part.classList.toggle('expanded');
       expandedPart = part.classList.contains('expanded') ? part : null;
-      
-      // Inject part location data if available and not already loaded
-      if (part.classList.contains('expanded') && partLocations) {
-        const partName = part.dataset.partName;
-        const loc = partLocations[partName];
-        if (loc) {
-          const detailDiv = part.querySelector('.part-detail');
-          if (detailDiv && !detailDiv.dataset.enriched) {
-            let locHtml = '';
-            if (loc.location) locHtml += `<div class="part-location"><div class="part-location-title">📍 Location</div><div class="part-location-text">${loc.location}</div></div>`;
-            if (loc.access) locHtml += `<div class="part-access"><div class="part-location-title">🚪 Access</div><div class="part-location-text">${loc.access}</div></div>`;
-            if (loc.tools && loc.tools.length) locHtml += `<div class="part-tools"><div class="part-location-title">🔧 Tools</div><div class="tools-list">${loc.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div></div>`;
-            if (loc.time) locHtml += `<div class="part-time">⏱️ Time: ${loc.time}</div>`;
-            if (loc.confidence) locHtml += `<div class="part-confidence">Confidence: <span class="confidence-badge confidence-${loc.confidence}">${loc.confidence}</span></div>`;
-            if (loc.removal_steps && loc.removal_steps.length) locHtml += `<div class="part-steps"><div class="part-location-title">📋 Removal Steps</div><ol class="steps-list">${loc.removal_steps.map(s => `<li>${s}</li>`).join('')}</ol></div>`;
-            if (loc.test_at_yard) locHtml += `<div class="part-test"><div class="yard-test-title">✅ Test at Yard</div><div class="yard-test-text">${loc.test_at_yard}</div></div>`;
-            if (loc.common_failures) locHtml += `<div class="part-failures"><div class="warning-title">⚠️ Common Failures</div><div class="warning-text">${loc.common_failures}</div></div>`;
-            if (loc.notes) locHtml += `<div class="part-notes"><div class="part-location-title">📝 Notes</div><div class="part-location-text">${loc.notes}</div></div>`;
-            
-            if (locHtml) {
-              detailDiv.innerHTML = locHtml + detailDiv.innerHTML;
-              detailDiv.dataset.enriched = 'true';
-            }
-          }
-        }
-      }
     }
 
     function renderYardMap() {

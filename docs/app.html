@@ -58,26 +58,29 @@
     .stat-chip {
       background: var(--card);
       border-radius: 8px;
-      padding: 0.6rem 0.3rem;
+      padding: 0.5rem 0.3rem;
       text-align: center;
       border: 1px solid var(--border);
     }
-    .stat-chip .value { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
-    .stat-chip .label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-chip .value { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+    .stat-chip .label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.1rem; }
 
     /* Filters */
     .filters {
-      padding: 0.75rem;
+      display: flex;
+      gap: 0.4rem;
+      padding: 0.6rem 0.75rem;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 0.5rem;
       flex-wrap: wrap;
+      position: sticky;
+      top: calc(1.2rem + 1rem + 0.85rem + 0.75rem + 3px);
+      z-index: 90;
     }
     .filter-btn {
       background: var(--card);
       border: 1px solid var(--border);
-      color: var(--text);
+      color: var(--text-muted);
       padding: 0.4rem 0.8rem;
       border-radius: 20px;
       font-size: 0.8rem;
@@ -147,6 +150,7 @@
     }
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
+    .badge-last { background: var(--red); color: white; }
     .vehicle-meta {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -188,7 +192,11 @@
       border-radius: 8px;
       padding: 0.5rem 0.6rem;
       border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
     }
+    .part-item:active { transform: scale(0.97); background: var(--card-hover); }
     .part-item.has-margin { border-left: 3px solid var(--green); }
     .part-item.no-data { opacity: 0.5; }
     .part-name {
@@ -208,6 +216,12 @@
       font-size: 0.7rem;
       color: var(--text-muted);
     }
+    .part-tap-hint {
+      font-size: 0.6rem;
+      color: var(--blue);
+      margin-top: 0.2rem;
+      opacity: 0.7;
+    }
 
     .detail-summary {
       margin-top: 0.6rem;
@@ -221,7 +235,166 @@
     .summary-item .sum-val { font-size: 1rem; font-weight: 700; color: var(--accent); }
     .summary-item .sum-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
 
-    /* Scroll to top */
+    /* Part Detail Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 500;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-panel {
+      background: var(--card);
+      border-radius: 16px 16px 0 0;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.2rem 1rem 2rem;
+      border-top: 3px solid var(--accent);
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem;
+    }
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .modal-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .modal-close {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .modal-close:active { background: var(--border); }
+
+    .info-section {
+      margin-bottom: 1rem;
+    }
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .info-value {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .info-value.location { color: var(--blue); }
+    .info-value.tools { color: var(--accent); }
+    .info-value.time { color: var(--green); }
+
+    .confidence-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .confidence-high { background: var(--green-dark); color: white; }
+    .confidence-medium { background: var(--danger); color: #0f172a; }
+    .confidence-low { background: var(--red); color: white; }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step;
+    }
+    .steps-list li {
+      padding: 0.4rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      background: var(--accent-dark);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .warning-box {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--red);
+    }
+    .warning-box .warning-title {
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tip-box {
+      background: rgba(251,191,36,0.1);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+    .tip-box .tip-title {
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     .scroll-top {
       position: fixed;
       bottom: 1rem;
@@ -265,7 +438,6 @@
       color: var(--text-muted);
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 1.5rem;
@@ -276,6 +448,8 @@
 
     @media (min-width: 600px) {
       .detail-grid { grid-template-columns: repeat(3, 1fr); }
+      .modal-panel { max-width: 600px; border-radius: 16px; margin-bottom: 2rem; }
+      .modal-overlay { align-items: center; }
     }
   </style>
 </head>
@@ -327,6 +501,20 @@
 
   <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
 
+  <!-- Part Detail Modal -->
+  <div class="modal-overlay" id="part-modal" onclick="closeModal(event)">
+    <div class="modal-panel" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modal-title">Part Name</div>
+          <div class="modal-subtitle" id="modal-subtitle">Vehicle Info</div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
   <div class="footer">
     <div>Research includes: ECU, ABS, Throttle Body, Amplifiers, BCM, TCM, HID Ballasts, Turbochargers, and more</div>
     <div style="margin-top: 0.3rem">Generated by Junkyard Arbitrage Bot</div>
@@ -334,14 +522,27 @@
 
   <script>
     let allVehicles = [];
+    let partLocations = {};
     let currentFilter = 'all';
     let expandedCard = null;
 
     async function loadData() {
       try {
-        const response = await fetch('research_data.json?t=' + Date.now());
-        const data = await response.json();
+        // Load both data files in parallel
+        const [vehicleResp, locationResp] = await Promise.all([
+          fetch('research_data.json?t=' + Date.now()),
+          fetch('part_locations.json?t=' + Date.now()).catch(() => null)
+        ]);
+
+        const data = await vehicleResp.json();
         allVehicles = data.vehicles || [];
+
+        if (locationResp && locationResp.ok) {
+          const locData = await locationResp.json();
+          // Strip _meta, keep only part entries
+          const { _meta, ...parts } = locData;
+          partLocations = parts;
+        }
 
         document.getElementById('update-time').textContent = 'Updated: ' + data.date;
         document.getElementById('stat-total').textContent = data.stats.total;
@@ -377,7 +578,7 @@
         filtered = filtered.filter(v =>
           v.make.toLowerCase().includes(search) ||
           v.model.toLowerCase().includes(search) ||
-          v.year.toLowerCase().includes(search)
+          v.year.toString().toLowerCase().includes(search)
         );
       }
 
@@ -417,6 +618,7 @@
                 <div class="badges">
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
+                  ${v.days_in_yard >= 13 ? '<span class="badge badge-last">LAST</span>' : ''}
                 </div>
               </div>
               <div class="vehicle-meta">
@@ -431,7 +633,7 @@
           </div>
           <div class="vehicle-detail">
             <div class="detail-grid">
-              ${renderParts(v.parts)}
+              ${renderParts(v.parts, v.year, v.make, v.model)}
             </div>
             <div class="detail-summary">
               <div class="summary-item">
@@ -452,7 +654,7 @@
       `).join('');
     }
 
-    function renderParts(parts) {
+    function renderParts(parts, year, make, model) {
       const partNames = {
         'instrument cluster': 'Instrument Cluster',
         'ECU': 'ECU / Computer',
@@ -472,22 +674,195 @@
       };
 
       return Object.entries(parts).map(([name, data]) => {
-        const hasData = data.active && data.active.avg;
         const margin = data.est_margin || 0;
-        const avg = data.active ? data.active.avg : 0;
-
-        if (!hasData && margin <= 0) return '';
+        const avg = data.average || 0;
+        const hasData = avg > 0;
+        const hasLocation = !!partLocations[name];
 
         return `
-          <div class="part-item ${hasData ? 'has-margin' : 'no-data'}">
+          <div class="part-item ${hasData ? 'has-margin' : ''}" 
+               onclick="event.stopPropagation(); showPartDetail('${name}', '${year}', '${make}', '${model}', ${margin}, ${avg})">
             <span class="part-name">${partNames[name] || name}</span>
             <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''}">
               ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
             </span>
             ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)}</span>` : ''}
+            ${hasLocation ? '<span class="part-tap-hint">📍 Tap for details</span>' : ''}
           </div>
         `;
       }).join('');
+    }
+
+    function showPartDetail(partName, year, make, model, margin, avgPrice) {
+      const loc = partLocations[partName];
+      const displayName = {
+        'instrument cluster': 'Instrument Cluster',
+        'ECU': 'ECU / Computer',
+        'ABS module': 'ABS Module',
+        'throttle body': 'Throttle Body',
+        'amplifier': 'Amplifier',
+        'BCM': 'BCM',
+        'TCM': 'TCM',
+        'HID ballast': 'HID Ballast',
+        'climate control': 'Climate Control',
+        'fuel pump': 'Fuel Pump',
+        'turbocharger': 'Turbocharger',
+        'seat control': 'Seat Control',
+        'alternator': 'Alternator',
+        'MAF sensor': 'MAF Sensor',
+        'radio nav': 'Radio / Nav'
+      }[partName] || partName;
+
+      document.getElementById('modal-title').textContent = displayName;
+      document.getElementById('modal-subtitle').textContent = `${year} ${make} ${model}`;
+
+      let content = '';
+
+      // Margin info
+      content += `
+        <div class="info-section">
+          <div class="info-label">💰 Research Data</div>
+          <div class="info-value">
+            ${margin > 0 ? `<span style="color:var(--green);font-weight:700">+$${Math.round(margin)}</span> margin` : 'No margin data'}
+            ${avgPrice > 0 ? ` · eBay avg $${Math.round(avgPrice)}` : ''}
+          </div>
+        </div>
+      `;
+
+      if (loc) {
+        // Location
+        if (loc.location) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">📍 Location</div>
+              <div class="info-value location">${loc.location}</div>
+            </div>
+          `;
+        }
+
+        // Access
+        if (loc.access) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">🚪 Access</div>
+              <div class="info-value">${loc.access}</div>
+            </div>
+          `;
+        }
+
+        // Tools
+        if (loc.tools && loc.tools.length > 0) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">🔧 Tools Needed</div>
+              <div class="info-value tools">${loc.tools.join(' · ')}</div>
+            </div>
+          `;
+        }
+
+        // Time
+        if (loc.time) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">⏱️ Time Estimate</div>
+              <div class="info-value time">${loc.time}</div>
+            </div>
+          `;
+        }
+
+        // Confidence
+        if (loc.confidence) {
+          const confClass = loc.confidence === 'high' ? 'confidence-high' : 
+                           loc.confidence === 'medium' ? 'confidence-medium' : 'confidence-low';
+          const confIcon = loc.confidence === 'high' ? '✓' : loc.confidence === 'medium' ? '⚠' : '?';
+          content += `
+            <div class="info-section">
+              <div class="info-label">🎯 Confidence</div>
+              <span class="confidence-badge ${confClass}">${confIcon} ${loc.confidence}</span>
+            </div>
+          `;
+        }
+
+        // Removal Steps
+        if (loc.removal_steps && loc.removal_steps.length > 0) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">📋 Removal Steps</div>
+              <ol class="steps-list">
+                ${loc.removal_steps.map(step => `<li>${step}</li>`).join('')}
+              </ol>
+            </div>
+          `;
+        }
+
+        // Test at yard
+        if (loc.test_at_yard) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">✅ Test at Yard</div>
+              <div class="info-value" style="color:var(--green)">${loc.test_at_yard}</div>
+            </div>
+          `;
+        }
+
+        // Common Failures
+        if (loc.common_failures) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">⚠️ Common Failures</div>
+              <div class="info-value" style="color:var(--danger)">${loc.common_failures}</div>
+            </div>
+          `;
+        }
+
+        // Notes
+        if (loc.notes) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">📝 Notes</div>
+              <div class="info-value">${loc.notes}</div>
+            </div>
+          `;
+        }
+
+        // Factory upgrade potential
+        if (loc.factory_upgrade_potential) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">⬆️ Upgrade Potential</div>
+              <div class="info-value" style="color:var(--accent)">${loc.factory_upgrade_potential}</div>
+            </div>
+          `;
+        }
+
+        // Premium brands
+        if (loc.premium_brands && loc.premium_brands.length > 0) {
+          content += `
+            <div class="info-section">
+              <div class="info-label">🏷️ Premium Brands</div>
+              <div class="info-value">${loc.premium_brands.join(' · ')}</div>
+            </div>
+          `;
+        }
+      } else {
+        content += `
+          <div class="info-section" style="text-align:center;padding:2rem 0;color:var(--text-muted)">
+            <div style="font-size:2rem;margin-bottom:0.5rem">📍</div>
+            <div>No detailed location data for this part yet.</div>
+            <div style="font-size:0.8rem;margin-top:0.5rem">Check repair manuals or YouTube for your specific year/trim.</div>
+          </div>
+        `;
+      }
+
+      document.getElementById('modal-content').innerHTML = content;
+      document.getElementById('part-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      document.getElementById('part-modal').classList.remove('active');
+      document.body.style.overflow = '';
     }
 
     function toggleCard(card) {
@@ -514,11 +889,13 @@
       document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 400);
     });
 
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
     // Load data on start
     loadData();
-
-    // Refresh every 5 minutes
-    setInterval(loadData, 300000);
   </script>
 </body>
 </html>
