@@ -143,6 +143,18 @@
       background: var(--card);
       color: var(--text);
     }
+    .watch-btn {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.2rem;
+      opacity: 0.3;
+      transition: opacity 0.15s ease;
+    }
+    .watch-btn:hover, .watch-btn.active { opacity: 1; }
+    .watch-btn.active { color: var(--green); }
+    .watch-btn.is-watchlisted { opacity: 1; color: #f59e0b; }
     .sort-select {
       background: var(--card);
       border: 1px solid var(--border);
@@ -157,6 +169,18 @@
       background: var(--card);
       color: var(--text);
     }
+    .watch-btn {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.2rem;
+      opacity: 0.3;
+      transition: opacity 0.15s ease;
+    }
+    .watch-btn:hover, .watch-btn.active { opacity: 1; }
+    .watch-btn.active { color: var(--green); }
+    .watch-btn.is-watchlisted { opacity: 1; color: #f59e0b; }
     .search-input {
       flex: 1;
       min-width: 120px;
@@ -253,6 +277,12 @@
     }
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
+
+    .badge-watch {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
     .badge-upgrade { background: var(--blue); color: white; }
     .vehicle-meta {
       font-size: 0.8rem;
@@ -646,6 +676,30 @@
     let currentFilter = 'all';
     let currentSort = 'margin_desc';
     let currentView = 'list';
+    
+    // WATCHLIST: make/model patterns to watch for
+    // Updated to match actual inventory data format
+    const watchlistPatterns = [
+      { make: 'scion', model: 'xb', yearMin: 2008, yearMax: 2015 },
+      { make: 'bmw', model: null, yearMin: null, yearMax: null },      // ALL BMWs
+      { make: 'bmw', model: '328', yearMin: null, yearMax: null },     // 3 series
+      { make: 'bmw', model: '330', yearMin: null, yearMax: null },     // 3 series
+    ];
+    
+    function matchesWatchlist(v) {
+      const make = (v.make || '').toLowerCase();
+      const model = (v.model || '').toLowerCase();
+      const year = parseInt(v.year, 10) || 0;
+      
+      for (const pat of watchlistPatterns) {
+        if (make !== pat.make) continue;
+        if (pat.model && !model.includes(pat.model)) continue;
+        if (pat.yearMin && year < pat.yearMin) continue;
+        if (pat.yearMax && year > pat.yearMax) continue;
+        return true;
+      }
+      return false;
+    }
     let expandedCard = null;
     let expandedPart = null;
 
@@ -743,7 +797,9 @@
         filtered = filtered.filter(v =>
           v.make.toLowerCase().includes(search) ||
           v.model.toLowerCase().includes(search) ||
-          v.year.toLowerCase().includes(search)
+          String(v.year).toLowerCase().includes(search) ||
+          (v.yard_row || '').toLowerCase().includes(search) ||
+          (v.arrival_date || '').toLowerCase().includes(search)
         );
       }
 
@@ -751,6 +807,7 @@
         case 'new': filtered = filtered.filter(v => v.is_new); break;
         case 'hv': filtered = filtered.filter(v => v.is_hv); break;
         case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
+        case 'watchlist': filtered = filtered.filter(v => matchesWatchlist(v)); break;
       }
 
       // Sort
@@ -820,6 +877,7 @@
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
                   ${hasUpgradePotential(v) ? '<span class="badge badge-upgrade">⚡</span>' : ''}
+                  ${matchesWatchlist(v) ? '<span class="badge badge-watch">⭐</span>' : ''}
                 </div>
               </div>
               <div class="vehicle-meta">
