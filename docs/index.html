@@ -129,58 +129,6 @@
       border-color: var(--accent);
       font-weight: 600;
     }
-    .sort-select {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      min-width: 150px;
-    }
-    .sort-select option {
-      background: var(--card);
-      color: var(--text);
-    }
-    .watch-btn {
-      background: none;
-      border: none;
-      font-size: 1.1rem;
-      cursor: pointer;
-      padding: 0.2rem;
-      opacity: 0.3;
-      transition: opacity 0.15s ease;
-    }
-    .watch-btn:hover, .watch-btn.active { opacity: 1; }
-    .watch-btn.active { color: var(--green); }
-    .watch-btn.is-watchlisted { opacity: 1; color: #f59e0b; }
-    .sort-select {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      min-width: 150px;
-    }
-    .sort-select option {
-      background: var(--card);
-      color: var(--text);
-    }
-    .watch-btn {
-      background: none;
-      border: none;
-      font-size: 1.1rem;
-      cursor: pointer;
-      padding: 0.2rem;
-      opacity: 0.3;
-      transition: opacity 0.15s ease;
-    }
-    .watch-btn:hover, .watch-btn.active { opacity: 1; }
-    .watch-btn.active { color: var(--green); }
-    .watch-btn.is-watchlisted { opacity: 1; color: #f59e0b; }
     .search-input {
       flex: 1;
       min-width: 120px;
@@ -277,12 +225,6 @@
     }
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
-
-    .badge-watch {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
     .badge-upgrade { background: var(--blue); color: white; }
     .vehicle-meta {
       font-size: 0.8rem;
@@ -570,32 +512,6 @@
       font-size: 0.75rem;
       border-top: 1px solid var(--border);
     }
-  
-    /* Enriched Part Details */
-    .part-access, .part-tools, .part-steps, .part-test, .part-failures, .part-notes, .part-time, .part-confidence {
-      margin-top: 0.5rem;
-      padding: 0.5rem;
-      background: rgba(30,58,95,0.3);
-      border-radius: 6px;
-    }
-    .part-access { border-left: 3px solid var(--blue); }
-    .part-tools { border-left: 3px solid var(--accent); }
-    .part-steps { border-left: 3px solid var(--green); }
-    .part-test { border-left: 3px solid var(--green); background: rgba(6,78,59,0.3); }
-    .part-failures { border-left: 3px solid var(--red); background: rgba(239,68,68,0.1); }
-    .part-notes { border-left: 3px solid var(--danger); }
-    .part-time { border-left: 3px solid var(--accent); }
-    .part-confidence { border-left: 3px solid var(--blue); }
-    .warning-title { font-size: 0.75rem; font-weight: 600; color: var(--red); margin-bottom: 0.2rem; }
-    .warning-text { font-size: 0.75rem; color: var(--text); }
-    .steps-list { list-style: none; counter-reset: step; }
-    .steps-list li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.75rem; color: var(--text); }
-    .steps-list li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0.3rem; width: 1.1rem; height: 1.1rem; background: var(--green); color: white; border-radius: 50%; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .confidence-badge { display: inline-block; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
-    .confidence-high { background: var(--green); color: white; }
-    .confidence-medium { background: var(--danger); color: #0f172a; }
-    .confidence-low { background: var(--red); color: white; }
-
   </style>
 </head>
 <body>
@@ -635,12 +551,6 @@
     <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
     <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
-    <button class="filter-btn" data-filter="watchlist" onclick="setFilter('watchlist')">⭐ Watchlist</button>
-    <select class="sort-select" id="sort-select" onchange="setSort(this.value)">
-      <option value="margin_desc">Sort: Best Margin ↓</option>
-      <option value="arrival_desc">Sort: Arrival Date ↓</option>
-      <option value="arrival_asc">Sort: Arrival Date ↑</option>
-    </select>
   </div>
 
   <!-- Yard Map View -->
@@ -673,50 +583,16 @@
 
   <script>
     let allVehicles = [];
-    let partLocations = {};
     let currentFilter = 'all';
-    let currentSort = 'margin_desc';
     let currentView = 'list';
-    
-    // WATCHLIST: make/model patterns to watch for
-    // Updated to match actual inventory data format
-    const watchlistPatterns = [
-      { make: 'scion', model: 'xb', yearMin: 2008, yearMax: 2015 },
-      { make: 'bmw', model: null, yearMin: null, yearMax: null },      // ALL BMWs
-      { make: 'bmw', model: '328', yearMin: null, yearMax: null },     // 3 series
-      { make: 'bmw', model: '330', yearMin: null, yearMax: null },     // 3 series
-    ];
-    
-    function matchesWatchlist(v) {
-      const make = (v.make || '').toLowerCase();
-      const model = (v.model || '').toLowerCase();
-      const year = parseInt(v.year, 10) || 0;
-      
-      for (const pat of watchlistPatterns) {
-        if (make !== pat.make) continue;
-        if (pat.model && !model.includes(pat.model)) continue;
-        if (pat.yearMin && year < pat.yearMin) continue;
-        if (pat.yearMax && year > pat.yearMax) continue;
-        return true;
-      }
-      return false;
-    }
     let expandedCard = null;
     let expandedPart = null;
 
     async function loadData() {
       try {
-        const [vehicleResp, locationResp] = await Promise.all([
-          fetch('research_data.json?t=' + Date.now()),
-          fetch('part_locations.json?t=' + Date.now()).catch(() => null)
-        ]);
-        const data = await vehicleResp.json();
+        const resp = await fetch('research_data.json?t=' + Date.now());
+        const data = await resp.json();
         allVehicles = data.vehicles || [];
-        if (locationResp && locationResp.ok) {
-          const locData = await locationResp.json();
-          const { _meta, ...parts } = locData;
-          partLocations = parts;
-        }
 
         document.getElementById('update-time').textContent = 'Updated: ' + data.date;
         document.getElementById('stat-total').textContent = data.stats.total;
@@ -747,47 +623,12 @@
       document.getElementById('list-filters').style.display = view === 'list' ? 'flex' : 'none';
     }
 
-    function setSort(sort) {
-      currentSort = sort;
-      renderVehicles();
-    }
-
-    function parseDate(dateStr) {
-      if (!dateStr) return 0;
-      const parts = dateStr.split('/');
-      if (parts.length === 3) {
-        const month = parseInt(parts[0], 10) - 1;
-        const day = parseInt(parts[1], 10);
-        const year = parseInt(parts[2], 10);
-        return new Date(year, month, day).getTime();
-      }
-      return new Date(dateStr).getTime() || 0;
-    }
-
     function setFilter(filter) {
       currentFilter = filter;
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filter === filter);
       });
       renderVehicles();
-    }
-
-    function setSort(sort) {
-      currentSort = sort;
-      renderVehicles();
-    }
-
-    function parseDate(dateStr) {
-      if (!dateStr) return 0;
-      // Handle MM/DD/YYYY format
-      const parts = dateStr.split('/');
-      if (parts.length === 3) {
-        const month = parseInt(parts[0], 10) - 1;
-        const day = parseInt(parts[1], 10);
-        const year = parseInt(parts[2], 10);
-        return new Date(year, month, day).getTime();
-      }
-      return new Date(dateStr).getTime() || 0;
     }
 
     function getFilteredVehicles() {
@@ -798,9 +639,7 @@
         filtered = filtered.filter(v =>
           v.make.toLowerCase().includes(search) ||
           v.model.toLowerCase().includes(search) ||
-          String(v.year).toLowerCase().includes(search) ||
-          (v.yard_row || '').toLowerCase().includes(search) ||
-          (v.arrival_date || '').toLowerCase().includes(search)
+          v.year.toLowerCase().includes(search)
         );
       }
 
@@ -808,28 +647,6 @@
         case 'new': filtered = filtered.filter(v => v.is_new); break;
         case 'hv': filtered = filtered.filter(v => v.is_hv); break;
         case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
-        case 'watchlist': filtered = filtered.filter(v => matchesWatchlist(v)); break;
-      }
-
-      // Sort
-      switch (currentSort) {
-        case 'arrival_desc':
-          filtered.sort((a, b) => {
-            const da = parseDate(a.arrival_date);
-            const db = parseDate(b.arrival_date);
-            return db - da || b.best_margin - a.best_margin;
-          });
-          break;
-        case 'arrival_asc':
-          filtered.sort((a, b) => {
-            const da = parseDate(a.arrival_date);
-            const db = parseDate(b.arrival_date);
-            return da - db || b.best_margin - a.best_margin;
-          });
-          break;
-        default: // margin_desc
-          filtered.sort((a, b) => b.best_margin - a.best_margin);
-          break;
       }
 
       return filtered;
@@ -878,7 +695,6 @@
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
                   ${hasUpgradePotential(v) ? '<span class="badge badge-upgrade">⚡</span>' : ''}
-                  ${matchesWatchlist(v) ? '<span class="badge badge-watch">⭐</span>' : ''}
                 </div>
               </div>
               <div class="vehicle-meta">
@@ -960,7 +776,7 @@
         }
 
         return `
-          <div class="part-item ${margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)" data-part-name="${name}">
+          <div class="part-item ${margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)">
             <div class="part-header">
               <span class="part-name">${partNames[name] || name}</span>
               <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''} ${isHighValue ? 'high-value' : ''}">
@@ -998,32 +814,6 @@
       }
       part.classList.toggle('expanded');
       expandedPart = part.classList.contains('expanded') ? part : null;
-      
-      // Inject part location data if available and not already loaded
-      if (part.classList.contains('expanded') && partLocations) {
-        const partName = part.dataset.partName;
-        const loc = partLocations[partName];
-        if (loc) {
-          const detailDiv = part.querySelector('.part-detail');
-          if (detailDiv && !detailDiv.dataset.enriched) {
-            let locHtml = '';
-            if (loc.location) locHtml += `<div class="part-location"><div class="part-location-title">📍 Location</div><div class="part-location-text">${loc.location}</div></div>`;
-            if (loc.access) locHtml += `<div class="part-access"><div class="part-location-title">🚪 Access</div><div class="part-location-text">${loc.access}</div></div>`;
-            if (loc.tools && loc.tools.length) locHtml += `<div class="part-tools"><div class="part-location-title">🔧 Tools</div><div class="tools-list">${loc.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div></div>`;
-            if (loc.time) locHtml += `<div class="part-time">⏱️ Time: ${loc.time}</div>`;
-            if (loc.confidence) locHtml += `<div class="part-confidence">Confidence: <span class="confidence-badge confidence-${loc.confidence}">${loc.confidence}</span></div>`;
-            if (loc.removal_steps && loc.removal_steps.length) locHtml += `<div class="part-steps"><div class="part-location-title">📋 Removal Steps</div><ol class="steps-list">${loc.removal_steps.map(s => `<li>${s}</li>`).join('')}</ol></div>`;
-            if (loc.test_at_yard) locHtml += `<div class="part-test"><div class="yard-test-title">✅ Test at Yard</div><div class="yard-test-text">${loc.test_at_yard}</div></div>`;
-            if (loc.common_failures) locHtml += `<div class="part-failures"><div class="warning-title">⚠️ Common Failures</div><div class="warning-text">${loc.common_failures}</div></div>`;
-            if (loc.notes) locHtml += `<div class="part-notes"><div class="part-location-title">📝 Notes</div><div class="part-location-text">${loc.notes}</div></div>`;
-            
-            if (locHtml) {
-              detailDiv.innerHTML = locHtml + detailDiv.innerHTML;
-              detailDiv.dataset.enriched = 'true';
-            }
-          }
-        }
-      }
     }
 
     function renderYardMap() {
