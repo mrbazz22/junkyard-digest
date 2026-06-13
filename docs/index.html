@@ -1,872 +1,813 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0f172a">
-  <title>Junkyard Hunter's Digest v3</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --card-hover: #252f47;
-      --border: #334155;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --accent: #fbbf24;
-      --accent-dark: #b45309;
-      --green: #10b981;
-      --green-dark: #059669;
-      --blue: #60a5fa;
-      --red: #ef4444;
-      --danger: #f59e0b;
-      --info-bg: #1e3a5f;
-      --success-bg: #064e3b;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, #1e293b 0%, var(--bg) 100%);
-      padding: 1.2rem 1rem;
-      text-align: center;
-      border-bottom: 3px solid var(--accent);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header h1 { font-size: 1.4rem; color: var(--accent); margin-bottom: 0.3rem; }
-    .header .subtitle { color: var(--text-muted); font-size: 0.85rem; }
-    .header .update { color: var(--accent); font-size: 0.75rem; margin-top: 0.3rem; font-weight: 600; }
-
-    /* Stats */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      padding: 0.75rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .stat-chip {
-      background: var(--card);
-      border-radius: 8px;
-      padding: 0.6rem 0.3rem;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-    .stat-chip .value { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
-    .stat-chip .label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-
-    /* Alert Banner */
-    .alert-banner {
-      background: var(--danger);
-      color: #0f172a;
-      padding: 0.6rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-align: center;
-      display: none;
-    }
-    .alert-banner.visible { display: block; }
-
-    /* View Toggle */
-    .view-toggle {
-      display: flex;
-      padding: 0.75rem;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .view-btn {
-      flex: 1;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.5rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .view-btn.active {
-      background: var(--accent);
-      color: #0f172a;
-      font-weight: 600;
-      border-color: var(--accent);
-    }
-
-    /* Filters */
-    .filters {
-      padding: 0.75rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn.active {
-      background: var(--accent);
-      color: #0f172a;
-      border-color: var(--accent);
-      font-weight: 600;
-    }
-    .search-input {
-      flex: 1;
-      min-width: 120px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    /* Yard Map */
-    .yard-map {
-      display: none;
-      padding: 0.75rem;
-    }
-    .yard-map.active { display: block; }
-    .map-row {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      padding: 0.75rem;
-    }
-    .map-row-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .map-row-title {
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .map-row-zone {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .map-vehicles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-    }
-    .map-vehicle-chip {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.2rem 0.5rem;
-      font-size: 0.75rem;
-    }
-    .map-vehicle-chip.new { border-color: var(--green); color: var(--green); }
-    .map-vehicle-chip.profitable { border-color: var(--accent); }
-
-    /* Vehicle List */
-    .vehicle-list { padding: 0.5rem; }
-    .vehicle-list.hidden { display: none; }
-
-    .vehicle-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 0.6rem;
-      overflow: hidden;
-      transition: transform 0.15s, box-shadow 0.15s;
-      cursor: pointer;
-    }
-    .vehicle-card:active { transform: scale(0.98); }
-    .vehicle-card.expanded { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(251,191,36,0.2); }
-
-    .vehicle-header {
-      padding: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .vehicle-info { flex: 1; min-width: 0; }
-    .vehicle-title {
-      font-size: 1rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .badges { display: flex; gap: 0.3rem; flex-shrink: 0; }
-    .badge {
-      font-size: 0.6rem;
-      font-weight: 700;
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-    .badge-new { background: var(--green); color: white; }
-    .badge-hv { background: var(--accent-dark); color: white; }
-    .badge-upgrade { background: var(--blue); color: white; }
-    .vehicle-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-    }
-    .vehicle-meta .row { color: var(--blue); }
-    .vehicle-margin {
-      text-align: right;
-      flex-shrink: 0;
-    }
-    .margin-value {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--green);
-    }
-    .margin-label {
-      font-size: 0.6rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    /* Expanded Detail */
-    .vehicle-detail {
-      display: none;
-      padding: 0 0.9rem 0.9rem;
-      border-top: 1px solid var(--border);
-      margin-top: 0.5rem;
-      padding-top: 0.5rem;
-    }
-    .vehicle-card.expanded .vehicle-detail { display: block; }
-
-    .detail-section {
-      margin-bottom: 1rem;
-    }
-    .detail-section-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .parts-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.4rem;
-    }
-    @media (min-width: 600px) {
-      .parts-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .part-item {
-      background: var(--bg);
-      border-radius: 8px;
-      padding: 0.5rem 0.6rem;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    .part-item.has-margin { border-left: 3px solid var(--green); }
-    .part-item.expanded {
-      border-color: var(--accent);
-      grid-column: 1 / -1;
-    }
-    .part-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .part-name {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .part-value {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .part-value.positive { color: var(--green); }
-    .part-value.negative { color: var(--red); }
-    .part-value.high-value { color: var(--danger); }
-    .part-price {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    /* Part Detail (location + tools) */
-    .part-detail {
-      display: none;
-      margin-top: 0.5rem;
-      padding-top: 0.5rem;
-      border-top: 1px dashed var(--border);
-    }
-    .part-item.expanded .part-detail { display: block; }
-
-    .part-location {
-      background: var(--info-bg);
-      border-radius: 6px;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .part-location-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--blue);
-      margin-bottom: 0.2rem;
-    }
-    .part-location-text {
-      font-size: 0.8rem;
-      color: var(--text);
-    }
-    .part-confidence {
-      font-size: 0.7rem;
-      margin-top: 0.2rem;
-    }
-    .confidence-high { color: var(--green); }
-    .confidence-medium { color: var(--danger); }
-    .confidence-low { color: var(--red); }
-
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-bottom: 0.5rem;
-    }
-    .tool-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.15rem 0.5rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-    .part-notes {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-    .part-time {
-      font-size: 0.7rem;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-
-    /* Removal Steps */
-    .removal-steps {
-      background: var(--bg);
-      border-radius: 6px;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border: 1px solid var(--border);
-    }
-    .removal-steps-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.3rem;
-    }
-    .removal-steps ol {
-      padding-left: 1.2rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .removal-steps li {
-      margin-bottom: 0.2rem;
-    }
-
-    /* Test at Yard */
-    .yard-test {
-      background: var(--success-bg);
-      border-radius: 6px;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .yard-test-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--green);
-      margin-bottom: 0.2rem;
-    }
-    .yard-test-text {
-      font-size: 0.75rem;
-      color: var(--text);
-    }
-
-    /* Factory Upgrade Alert */
-    .factory-upgrade {
-      background: var(--info-bg);
-      border-radius: 6px;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border: 1px solid var(--blue);
-    }
-    .factory-upgrade-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--blue);
-      margin-bottom: 0.2rem;
-    }
-    .factory-upgrade-text {
-      font-size: 0.75rem;
-      color: var(--text);
-    }
-
-    .detail-summary {
-      margin-top: 0.6rem;
-      padding: 0.5rem;
-      background: var(--bg);
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-    }
-    .summary-item .sum-val { font-size: 1rem; font-weight: 700; color: var(--accent); }
-    .summary-item .sum-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
-
-    /* Tools Summary Section */
-    .tools-summary {
-      background: var(--info-bg);
-      border-radius: 8px;
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-    .tools-summary-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-    .tools-list-compact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-    }
-
-    /* Scroll top */
-    .scroll-top {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      width: 48px;
-      height: 48px;
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 200;
-    }
-    .scroll-top.visible { display: flex; }
-
-    .loading {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
-    }
-    .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <h1>🔧 Junkyard Hunter's Digest v3</h1>
-    <div class="subtitle">Cagle's U Pull It — Research + Location Intel + Tools</div>
-    <div class="update" id="update-time">Loading...</div>
+<html><head><meta charset="UTF-8">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #fff; color: #333; }
+.container { max-width: 900px; margin: 0 auto; }
+h1 { margin: 0 0 5px; font-size: 1.8rem; color: #1a1a2e; }
+.sub { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+.stats { display: flex; gap: 15px; margin-bottom: 20px; }
+.stat { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px 16px; text-align: center; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; }
+.stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
+.section { margin-bottom: 25px; }
+.section-title { font-size: 1.2rem; font-weight: 700; padding: 10px; background: #e8f4f8; border-radius: 6px; margin-bottom: 10px; }
+.vehicle-card { border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 10px; overflow: hidden; page-break-inside: avoid; }
+.vehicle-header { padding: 10px 14px; background: #f8f9fa; display: flex; justify-content: space-between; align-items: center; }
+.vehicle-title { font-weight: 600; }
+.vehicle-title .row { color: #666; font-weight: 400; font-size: 0.85rem; }
+.badge-hv { background: #b8860b; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
+.margin { background: #198754; color: white; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.vehicle-body { padding: 10px 14px; }
+.part-line { display: flex; gap: 10px; padding: 3px 0; border-bottom: 1px dashed #eee; }
+.part-name { flex: 1; }
+.part-price { color: #0d6efd; font-weight: 600; }
+.part-margin { color: #198754; font-weight: 700; }
+.footer { text-align: center; color: #666; font-size: 0.8rem; margin-top: 30px; padding: 20px; border-top: 1px solid #eee; }
+.page-break { page-break-after: always; }
+</style>
+</head><body>
+<div class="container">
+  <h1>Junkyard Hunter's Digest</h1>
+  <div class="sub">Cagle's — 2026-06-12 — MASSIVE RESEARCH EDITION</div>
+  
+  <div class="stats">
+    <div class="stat"><span class="stat-value">50</span><span class="stat-label">Vehicles</span></div>
+    <div class="stat"><span class="stat-value">5</span><span class="stat-label">High-Value</span></div>
+    <div class="stat"><span class="stat-value">$146</span><span class="stat-label">Avg Margin</span></div>
   </div>
-
-  <div class="stats-bar">
-    <div class="stat-chip">
-      <div class="value" id="stat-total">—</div>
-      <div class="label">Vehicles</div>
-    </div>
-    <div class="stat-chip">
-      <div class="value" id="stat-new">—</div>
-      <div class="label">New</div>
-    </div>
-    <div class="stat-chip">
-      <div class="value" id="stat-avg">—</div>
-      <div class="label">Avg $</div>
-    </div>
-    <div class="stat-chip">
-      <div class="value" id="stat-best">—</div>
-      <div class="label">Best $</div>
-    </div>
-  </div>
-
-  <div class="view-toggle">
-    <button class="view-btn active" onclick="setView('list')">📋 Vehicle List</button>
-    <button class="view-btn" onclick="setView('map')">🗺️ Yard Map</button>
-  </div>
-
-  <div class="filters" id="list-filters">
-    <input type="text" class="search-input" id="search-input" placeholder="Search make, model, year...">
-    <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
-    <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New</button>
-    <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">HV</button>
-    <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
-  </div>
-
-  <!-- Yard Map View -->
-  <div class="yard-map" id="yard-map">
-    <div class="loading" id="map-loading">
-      <div class="loading-spinner"></div>
-      <div>Loading yard map...</div>
-    </div>
-  </div>
-
-  <!-- Vehicle List View -->
-  <div class="vehicle-list" id="vehicle-list">
-    <div class="loading">
-      <div class="loading-spinner"></div>
-      <div>Loading research data...</div>
-    </div>
-  </div>
-
-  <div class="empty-state" id="empty-state" style="display:none">
-    <div style="font-size: 2rem; margin-bottom: 0.5rem">🔍</div>
-    <div>No vehicles match your filters.</div>
-  </div>
-
-  <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
-
-  <div class="footer">
-    <div>Tap vehicle → see parts. Tap part → see location, tools, removal steps, test procedures.</div>
-    <div style="margin-top: 0.3rem">Part locations sourced from repair manuals & pull videos. Verify for your year/trim.</div>
-  </div>
-
-  <script>
-    let allVehicles = [];
-    let currentFilter = 'all';
-    let currentView = 'list';
-    let expandedCard = null;
-    let expandedPart = null;
-
-    async function loadData() {
-      try {
-        const resp = await fetch('research_data.json?t=' + Date.now());
-        const data = await resp.json();
-        allVehicles = data.vehicles || [];
-
-        document.getElementById('update-time').textContent = 'Updated: ' + data.date;
-        document.getElementById('stat-total').textContent = data.stats.total;
-        document.getElementById('stat-new').textContent = data.stats.new;
-        document.getElementById('stat-avg').textContent = '$' + Math.round(data.stats.avg_margin);
-        document.getElementById('stat-best').textContent = '$' + Math.round(data.stats.best_margin);
-
-        renderVehicles();
-        renderYardMap();
-      } catch (e) {
-        console.error('Failed to load:', e);
-        document.getElementById('vehicle-list').innerHTML = `
-          <div class="empty-state">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem">⚠️</div>
-            <div>Failed to load data.</div>
-          </div>
-        `;
-      }
-    }
-
-    function setView(view) {
-      currentView = view;
-      document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      document.getElementById('vehicle-list').classList.toggle('hidden', view !== 'list');
-      document.getElementById('yard-map').classList.toggle('active', view === 'map');
-      document.getElementById('list-filters').style.display = view === 'list' ? 'flex' : 'none';
-    }
-
-    function setFilter(filter) {
-      currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === filter);
-      });
-      renderVehicles();
-    }
-
-    function getFilteredVehicles() {
-      let filtered = [...allVehicles];
-      const search = document.getElementById('search-input').value.toLowerCase();
-
-      if (search) {
-        filtered = filtered.filter(v =>
-          v.make.toLowerCase().includes(search) ||
-          v.model.toLowerCase().includes(search) ||
-          v.year.toLowerCase().includes(search)
-        );
-      }
-
-      switch (currentFilter) {
-        case 'new': filtered = filtered.filter(v => v.is_new); break;
-        case 'hv': filtered = filtered.filter(v => v.is_hv); break;
-        case 'profitable': filtered = filtered.filter(v => v.best_margin >= 50); break;
-      }
-
-      return filtered;
-    }
-
-    function renderVehicles() {
-      const container = document.getElementById('vehicle-list');
-      const filtered = getFilteredVehicles();
-
-      if (filtered.length === 0) {
-        container.innerHTML = '';
-        document.getElementById('empty-state').style.display = 'block';
-        return;
-      }
-      document.getElementById('empty-state').style.display = 'none';
-
-      // Calculate tools needed for profitable parts
-      const toolsNeeded = new Set();
-      filtered.forEach(v => {
-        Object.entries(v.parts || {}).forEach(([name, data]) => {
-          if (data.est_margin >= 30 && data.tools) {
-            data.tools.forEach(t => toolsNeeded.add(t));
-          }
-        });
-      });
-
-      let toolsHtml = '';
-      if (toolsNeeded.size > 0) {
-        toolsHtml = `
-          <div class="tools-summary">
-            <div class="tools-summary-title">🧰 Tools Needed (for profitable parts)</div>
-            <div class="tools-list-compact">
-              ${Array.from(toolsNeeded).map(t => `<span class="tool-chip">${t}</span>`).join('')}
+  
+  <div class="section">
+    <div class="section-title">TOP TARGETS (Best Margin)</div>
+    
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CADILLAC CTS <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
             </div>
-          </div>
-        `;
-      }
-
-      container.innerHTML = toolsHtml + filtered.map(v => `
-        <div class="vehicle-card" id="card-${v.year}-${v.make}-${v.model}" onclick="toggleCard(this, event)">
-          <div class="vehicle-header">
-            <div class="vehicle-info">
-              <div class="vehicle-title">
-                <span>${v.year} ${v.make} ${v.model}</span>
-                <div class="badges">
-                  ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
-                  ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
-                  ${hasUpgradePotential(v) ? '<span class="badge badge-upgrade">⚡</span>' : ''}
-                </div>
-              </div>
-              <div class="vehicle-meta">
-                Row <span class="row">${v.yard_row}</span> · Arrived ${v.arrival_date}
-              </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
             </div>
-            <div class="vehicle-margin">
-              <div class="margin-value">+$${Math.round(v.best_margin)}</div>
-              <div class="margin-label">Best Margin</div>
-            </div>
-          </div>
-          <div class="vehicle-detail">
-            <div class="detail-section">
-              <div class="detail-section-title">⚙️ Parts</div>
-              <div class="parts-grid">
-                ${renderParts(v.parts)}
-              </div>
-            </div>
-            <div class="detail-summary">
-              <div class="summary-item">
-                <div class="sum-val">$${Math.round(v.total_margin)}</div>
-                <div class="sum-label">Total Margin</div>
-              </div>
-              <div class="summary-item">
-                <div class="sum-val">${Object.keys(v.parts).length}</div>
-                <div class="sum-label">Parts</div>
-              </div>
-            </div>
-          </div>
         </div>
-      `).join('');
-    }
-
-    function hasUpgradePotential(v) {
-      return Object.values(v.parts).some(p => p.factory_upgrade);
-    }
-
-    function renderParts(parts) {
-      const partNames = {
-        'instrument cluster': 'Instrument Cluster',
-        'ECU': 'ECU',
-        'ABS module': 'ABS Module',
-        'throttle body': 'Throttle Body',
-        'amplifier': 'Amplifier',
-        'BCM': 'BCM',
-        'TCM': 'TCM',
-        'HID ballast': 'HID Ballast',
-        'climate control': 'Climate Control',
-        'fuel pump': 'Fuel Pump',
-        'turbocharger': 'Turbo',
-        'seat control': 'Seat Control',
-        'alternator': 'Alternator',
-        'MAF sensor': 'MAF Sensor',
-        'radio nav': 'Radio / Nav',
-        'A/C compressor': 'A/C Compressor',
-        'power steering pump': 'P/S Pump',
-        'wheels alloy set': 'Alloy Wheels',
-        'fog lights': 'Fog Lights',
-        'TPMS sensors': 'TPMS Sensors',
-        'backup camera': 'Backup Camera'
-      };
-
-      return Object.entries(parts).map(([name, data]) => {
-        const margin = data.est_margin || 0;
-        const avg = data.active ? data.active.avg : 0;
-        const isHighValue = margin >= 200;
-
-        let locationHtml = '';
-        if (data.location) {
-          locationHtml = `
-            <div class="part-location">
-              <div class="part-location-title">📍 Location</div>
-              <div class="part-location-text">${data.location}</div>
-              ${data.tools ? `<div class="tools-list">${data.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}</div>` : ''}
-              ${data.time ? `<div class="part-time">⏱️ ${data.time}</div>` : ''}
-              ${data.notes ? `<div class="part-notes">💡 ${data.notes}</div>` : ''}
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 INFINITI QX4 <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
             </div>
-          `;
-        }
-
-        return `
-          <div class="part-item ${margin > 0 ? 'has-margin' : ''}" onclick="togglePart(this, event)">
-            <div class="part-header">
-              <span class="part-name">${partNames[name] || name}</span>
-              <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''} ${isHighValue ? 'high-value' : ''}">
-                ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
-              </span>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
             </div>
-            ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)} · cost $${data.yard_cost}</span>` : ''}
-            <div class="part-detail">
-              ${locationHtml}
-              ${data.factory_upgrade ? `
-                <div class="factory-upgrade">
-                  <div class="factory-upgrade-title">⚡ Factory Upgrade Potential</div>
-                  <div class="factory-upgrade-text">${data.factory_upgrade}</div>
-                </div>
-              ` : ''}
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 CHEVROLET TRAVERSE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$216</span></div>
             </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleCard(card, event) {
-      if (event.target.closest('.part-item')) return;
-      if (expandedCard && expandedCard !== card) {
-        expandedCard.classList.remove('expanded');
-      }
-      card.classList.toggle('expanded');
-      expandedCard = card.classList.contains('expanded') ? card : null;
-    }
-
-    function togglePart(part, event) {
-      event.stopPropagation();
-      if (expandedPart && expandedPart !== part) {
-        expandedPart.classList.remove('expanded');
-      }
-      part.classList.toggle('expanded');
-      expandedPart = part.classList.contains('expanded') ? part : null;
-    }
-
-    function renderYardMap() {
-      const container = document.getElementById('yard-map');
-      const rowData = {};
-
-      allVehicles.forEach(v => {
-        const row = v.yard_row || 'Unknown';
-        if (!rowData[row]) rowData[row] = [];
-        rowData[row].push(v);
-      });
-
-      const sortedRows = Object.keys(rowData).sort((a, b) => parseInt(a) - parseInt(b));
-
-      container.innerHTML = sortedRows.map(row => {
-        const vehicles = rowData[row];
-        const newCount = vehicles.filter(v => v.is_new).length;
-        const profitable = vehicles.filter(v => v.best_margin >= 50);
-
-        return `
-          <div class="map-row">
-            <div class="map-row-header">
-              <span class="map-row-title">Row ${row}</span>
-              <span class="map-row-zone">${vehicles.length} vehicles${newCount > 0 ? ` · ${newCount} new` : ''}</span>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
             </div>
-            <div class="map-vehicles">
-              ${vehicles.map(v => `
-                <span class="map-vehicle-chip ${v.is_new ? 'new' : ''} ${v.best_margin >= 50 ? 'profitable' : ''}">
-                  ${v.year} ${v.make} ${v.model}${v.best_margin >= 50 ? ' (+$' + Math.round(v.best_margin) + ')' : ''}
-                </span>
-              `).join('')}
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2004 LINCOLN AVIATOR <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$216</span></div>
             </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    let searchTimeout;
-    document.getElementById('search-input').addEventListener('input', () => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(renderVehicles, 300);
-    });
-
-    window.addEventListener('scroll', () => {
-      document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 400);
-    });
-
-    loadData();
-    setInterval(loadData, 300000);
-  </script>
-</body>
-</html>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 CADILLAC SRX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1992 CADILLAC FLEETWOOD <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2008 CHEVROLET EQUINOX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET SONIC <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 CHEVROLET EQUINOX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 CHEVROLET SILVERADO <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2013 CHEVROLET CAMARO <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CHEVROLET CAVALIER <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 CHEVROLET CRUZE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET SONIC <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CHEVROLET SILVERADO <span class="row">Row 2</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET CRUZE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 CHEVROLET IMPALA LIMITED <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 CHEVROLET SILVERADO <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 FORD MUSTANG <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1995 FORD F-150 <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+  </div>
+  
+  <div class="page-break"></div>
+  
+  <div class="section">
+    <div class="section-title">HIGH-VALUE MAKES</div>
+    
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CADILLAC CTS <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 INFINITI QX4 <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 CADILLAC SRX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1992 CADILLAC FLEETWOOD <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 AUDI A4 <span class="row">Row 31</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+  </div>
+  
+  <div class="page-break"></div>
+  
+  <div class="section">
+    <div class="section-title">FULL INVENTORY</div>
+    
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CADILLAC CTS <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 INFINITI QX4 <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 CHEVROLET TRAVERSE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2004 LINCOLN AVIATOR <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$216</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>turbocharger</span> <span class='part-price'>est</span> <span class='part-margin'>+$216</span></div><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 CADILLAC SRX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1992 CADILLAC FLEETWOOD <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2008 CHEVROLET EQUINOX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET SONIC <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 CHEVROLET EQUINOX <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 CHEVROLET SILVERADO <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2013 CHEVROLET CAMARO <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CHEVROLET CAVALIER <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 CHEVROLET CRUZE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET SONIC <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2003 CHEVROLET SILVERADO <span class="row">Row 2</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2015 CHEVROLET CRUZE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 CHEVROLET IMPALA LIMITED <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 CHEVROLET SILVERADO <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 FORD MUSTANG <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1995 FORD F-150 <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 FORD ESCAPE <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1992 FORD TAURUS <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 FORD FIESTA <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2013 FORD F-150 <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2005 FORD FOCUS <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1992 FORD RANGER <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2013 FORD FOCUS <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2004 HONDA PILOT <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2017 HONDA ACCORD <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2014 JEEP COMPASS <span class="row">Row 58</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>MAF sensor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2004 TOYOTA CAMRY <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2009 TOYOTA MATRIX <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2005 NISSAN TITAN <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2018 NISSAN SENTRA <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2016 NISSAN PATHFINDER <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2017 NISSAN VERSA NOTE <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2004 NISSAN XTERRA <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2005 HYUNDAI TUCSON <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2017 KIA FORTE <span class="row">Row 28</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 DODGE CALIBER <span class="row">Row 58</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 LINCOLN TOWN CAR <span class="row">Row 17</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2007 PONTIAC G5 <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2008 SATURN VUE <span class="row">Row 49</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>HID ballast</span> <span class='part-price'>est</span> <span class='part-margin'>+$11</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2012 AUDI A4 <span class="row">Row 31</span></div>
+                <div class="vehicle-badges"><span class='badge-hv'>HV</span><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2011 CHEVROLET MALIBU <span class="row">Row 53</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2001 CHEVROLET SUBURBAN <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div><div class='part-line'><span class='part-name'>seat control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$6</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1994 FORD RANGER <span class="row">Row 15</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">1989 FORD E-350 <span class="row">Row 8</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$71</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>BCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$37</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2017 FORD EDGE <span class="row">Row 15</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+        <div class="vehicle-card">
+            <div class="vehicle-header">
+                <div class="vehicle-title">2000 HONDA ODYSSEY <span class="row">Row 31</span></div>
+                <div class="vehicle-badges"><span class="margin">+$140</span></div>
+            </div>
+            <div class="vehicle-body">
+                <div class="parts"><div class='part-line'><span class='part-name'>MMI amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$140</span></div><div class='part-line'><span class='part-name'>air ride compressor</span> <span class='part-price'>est</span> <span class='part-margin'>+$119</span></div><div class='part-line'><span class='part-name'>Mark Levinson amp</span> <span class='part-price'>est</span> <span class='part-margin'>+$106</span></div><div class='part-line'><span class='part-name'>HK amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$58</span></div><div class='part-line'><span class='part-name'>TCM</span> <span class='part-price'>est</span> <span class='part-margin'>+$54</span></div><div class='part-line'><span class='part-name'>BOSE amplifier</span> <span class='part-price'>est</span> <span class='part-margin'>+$49</span></div><div class='part-line'><span class='part-name'>climate control module</span> <span class='part-price'>est</span> <span class='part-margin'>+$24</span></div><div class='part-line'><span class='part-name'>sunroof motor</span> <span class='part-price'>est</span> <span class='part-margin'>+$9</span></div></div>
+            </div>
+        </div>
+        
+  </div>
+  
+  <div class="footer">
+    Generated 2026-06-12 15:09 • Hidden Gold Parts + Sold Price Research<br>
+    Includes: instrument cluster, ECU, ABS, throttle body, amplifiers, BCM, TCM, HID ballasts, turbochargers, and more
+  </div>
+</div>
+</body></html>
