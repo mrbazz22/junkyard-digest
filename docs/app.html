@@ -618,7 +618,7 @@
                 <div class="badges">
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
-                  ${v.days_in_yard >= 13 ? '<span class="badge badge-last">LAST</span>' : ''}
+                  ${(() => { const d = (() => { try { const a = v.arrival_date; if (!a) return 0; const m = a.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if (!m) return 0; const dt = new Date(`${m[3]}-${m[1].padStart(2,'0')}-${m[2].padStart(2,'0')}`); return Math.floor((Date.now() - dt.getTime())/86400000); } catch(e) { return 0; } })(); return d >= 13 ? '<span class="badge badge-last">LAST</span>' : ''; })()}
                 </div>
               </div>
               <div class="vehicle-meta">
@@ -675,7 +675,7 @@
 
       return Object.entries(parts).map(([name, data]) => {
         const margin = data.est_margin || 0;
-        const avg = data.average || 0;
+        const avg = (data.active && data.active.avg) || data.average || 0;
         const hasData = avg > 0;
         const hasLocation = !!partLocations[name];
 
