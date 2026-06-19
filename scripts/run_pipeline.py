@@ -41,7 +41,7 @@ SPEC_VERSION = "v1.0"
 EBAY_CRED_PATH = Path.home() / ".openclaw" / "ebay_credentials.json"
 EBAY_CRED = json.load(open(EBAY_CRED_PATH))
 CLIENT_ID = EBAY_CRED["production"]["app_id"]
-CLIENT_SECRET = ***"EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert_id"]
+CLIENT_SECRET = os.getenv("EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert_id"]
 
 # --- thresholds (from FORMAT-SPEC §3) ---
 HV_THRESHOLD = 500         # best_margin ≥ $500 → HV badge
@@ -111,7 +111,7 @@ def run_research():
     """[2/5] Run research_fast_v3.py with env vars set (long-running)"""
     step("[2/5] Running eBay research (~36 min for 50 vehicles × 22 parts)…")
     if not CLIENT_SECRET:
-        ***"EBAY_CLIENT_SECRET not set")
+        print("ERROR: EBAY_CLIENT_SECRET not set", file=sys.stderr)
         sys.exit(1)
     env = os.environ.copy()
     env["EBAY_CLIENT_SECRET"] = CLIENT_SECRET
@@ -136,10 +136,28 @@ def transform_research_output():
         fail(f"Missing {src}")
         return False
     with open(src) as f:
-        results = json.load(f)
-    if not results:
+        raw = json.load(f)
+    if not raw:
         fail("Research output is empty")
         return False
+
+    # Research script outputs nested: [{vehicle:{...}, parts:{...}, best_margin, total_margin, parts_with_data}, ...]
+    # Flatten to the SPA schema: {year, make, model, yard_row, arrival_date, yard, best_margin, total_margin, parts, is_new, is_hv}
+    results = []
+    for r in raw:
+        v = r.get("vehicle", r)  # fall back to flat if already flat
+        results.append({
+            "year": v.get("year", ""),
+            "make": v.get("make", ""),
+            "model": v.get("model", ""),
+            "yard_row": v.get("yard_row", ""),
+            "arrival_date": v.get("arrival_date", ""),
+            "yard": v.get("yard", "Cagle's"),
+            "best_margin": r.get("best_margin", 0),
+            "total_margin": r.get("total_margin", 0),
+            "parts_with_data": r.get("parts_with_data", len(r.get("parts", {}))),
+            "parts": r.get("parts", {}),
+        })
 
     # enrich with is_new, is_hv flags (FORMAT-SPEC §3)
     ledger_path = DATA_DIR / "research_ledger.json"
@@ -155,8 +173,7 @@ def transform_research_output():
         return f"{v['year']}|{v['make']}|{v['model']}|{v.get('yard_row','')}|{v.get('arrival_date','')}"
 
     for r in results:
-        v = r["vehicle"]
-        r["is_new"] = vid(v) not in ledger
+        r["is_new"] = vid(r) not in ledger
         r["is_hv"] = r.get("best_margin", 0) >= HV_THRESHOLD
 
     margins = [r.get("best_margin", 0) for r in results]
