@@ -171,6 +171,18 @@ margin = eBay_avg - yard_cost - 12 - (eBay_avg * 0.13 + 0.30)
 
 Plus a **search input** (debounced 300ms, matches make/model substring, case-insensitive).
 
+### Sort dropdown (6 options, sticky under filters)
+| Sort | Behavior |
+|------|----------|
+| **📅 Newest arrivals** (default) | `arrival_date` desc — most recent scrape date first |
+| **📅 Oldest arrivals** | `arrival_date` asc — longest-in-yard first (paired with LAST badge) |
+| **💰 Best margin** | `best_margin` desc — top picks first |
+| **💰 Lowest margin** | `best_margin` asc — pass list |
+| **🔤 Make (A–Z)** | `make` asc, then `model` asc — alphabetical inventory walk |
+| **📆 Year (newest)** | `year` desc, tiebreak by `best_margin` desc |
+
+Default = **Newest arrivals** so the freshly-scraped 06/16 cars surface immediately without scrolling. `arrival_date` parsed via `MM/DD/YYYY → Date`; invalid/missing dates sort to the end.
+
 ### Vehicle cards (collapsed view)
 - Year/Make/Model header
 - Badges row: 🆕 NEW, 💰 HV, ⏰ LAST
@@ -272,3 +284,4 @@ A run is **valid** iff:
 - 50 vehicles per run, new-first selection
 - Web app: filterable, tappable parts, location catalog
 - Markdown digest: Top 10 / New / Leaving Soon
+- **v1.0.1** — Sort dropdown added (6 options), default = Newest arrivals. Preflight syntax check added to orchestrator to catch scrubbed-`***` failures before subprocess launches.
