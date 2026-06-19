@@ -15,7 +15,7 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 LEDGER_FILE = DATA_DIR / "research_ledger.json"
 
 CLIENT_ID = "JeffBasw-junkyard-PRD-07b75c3f4-14dc40cd"
-CLIENT_SECRET = ***"EBAY_CLIENT_SECRET", "")
+CLIENT_SECRET = os.environ.get("EBAY_CLIENT_SECRET", "")
 OAUTH_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 BROWSE_API = "https://api.ebay.com/buy/browse/v1"
 
@@ -30,7 +30,7 @@ def rate_limit():
 
 def get_token():
     if not CLIENT_SECRET:
-        ***"ERROR: EBAY_CLIENT_SECRET not set", file=sys.stderr)
+        print("ERROR: EBAY_CLIENT_SECRET not set", file=sys.stderr)
         return None
     creds = base64.b64encode(f"{CLIENT_ID}:{CLIENT_SECRET}".encode()).decode()
     headers = {"Authorization": f"Basic {creds}", "Content-Type": "application/x-www-form-urlencoded"}
@@ -185,7 +185,7 @@ def main():
     print("="*60)
     
     if not CLIENT_SECRET:
-        ***"ERROR: Set EBAY_CLIENT_SECRET", file=sys.stderr)
+        print("ERROR: Set EBAY_CLIENT_SECRET", file=sys.stderr)
         sys.exit(1)
     
     # Auth

@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 """
-JUNKYARD DIGEST PIPELINE — orchestrator
-======================================
+JUNKYARD DIGEST PIPELINE — orchestrator (FORMAT-SPEC v1.0)
+========================================================
 Runs the full daily flow:
   1. Scrape Cagle's inventory
   2. eBay Browse API research (NEW + backfill)
   3. Build research_data.json + part_locations.json
   4. Copy fresh data + app.html into docs/ for GitHub Pages
+  5. Build Markdown digest (docs/digest_latest.md)
+  6. Commit + push
 
 Usage:
-    export EBAY_CLIENT_SECRET='PRD-xxxx'
-    python3 scripts/run_pipeline.py [--quick] [--skip-scrape] [--skip-research] [--publish]
+    export EBAY_CLIENT_SECRET='***'
+    python3 scripts/run_pipeline.py [--quick] [--skip-scrape] [--skip-research] [--publish-only] [--no-push] [--dry-run]
 
 Env:
     EBAY_CLIENT_SECRET       required for research
-    EBAY_CERT_PATH           optional override path to eBay cert id
 """
 
 import os
@@ -23,6 +24,7 @@ import json
 import shutil
 import subprocess
 import argparse
+import re
 from pathlib import Path
 from datetime import datetime
 
@@ -32,12 +34,22 @@ DATA_DIR = REPO / "data"
 DOCS_DIR = REPO / "docs"
 RESEARCH_SCRIPT = DOCS_DIR / "research_fast_v3.py"
 
-# --- eBay credentials ---
-EBAY_CRED = json.load(open(Path.home() / ".openclaw" / "ebay_credentials.json"))
-CLIENT_ID = EBAY_CRED["production"]["app_id"]
-CLIENT_SECRET = os.environ.get("EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert_id"]
+# --- format spec version (FORMAT-SPEC.md) ---
+SPEC_VERSION = "v1.0"
 
-# --- colors for terminal ---
+# --- eBay credentials ---
+EBAY_CRED_PATH = Path.home() / ".openclaw" / "ebay_credentials.json"
+EBAY_CRED = json.load(open(EBAY_CRED_PATH))
+CLIENT_ID = EBAY_CRED["production"]["app_id"]
+CLIENT_SECRET = ***"EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert_id"]
+
+# --- thresholds (from FORMAT-SPEC §3) ---
+HV_THRESHOLD = 500         # best_margin ≥ $500 → HV badge
+LAST_THRESHOLD_DAYS = 13   # days_in_yard ≥ 13 → LAST badge
+SHOW_THRESHOLD = 50        # best_margin ≥ $50 → "$50+" filter
+MAX_VEHICLES = 50
+
+# --- colors ---
 GREEN = "\033[92m"
 RED = "\033[91m"
 YELLOW = "\033[93m"
@@ -62,9 +74,9 @@ def fail(msg):
 
 
 def scrape_cagles():
-    """Quick scrape test — returns count + saves to data/cagles_inventory_latest.json"""
-    import requests, re
-    step("[1/4] Scraping Cagle's inventory…")
+    """[1/5] Quick scrape test — saves to data/cagles_inventory_latest.json"""
+    import requests
+    step("[1/5] Scraping Cagle's inventory…")
     try:
         r = requests.get("https://caglesupullit.com/inventory.aspx", timeout=20)
         r.raise_for_status()
@@ -75,7 +87,6 @@ def scrape_cagles():
             if len(cells) >= 5:
                 clean = [re.sub(r"<[^>]+>", "", c).strip() for c in cells]
                 clean = [re.sub(r"\s+", " ", c).strip() for c in clean]
-                # skip header
                 if clean[0].lower() == "year":
                     continue
                 vehicles.append({
@@ -96,20 +107,17 @@ def scrape_cagles():
         return []
 
 
-def run_research(quick=False):
-    """Run research_fast_v3.py with env vars set"""
-    step("[2/4] Running eBay research (may take 5-30 minutes)…")
+def run_research():
+    """[2/5] Run research_fast_v3.py with env vars set (long-running)"""
+    step("[2/5] Running eBay research (~36 min for 50 vehicles × 22 parts)…")
     if not CLIENT_SECRET:
-        fail("EBAY_CLIENT_SECRET not set")
+        ***"EBAY_CLIENT_SECRET not set")
         sys.exit(1)
     env = os.environ.copy()
     env["EBAY_CLIENT_SECRET"] = CLIENT_SECRET
-    args = [sys.executable, str(RESEARCH_SCRIPT)]
-    if quick:
-        # patch max_vehicles would need arg parsing in v3
-        warn("Quick mode not implemented in research_fast_v3.py — running full")
     try:
-        result = subprocess.run(args, env=env, cwd=str(REPO), check=False)
+        result = subprocess.run([sys.executable, "-u", str(RESEARCH_SCRIPT)],
+                                env=env, cwd=str(REPO), check=False)
         if result.returncode != 0:
             fail(f"Research script exited {result.returncode}")
             return False
@@ -121,8 +129,8 @@ def run_research(quick=False):
 
 
 def transform_research_output():
-    """Convert research_output_latest.json (array) into research_data.json (dict with stats)"""
-    step("[3/4] Transforming research output…")
+    """[3/5] Convert research_output_latest.json (array) → research_data.json (dict w/ stats)"""
+    step("[3/5] Transforming research output (FORMAT-SPEC §4 schema)…")
     src = DATA_DIR / "research_output_latest.json"
     if not src.exists():
         fail(f"Missing {src}")
@@ -133,7 +141,7 @@ def transform_research_output():
         fail("Research output is empty")
         return False
 
-    # enrich with is_new, is_hv flags based on ledger
+    # enrich with is_new, is_hv flags (FORMAT-SPEC §3)
     ledger_path = DATA_DIR / "research_ledger.json"
     ledger = {}
     if ledger_path.exists():
@@ -149,7 +157,7 @@ def transform_research_output():
     for r in results:
         v = r["vehicle"]
         r["is_new"] = vid(v) not in ledger
-        r["is_hv"] = r.get("best_margin", 0) >= 500
+        r["is_hv"] = r.get("best_margin", 0) >= HV_THRESHOLD
 
     margins = [r.get("best_margin", 0) for r in results]
     new_count = sum(1 for r in results if r.get("is_new"))
@@ -169,19 +177,105 @@ def transform_research_output():
         },
         "vehicles": results,
     }
-    # write to repo root AND docs/ for Pages
     for out_path in [REPO / "research_data.json", DOCS_DIR / "research_data.json"]:
         with open(out_path, "w") as f:
             json.dump(payload, f, indent=2)
-    ok(f"Transformed {len(results)} vehicles (new={new_count}, hv={hv_count}, best=${max(margins):.0f})")
+    ok(f"{len(results)} vehicles (new={new_count}, hv={hv_count}, best=${max(margins):.0f})")
     return True
 
 
-def publish():
-    """Copy fresh assets into docs/ for GitHub Pages and commit"""
-    step("[4/4] Publishing to GitHub Pages (docs/)…")
+def build_markdown_digest():
+    """[4/5] Build docs/digest_latest.md per FORMAT-SPEC §6"""
+    step(f"[4/5] Building markdown digest (FORMAT-SPEC §6, {SPEC_VERSION})…")
+    src = DOCS_DIR / "research_data.json"
+    if not src.exists():
+        fail(f"Missing {src}")
+        return False
+    with open(src) as f:
+        data = json.load(f)
 
-    # Always copy app.html → index.html
+    today = datetime.now()
+    md = []
+    md.append(f"# 🚗 Junkyard Digest — Cagle's U Pull It")
+    md.append(f"**Date:** {today.strftime('%A, %B %d, %Y')}")
+    md.append(f"**Yard data from:** {data['date']}")
+    md.append(f"**Total vehicles:** {data['stats']['total']} · **New arrivals:** {data['stats']['new']} · **High-value (HV):** {data['stats']['hv']}")
+    md.append(f"**Avg best margin:** ${data['stats']['avg_margin']:.0f} · **Top margin:** ${data['stats']['best_margin']:.0f}")
+    md.append(f"**Total parts researched:** {data['stats']['total_parts']:,}")
+    md.append("")
+    md.append("---")
+    md.append("")
+
+    # §6.2 — Top 10 — Best Margin
+    top = sorted(data['vehicles'], key=lambda v: v.get('best_margin', 0), reverse=True)
+    md.append("## 🏆 Top 10 — Best Margin")
+    md.append("")
+    md.append("| # | Vehicle | Row | Best Margin | Parts w/ Data |")
+    md.append("|---|---------|-----|-------------|---------------|")
+    for i, v in enumerate(top[:10], 1):
+        parts_with = sum(1 for p, d in v['parts'].items() if d.get('est_margin', 0) > 0)
+        total_parts = len(v['parts'])
+        new_badge = "🆕 " if v.get('is_new') else ""
+        hv_badge = " 💰" if v.get('is_hv') else ""
+        md.append(f"| {i} | {new_badge}{v['year']} {v['make']} {v['model']}{hv_badge} | {v['yard_row']} | **${v['best_margin']:.0f}** | {parts_with}/{total_parts} |")
+    md.append("")
+    md.append("---")
+    md.append("")
+
+    # §6.3 — New Arrivals
+    new = [v for v in data['vehicles'] if v.get('is_new')]
+    md.append(f"## 🆕 New Arrivals ({len(new)})")
+    if new:
+        md.append("")
+        md.append("| Vehicle | Row | Arrived | Best |")
+        md.append("|---------|-----|---------|------|")
+        for v in sorted(new, key=lambda v: v.get('best_margin', 0), reverse=True):
+            md.append(f"| {v['year']} {v['make']} {v['model']} | {v['yard_row']} | {v['arrival_date']} | ${v['best_margin']:.0f} |")
+    else:
+        md.append("")
+        md.append("_No new arrivals in this run._")
+    md.append("")
+
+    # §6.4 — Leaving Soon
+    last_vehicles = []
+    for v in data['vehicles']:
+        try:
+            m = re.match(r'(\d{1,2})/(\d{1,2})/(\d{4})', v.get('arrival_date', ''))
+            if m:
+                d = datetime(int(m.group(3)), int(m.group(1)), int(m.group(2)))
+                days = (today - d).days
+                if days >= LAST_THRESHOLD_DAYS:
+                    last_vehicles.append((v, days))
+        except:
+            pass
+    last_vehicles.sort(key=lambda x: -x[1])
+
+    md.append(f"## ⏰ Leaving Soon ({LAST_THRESHOLD_DAYS}+ days, {len(last_vehicles)} vehicles)")
+    md.append("")
+    if last_vehicles:
+        md.append("| Vehicle | Row | Days | Arrived | Best |")
+        md.append("|---------|-----|------|---------|------|")
+        for v, days in last_vehicles[:15]:
+            md.append(f"| {v['year']} {v['make']} {v['model']} | {v['yard_row']} | {days}d | {v['arrival_date']} | ${v['best_margin']:.0f} |")
+    md.append("")
+    md.append("---")
+    md.append("")
+    md.append(f"**Live app:** https://mrbazz22.github.io/junkyard-digest/")
+    md.append("")
+    md.append(f"_Generated by junkyard-digest pipeline {SPEC_VERSION} ({today.strftime('%Y-%m-%d %H:%M')})_")
+
+    text = "\n".join(md)
+    out = DOCS_DIR / "digest_latest.md"
+    out.write_text(text)
+    ok(f"Wrote {out} ({len(text):,} chars, {len(md)} lines)")
+    return True
+
+
+def publish(dry_run=False):
+    """[5/5] Copy fresh assets into docs/, commit, push (FORMAT-SPEC §8 invariants)"""
+    step(f"[5/5] Publishing to GitHub Pages (FORMAT-SPEC {SPEC_VERSION})…")
+
+    # Invariant: docs/index.html == docs/app.html
     src_app = DOCS_DIR / "app.html"
     dst_idx = DOCS_DIR / "index.html"
     if src_app.exists():
@@ -191,7 +285,7 @@ def publish():
         fail(f"Missing {src_app}")
         return False
 
-    # Confirm data files exist in docs/
+    # Copy data files
     for fname in ["research_data.json", "part_locations.json", "yard_map.json"]:
         src = REPO / fname
         dst = DOCS_DIR / fname
@@ -202,10 +296,12 @@ def publish():
         else:
             warn(f"{fname} not found at repo root, skipping")
 
-    # Git commit + push
-    print()
+    if dry_run:
+        warn("--dry-run: skipping git commit + push")
+        return True
+
+    # Invariant: commit message format
     if subprocess.run(["git", "-C", str(REPO), "diff", "--cached", "--quiet"]).returncode == 0:
-        # see if there's anything new to stage
         r = subprocess.run(["git", "-C", str(REPO), "status", "--porcelain"],
                           capture_output=True, text=True)
         if r.stdout.strip():
@@ -215,6 +311,10 @@ def publish():
             return True
 
     msg = f"Digest: {datetime.now().strftime('%Y-%m-%d %H:%M')} — auto-publish"
+    if not msg.startswith("Digest: "):
+        fail(f"Invariant violation: commit message must start with 'Digest: '")
+        return False
+
     subprocess.run(["git", "-C", str(REPO), "commit", "-m", msg], check=False)
     r = subprocess.run(["git", "-C", str(REPO), "push", "origin", "main"],
                        capture_output=True, text=True)
@@ -227,22 +327,25 @@ def publish():
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=f"Junkyard Digest Pipeline {SPEC_VERSION}")
     parser.add_argument("--skip-scrape", action="store_true")
     parser.add_argument("--skip-research", action="store_true")
     parser.add_argument("--publish-only", action="store_true",
                         help="Just rebuild docs/ from existing data + push")
     parser.add_argument("--no-push", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--version", action="version", version=f"junkyard-digest {SPEC_VERSION}")
     args = parser.parse_args()
 
     print(f"{BLUE}🚗 JUNK{'='*50}YARD DIGEST PIPELINE")
     print(f"{'='*60}")
+    print(f"Version: {SPEC_VERSION}")
     print(f"Repo: {REPO}")
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}{RESET}\n")
 
     if args.publish_only:
-        publish()
+        publish(dry_run=args.dry_run)
         return 0
 
     if not args.skip_scrape:
@@ -252,8 +355,11 @@ def main():
             return 1
     if not transform_research_output():
         return 1
+    if not build_markdown_digest():
+        return 1
     if not args.no_push:
-        publish()
+        publish(dry_run=args.dry_run)
+
     ok("DONE")
     return 0
 
