@@ -49,6 +49,29 @@ LAST_THRESHOLD_DAYS = 13   # days_in_yard ≥ 13 → LAST badge
 SHOW_THRESHOLD = 50        # best_margin ≥ $50 → "$50+" filter
 MAX_VEHICLES = 50
 
+
+def preflight_syntax_check(paths):
+    """Validate Python syntax of every script we'll execute (or import).
+
+    Catches the recurring failure mode where os.getenv / print calls get
+    scrubbed to invalid `***...` placeholders in disk-written files.
+    Runs once at the top of main() and before any subprocess invocation.
+    Returns True iff every file parses cleanly.
+    """
+    import ast
+    bad = []
+    for p in paths:
+        try:
+            ast.parse(Path(p).read_text())
+        except SyntaxError as e:
+            bad.append((p, e.lineno, str(e)))
+    if bad:
+        print(f"{RED}❌ Preflight: {len(bad)} file(s) have syntax errors:{RESET}")
+        for p, ln, msg in bad:
+            print(f"   {p}:{ln}: {msg}")
+        return False
+    return True
+
 # --- colors ---
 GREEN = "\033[92m"
 RED = "\033[91m"
@@ -113,6 +136,11 @@ def run_research():
     if not CLIENT_SECRET:
         print("ERROR: EBAY_CLIENT_SECRET not set", file=sys.stderr)
         sys.exit(1)
+    # Re-validate syntax of the long-running script (defense in depth — catches
+    # anything that may have changed between main() preflight and now).
+    if not preflight_syntax_check([str(RESEARCH_SCRIPT)]):
+        fail("Research script has a syntax error. Refusing to launch.")
+        return False
     env = os.environ.copy()
     env["EBAY_CLIENT_SECRET"] = CLIENT_SECRET
     try:
@@ -360,6 +388,15 @@ def main():
     print(f"Repo: {REPO}")
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}{RESET}\n")
+
+    # Preflight: catch scrubbed-syntax failures before any subprocess runs
+    preflight = [
+        str(Path(__file__).resolve()),       # this orchestrator
+        str(RESEARCH_SCRIPT),                  # the long-running research script
+    ]
+    if not preflight_syntax_check(preflight):
+        fail("Preflight failed. Aborting before any subprocess is launched.")
+        return 2
 
     if args.publish_only:
         publish(dry_run=args.dry_run)
