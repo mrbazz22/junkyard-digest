@@ -8,7 +8,12 @@
   "instrument cluster": {
     "location": "Behind dashboard, center of steering column",
     "access": "Remove trim bezel (snap clips), 2-4 screws, disconnect harness. Some require steering wheel drop.",
-    "tools": ["Phillips screwdriver", "Trim removal tool", "Flashlight", "Small mirror"],
+    "tools": [
+      "Phillips screwdriver",
+      "Trim removal tool",
+      "Flashlight",
+      "Small mirror"
+    ],
     "time": "5-15 min",
     "confidence": "high",
     "notes": "Watch for hidden screws behind dash trim. Label connectors with tape before disconnecting. Premium clusters (Denali, S-Line, M-Sport) have higher margins.",
@@ -16,49 +21,63 @@
       "1. Adjust steering wheel all the way down",
       "2. Remove plastic trim bezel (pull straight out, clips only)",
       "3. Remove 2-4 Phillips screws at corners",
-      "4. Pull cluster forward carefully — harness is short",
+      "4. Pull cluster forward carefully \u2014 harness is short",
       "5. Disconnect 1-3 harness connectors (squeeze tabs)"
     ],
-    "test_at_yard": "Turn key to ON — gauges should sweep. Check for backlighting. LCD should show mileage (not dashes).",
-    "factory_upgrade_potential": "High — Base models often accept premium cluster swaps with coding"
+    "test_at_yard": "Turn key to ON \u2014 gauges should sweep. Check for backlighting. LCD should show mileage (not dashes).",
+    "factory_upgrade_potential": "High \u2014 Base models often accept premium cluster swaps with coding"
   },
   "ECU": {
     "location": "Engine bay passenger side firewall OR behind glove box OR under passenger kick panel",
     "access": "Remove plastic cover (clips) OR remove glove box (2 screws) OR remove kick panel",
-    "tools": ["10mm socket", "Trim tool", "Flashlight"],
+    "tools": [
+      "10mm socket",
+      "Trim tool",
+      "Flashlight"
+    ],
     "time": "5-15 min",
     "confidence": "medium",
     "notes": "Location varies significantly by make: Honda/Acura = passenger kick panel; Toyota/Lexus = engine bay firewall; GM = engine bay; BMW = under hood on passenger side; VW/Audi = behind glove box or under hood. Check eBay photos for your specific year to confirm.",
     "removal_steps": [
       "1. Locate ECU (check multiple locations if unsure)",
       "2. Remove mounting bracket screws (10mm)",
-      "3. Disconnect large harness connector(s) — squeeze lock tab",
+      "3. Disconnect large harness connector(s) \u2014 squeeze lock tab",
       "4. Note part number on label for compatibility checking"
     ],
-    "test_at_yard": "Visual inspection only — cannot test without VIN-matched vehicle. Look for corrosion on connector pins. Check part number matches target vehicle.",
+    "test_at_yard": "Visual inspection only \u2014 cannot test without VIN-matched vehicle. Look for corrosion on connector pins. Check part number matches target vehicle.",
     "common_failures": "Water damage (engine bay location), corroded pins, fried from jump-start"
   },
   "ABS module": {
     "location": "Engine bay, mounted to master cylinder/brake booster assembly",
     "access": "Remove cover, disconnect brake lines (do NOT mix up! Mark with tape)",
-    "tools": ["10mm socket", "Brake line wrench (flare nut 11mm or 12mm)", "Rags/catch pan", "Pen + tape for labeling lines"],
+    "tools": [
+      "10mm socket",
+      "Brake line wrench (flare nut 11mm or 12mm)",
+      "Rags/catch pan",
+      "Pen + tape for labeling lines"
+    ],
     "time": "15-30 min",
     "confidence": "high",
-    "notes": "CRITICAL: Brake fluid will leak. Bring rags. Do NOT cross-thread lines on removal — if line is seized, skip it. Label lines with tape BEFORE disconnecting. The module is the electronic box ON TOP of the valve body, not the whole assembly.",
+    "notes": "CRITICAL: Brake fluid will leak. Bring rags. Do NOT cross-thread lines on removal \u2014 if line is seized, skip it. Label lines with tape BEFORE disconnecting. The module is the electronic box ON TOP of the valve body, not the whole assembly.",
     "removal_steps": [
       "1. Remove plastic cover from master cylinder area",
       "2. Label each brake line with tape (RF, LF, RR, LR)",
-      "3. Disconnect brake lines with flare nut wrench — expect fluid",
+      "3. Disconnect brake lines with flare nut wrench \u2014 expect fluid",
       "4. Disconnect electrical connector(s)",
-      "5. Remove 4 mounting bolts — module lifts off valve body"
+      "5. Remove 4 mounting bolts \u2014 module lifts off valve body"
     ],
     "test_at_yard": "Cannot fully test. Check for brake fluid leakage around module = bad seal. Look up common failures for this model year online.",
     "common_failures": "Pump motor failure, solenoid codes (C-code), communication errors"
   },
   "throttle body": {
-    "location": "Intake manifold, top/front of engine — follow big intake hose from air filter",
+    "location": "Intake manifold, top/front of engine \u2014 follow big intake hose from air filter",
     "access": "Remove intake hose clamp, 4 bolts, disconnect harness and coolant hoses (if equipped)",
-    "tools": ["10mm socket", "Flathead screwdriver", "Pliers (hose clamps)", "Ziplock bag for bolts"],
+    "tools": [
+      "10mm socket",
+      "Flathead screwdriver",
+      "Pliers (hose clamps)",
+      "Ziplock bag for bolts"
+    ],
     "time": "5-10 min",
     "confidence": "high",
     "notes": "Very accessible on most cars. Often has coolant lines attached (pinch clamps). Mark hose orientation if present. Some have 8mm bolts, not 10mm. Hybrid TBs (Prius) are electronically controlled and worth more.",
@@ -70,40 +89,59 @@
       "5. Remove 4 mounting bolts (10mm or 8mm)",
       "6. TB lifts straight up"
     ],
-    "test_at_yard": "Visual — shaft should move freely by hand (engine off). Check for carbon buildup. Electronics side should be clean, not oil-soaked.",
+    "test_at_yard": "Visual \u2014 shaft should move freely by hand (engine off). Check for carbon buildup. Electronics side should be clean, not oil-soaked.",
     "common_failures": "Carbon buildup causing idle issues, TPS sensor failure, motor failure on electronic TBs"
   },
   "amplifier": {
     "location": "Trunk/rear cargo area OR under passenger seat OR behind glove box OR under rear deck",
     "access": "Remove trunk panel clips OR lift seat forward OR remove glove box",
-    "tools": ["Trim removal tool", "10mm socket", "Flashlight", "Small mirror"],
+    "tools": [
+      "Trim removal tool",
+      "10mm socket",
+      "Flashlight",
+      "Small mirror"
+    ],
     "time": "5-20 min",
     "confidence": "medium",
-    "notes": "Bose: often in trunk or rear deck. Harman Kardon: under seat or trunk. Mark Levinson: trunk or rear deck. Burmester/Bowers: trunk. Premium amps have heat sinks = easy ID. Check part number — some cars have multiple amp locations.",
+    "notes": "Bose: often in trunk or rear deck. Harman Kardon: under seat or trunk. Mark Levinson: trunk or rear deck. Burmester/Bowers: trunk. Premium amps have heat sinks = easy ID. Check part number \u2014 some cars have multiple amp locations.",
     "removal_steps": [
-      "1. Check trunk first — remove side panel clips (pull straight)",
+      "1. Check trunk first \u2014 remove side panel clips (pull straight)",
       "2. Look for black box with heat sinks and multiple connectors",
       "3. If not in trunk, check under passenger seat (slide forward)",
-      "4. Disconnect harness connectors — squeeze tabs",
+      "4. Disconnect harness connectors \u2014 squeeze tabs",
       "5. Remove mounting bolts (usually 10mm)"
     ],
-    "test_at_yard": "Visual only — look for water damage (trunk leaks = dead amp). Heat sinks should be clean, not corroded.",
-    "factory_upgrade_potential": "High — Many base cars have wiring for premium audio but no amp. Plug-and-play upgrade for owners.",
-    "premium_brands": ["Bose", "Harman Kardon", "Mark Levinson", "Burmester", "Bowers & Wilkins", "Dynaudio", "Bang & Olufsen"]
+    "test_at_yard": "Visual only \u2014 look for water damage (trunk leaks = dead amp). Heat sinks should be clean, not corroded.",
+    "factory_upgrade_potential": "High \u2014 Many base cars have wiring for premium audio but no amp. Plug-and-play upgrade for owners.",
+    "premium_brands": [
+      "Bose",
+      "Harman Kardon",
+      "Mark Levinson",
+      "Burmester",
+      "Bowers & Wilkins",
+      "Dynaudio",
+      "Bang & Olufsen"
+    ]
   },
   "BCM": {
     "location": "Under driver dash OR behind glove box OR left of steering column OR under passenger kick panel",
     "access": "Remove lower dash panel (2-3 screws), locate module with multiple harnesses",
-    "tools": ["7mm socket", "Trim tool", "Flashlight", "Inspection mirror", "Phone/camera for connector layout"],
+    "tools": [
+      "7mm socket",
+      "Trim tool",
+      "Flashlight",
+      "Inspection mirror",
+      "Phone/camera for connector layout"
+    ],
     "time": "10-25 min",
     "confidence": "medium",
-    "notes": "Usually black box with 3-5 large connectors. PHOTO connectors before removal — must go back same way. BCMs are VIN-locked on many newer cars (2010+) and require programming. Check interchange before buying. Some BCMs are integrated with fuse box.",
+    "notes": "Usually black box with 3-5 large connectors. PHOTO connectors before removal \u2014 must go back same way. BCMs are VIN-locked on many newer cars (2010+) and require programming. Check interchange before buying. Some BCMs are integrated with fuse box.",
     "removal_steps": [
       "1. Remove lower dash panel (Phillips or 7mm screws)",
       "2. Locate large black box with multiple connectors (3-5)",
       "3. TAKE PHOTO of connector layout before touching",
       "4. Label each connector with tape (1, 2, 3...)",
-      "5. Disconnect connectors — squeeze lock tabs",
+      "5. Disconnect connectors \u2014 squeeze lock tabs",
       "6. Remove mounting bolts (usually 10mm or 7mm)"
     ],
     "test_at_yard": "Visual only. Check for water damage (leaky windshield = corroded BCM). Connector pins should be clean, not green.",
@@ -113,15 +151,19 @@
   "TCM": {
     "location": "Passenger footwell OR engine bay on transmission OR under center console OR integrated into ECU",
     "access": "Remove kick panel OR transmission cover OR console trim",
-    "tools": ["10mm socket", "Trim tool", "Flashlight"],
+    "tools": [
+      "10mm socket",
+      "Trim tool",
+      "Flashlight"
+    ],
     "time": "10-25 min",
     "confidence": "medium",
     "notes": "Often integrated with ECU on newer cars. Check eBay listing photos to confirm separate module exists. Integrated TCM+ECU = harder pull but higher value. Standalone TCM = easier pull, moderate value. BMW ZF transmissions often have separate TCM on transmission itself.",
     "removal_steps": [
-      "1. Check passenger footwell — remove kick panel",
+      "1. Check passenger footwell \u2014 remove kick panel",
       "2. If not there, check transmission (remove plastic cover)",
       "3. Some cars: under center console (remove trim)",
-      "4. Disconnect harness — squeeze lock tab",
+      "4. Disconnect harness \u2014 squeeze lock tab",
       "5. Remove mounting bolts"
     ],
     "test_at_yard": "Visual only. Check part number against eBay listings for compatibility.",
@@ -130,7 +172,11 @@
   "HID ballast": {
     "location": "Under headlight assembly OR behind bumper cover OR attached to headlight housing OR near frame rail",
     "access": "Open hood, look for rectangular box ~3x5 inches attached to headlight wiring",
-    "tools": ["Phillips screwdriver", "Trim tool", "Flashlight"],
+    "tools": [
+      "Phillips screwdriver",
+      "Trim tool",
+      "Flashlight"
+    ],
     "time": "3-8 min",
     "confidence": "high",
     "notes": "Small black box ~3x5 inches. Often attached to headlight housing or frame rail. Don't confuse with headlight leveling module (smaller). OEM ballasts (Osram, Philips, Denso, Matsushita) worth more than aftermarket. Both sides usually have separate ballasts.",
@@ -143,51 +189,75 @@
     ],
     "test_at_yard": "Cannot test. Check for physical damage and corrosion. OEM labels (Osram, Philips) = higher value.",
     "common_failures": "Capacitor failure (common on 8-12 year old units), water intrusion",
-    "premium_brands": ["Osram", "Philips", "Denso", "Matsushita", "Mitsubishi Electric"]
+    "premium_brands": [
+      "Osram",
+      "Philips",
+      "Denso",
+      "Matsushita",
+      "Mitsubishi Electric"
+    ]
   },
   "climate control": {
     "location": "Center dash behind radio OR integrated with radio bezel",
     "access": "Remove radio trim (snap clips), 4 screws, disconnect harness",
-    "tools": ["Trim tool", "Phillips screwdriver", "Flashlight"],
+    "tools": [
+      "Trim tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
     "time": "10-20 min",
     "confidence": "high",
     "notes": "Often includes blend door actuators. Pull the whole panel as assembly. Dual-zone climate = higher value. Rear climate controls (SUVs/minivans) = separate unit in back, also valuable.",
     "removal_steps": [
       "1. Remove center dash trim (pull straight, clips only)",
       "2. Remove 4 mounting screws (Phillips)",
-      "3. Pull assembly forward — harness is short",
+      "3. Pull assembly forward \u2014 harness is short",
       "4. Disconnect harness connector(s)",
       "5. Remove HVAC ducts if attached (squeeze clips)"
     ],
-    "test_at_yard": "Turn key to ON — buttons should illuminate. LCD should display. Knobs should rotate smoothly.",
-    "factory_upgrade_potential": "Medium — Some base cars accept dual-zone upgrade with wiring harness swap"
+    "test_at_yard": "Turn key to ON \u2014 buttons should illuminate. LCD should display. Knobs should rotate smoothly.",
+    "factory_upgrade_potential": "Medium \u2014 Some base cars accept dual-zone upgrade with wiring harness swap"
   },
   "fuel pump": {
     "location": "Top of fuel tank, under rear seat OR trunk floor panel",
     "access": "Lift rear seat (clips) OR remove trunk panel, disconnect fuel lines",
-    "tools": ["Phillips screwdriver", "Fuel line disconnect tool ($5 at parts store)", "Rags", "Hammer + chisel (for rusted ring)", "Safety glasses"],
+    "tools": [
+      "Phillips screwdriver",
+      "Fuel line disconnect tool ($5 at parts store)",
+      "Rags",
+      "Hammer + chisel (for rusted ring)",
+      "Safety glasses"
+    ],
     "time": "20-40 min",
     "confidence": "high",
-    "notes": "Tank may be 1/4 full = heavy. Fuel vapors = NO SPARKS/NO SMOKING. Ring retainer may be rusted — bring PB Blaster. Some cars have access panel under seat (easy), others require tank drop (skip unless very valuable).",
+    "notes": "Tank may be 1/4 full = heavy. Fuel vapors = NO SPARKS/NO SMOKING. Ring retainer may be rusted \u2014 bring PB Blaster. Some cars have access panel under seat (easy), others require tank drop (skip unless very valuable).",
     "removal_steps": [
       "1. Lift rear seat or remove trunk floor panel",
-      "2. Remove access panel (if equipped) — 4 screws",
-      "3. Clean area around ring — debris falls in tank",
+      "2. Remove access panel (if equipped) \u2014 4 screws",
+      "3. Clean area around ring \u2014 debris falls in tank",
       "4. Remove retainer ring (hammer + chisel if rusted)",
       "5. Disconnect fuel lines with disconnect tool",
       "6. Disconnect electrical connector",
       "7. Pull pump assembly straight up"
     ],
-    "test_at_yard": "Cannot test. Visual — check for corrosion on connector. Screen/filter should be intact.",
+    "test_at_yard": "Cannot test. Visual \u2014 check for corrosion on connector. Screen/filter should be intact.",
     "safety_warning": "NO SMOKING. Fuel vapors are explosive. Work in well-ventilated area."
   },
   "turbocharger": {
-    "location": "Exhaust manifold side, center of engine bay — look for snail-shaped housing",
+    "location": "Exhaust manifold side, center of engine bay \u2014 look for snail-shaped housing",
     "access": "Remove heat shield, intake tubing, exhaust flange bolts, oil/coolant lines",
-    "tools": ["13mm socket", "14mm socket", "PB Blaster", "Extensions", "Swivel socket", "Ratchet with long handle", "Penetrating oil"],
+    "tools": [
+      "13mm socket",
+      "14mm socket",
+      "PB Blaster",
+      "Extensions",
+      "Swivel socket",
+      "Ratchet with long handle",
+      "Penetrating oil"
+    ],
     "time": "30-60 min",
     "confidence": "high",
-    "notes": "Rusty exhaust bolts = PB Blaster first. Let sit 10 min. Heavy part — support before final bolt removal. Oil/coolant lines attached — expect drips. Don't lose copper washers on banjo bolts. Check shaft play — grab compressor wheel, should have minimal play.",
+    "notes": "Rusty exhaust bolts = PB Blaster first. Let sit 10 min. Heavy part \u2014 support before final bolt removal. Oil/coolant lines attached \u2014 expect drips. Don't lose copper washers on banjo bolts. Check shaft play \u2014 grab compressor wheel, should have minimal play.",
     "removal_steps": [
       "1. Soak exhaust flange nuts with PB Blaster (wait 10 min)",
       "2. Remove heat shield (10mm bolts)",
@@ -195,16 +265,28 @@
       "4. Disconnect oil feed/drain lines (catch drips)",
       "5. Disconnect coolant lines if equipped",
       "6. Remove exhaust downpipe/v-band clamp",
-      "7. Remove mounting bolts — support turbo before last bolt",
-      "8. Turbo lifts out — HEAVY"
+      "7. Remove mounting bolts \u2014 support turbo before last bolt",
+      "8. Turbo lifts out \u2014 HEAVY"
     ],
-    "test_at_yard": "Grab compressor wheel (intake side) — should spin freely with minimal shaft play. Oil in compressor = bad seals. Check for cracked housing.",
-    "premium_brands": ["Garrett", "BorgWarner", "Holset", "IHI", "Mitsubishi", "KKK", "Precision"]
+    "test_at_yard": "Grab compressor wheel (intake side) \u2014 should spin freely with minimal shaft play. Oil in compressor = bad seals. Check for cracked housing.",
+    "premium_brands": [
+      "Garrett",
+      "BorgWarner",
+      "Holset",
+      "IHI",
+      "Mitsubishi",
+      "KKK",
+      "Precision"
+    ]
   },
   "seat control": {
     "location": "Under driver seat OR integrated into seat base OR under seat track",
     "access": "Slide seat all the way back, look underneath for small black box",
-    "tools": ["10mm socket", "Trim tool", "Flashlight"],
+    "tools": [
+      "10mm socket",
+      "Trim tool",
+      "Flashlight"
+    ],
     "time": "5-10 min",
     "confidence": "medium",
     "notes": "Memory seat cars always have module. Base models may not. Check for heated seat buttons as indicator. Module is small black box with 2-3 connectors. Some integrate into seat motor assembly.",
@@ -215,15 +297,20 @@
       "4. Remove mounting bolt (usually 10mm)"
     ],
     "test_at_yard": "Visual only. Check connector for corrosion.",
-    "factory_upgrade_potential": "High — Many cars have wiring for memory/heat but no module. Plug-and-play upgrade."
+    "factory_upgrade_potential": "High \u2014 Many cars have wiring for memory/heat but no module. Plug-and-play upgrade."
   },
   "alternator": {
-    "location": "Front of engine, driven by serpentine belt — look for round device with cooling vents",
+    "location": "Front of engine, driven by serpentine belt \u2014 look for round device with cooling vents",
     "access": "Remove belt (tensioner), 2-3 bolts, disconnect harness and battery cable",
-    "tools": ["15mm socket", "Serpentine belt tool or 3/8 drive ratchet", "10mm socket", "Gloves (belt tension is strong)"],
+    "tools": [
+      "15mm socket",
+      "Serpentine belt tool or 3/8 drive ratchet",
+      "10mm socket",
+      "Gloves (belt tension is strong)"
+    ],
     "time": "10-20 min",
     "confidence": "high",
-    "notes": "Very accessible on most cars. Note belt routing before removal (take photo). The rear bolt is often hard to reach — use extension + swivel. High-output alternators (trucks, police cars, ambulances) = premium.",
+    "notes": "Very accessible on most cars. Note belt routing before removal (take photo). The rear bolt is often hard to reach \u2014 use extension + swivel. High-output alternators (trucks, police cars, ambulances) = premium.",
     "removal_steps": [
       "1. Take photo of belt routing",
       "2. Release belt tensioner (15mm socket)",
@@ -231,57 +318,84 @@
       "4. Disconnect battery cable from alternator (10mm)",
       "5. Disconnect harness connector",
       "6. Remove 2-3 mounting bolts (14mm or 15mm)",
-      "7. Alternator lifts out — heavy"
+      "7. Alternator lifts out \u2014 heavy"
     ],
-    "test_at_yard": "Spin pulley by hand — should spin smoothly, no grinding. Check for burned smell. Rear bearing should not wobble.",
+    "test_at_yard": "Spin pulley by hand \u2014 should spin smoothly, no grinding. Check for burned smell. Rear bearing should not wobble.",
     "common_failures": "Worn bearings (grinding), voltage regulator failure, diode failure"
   },
   "MAF sensor": {
-    "location": "Intake duct between air filter and throttle body — rectangular plastic housing",
+    "location": "Intake duct between air filter and throttle body \u2014 rectangular plastic housing",
     "access": "Unclip sensor from intake tube, disconnect harness",
-    "tools": ["Flathead screwdriver (hose clamp)", "Torx bits T20/T25 (some)", "MAF cleaner spray (optional for cleaning later)"],
+    "tools": [
+      "Flathead screwdriver (hose clamp)",
+      "Torx bits T20/T25 (some)",
+      "MAF cleaner spray (optional for cleaning later)"
+    ],
     "time": "2-5 min",
     "confidence": "high",
-    "notes": "Easiest pull on the list. Don't touch sensor wires with fingers — oils damage them. Some use hose clamp, others use 2 screws (Torx). OEM Bosch/Denso sensors worth more than aftermarket.",
+    "notes": "Easiest pull on the list. Don't touch sensor wires with fingers \u2014 oils damage them. Some use hose clamp, others use 2 screws (Torx). OEM Bosch/Denso sensors worth more than aftermarket.",
     "removal_steps": [
       "1. Locate sensor housing in intake tube",
       "2. Disconnect harness connector",
       "3. Loosen hose clamp or remove 2 Torx screws",
-      "4. Pull sensor straight out — DO NOT touch internal wires"
+      "4. Pull sensor straight out \u2014 DO NOT touch internal wires"
     ],
-    "test_at_yard": "Visual — wires should be clean, not coated with dirt/oil. Housing should not be cracked.",
+    "test_at_yard": "Visual \u2014 wires should be clean, not coated with dirt/oil. Housing should not be cracked.",
     "common_failures": "Contaminated wires (from oiled air filter), cracked housing, connector corrosion",
-    "premium_brands": ["Bosch", "Denso", "Siemens/VDO", "Hitachi"]
+    "premium_brands": [
+      "Bosch",
+      "Denso",
+      "Siemens/VDO",
+      "Hitachi"
+    ]
   },
   "radio nav": {
-    "location": "Center dash, behind bezel — look for rectangular opening with screen",
+    "location": "Center dash, behind bezel \u2014 look for rectangular opening with screen",
     "access": "Remove dash trim (clips), 4 mounting screws, disconnect harness/antenna",
-    "tools": ["Trim removal tool", "7mm socket", "Radio removal keys (some VW/Audi/BMW)", "Flashlight"],
+    "tools": [
+      "Trim removal tool",
+      "7mm socket",
+      "Radio removal keys (some VW/Audi/BMW)",
+      "Flashlight"
+    ],
     "time": "10-25 min",
     "confidence": "high",
     "notes": "Premium nav units often have separate DVD drive below. Pull both. GPS antenna on dash top. Amplifier may be separate (trunk/under seat). OEM nav units with Apple CarPlay/Android Auto = GOLD. Aftermarket = skip.",
     "removal_steps": [
       "1. Remove center dash trim (pull straight, clips)",
       "2. Remove 4 mounting screws (7mm or Phillips)",
-      "3. Pull radio forward — harness is short",
+      "3. Pull radio forward \u2014 harness is short",
       "4. Disconnect main harness",
       "5. Disconnect antenna (pull straight, don't twist)",
       "6. Disconnect GPS antenna if separate",
-      "7. Check for separate DVD drive below — remove too"
+      "7. Check for separate DVD drive below \u2014 remove too"
     ],
-    "test_at_yard": "Turn key to ACC — screen should illuminate. Touchscreen should respond. CD/DVD should accept disc.",
-    "factory_upgrade_potential": "Very High — Base cars accept premium nav with coding. CarPlay/Android Auto units = $500-1000 demand.",
-    "premium_features": ["Apple CarPlay", "Android Auto", "Navigation DVD", "Touchscreen", "Backup camera integration"]
+    "test_at_yard": "Turn key to ACC \u2014 screen should illuminate. Touchscreen should respond. CD/DVD should accept disc.",
+    "factory_upgrade_potential": "Very High \u2014 Base cars accept premium nav with coding. CarPlay/Android Auto units = $500-1000 demand.",
+    "premium_features": [
+      "Apple CarPlay",
+      "Android Auto",
+      "Navigation DVD",
+      "Touchscreen",
+      "Backup camera integration"
+    ]
   },
   "catalytic converter": {
-    "location": "Under vehicle, in exhaust system between engine and muffler — look for bulging canister",
+    "location": "Under vehicle, in exhaust system between engine and muffler \u2014 look for bulging canister",
     "access": "Jack/stands or ramp required. Usually accessible from underneath.",
-    "tools": ["14mm or 15mm socket + extension", "PB Blaster", " penetrating oil", "Sawzall (backup for seized bolts)", "Safety glasses", "Work gloves"],
+    "tools": [
+      "14mm or 15mm socket + extension",
+      "PB Blaster",
+      " penetrating oil",
+      "Sawzall (backup for seized bolts)",
+      "Safety glasses",
+      "Work gloves"
+    ],
     "time": "15-45 min",
     "confidence": "high",
     "notes": "THE most valuable part on most vehicles. Toyota Prius cats especially valuable ($1,000+). Foreign/luxury cats worth 2-5x domestic. Check converter type: ceramic honeycomb (light, fragile) vs metallic (heavy, dense). Some have heat shields that must be removed first.",
     "removal_steps": [
-      "1. Locate converter — follow exhaust from engine, look for bulge",
+      "1. Locate converter \u2014 follow exhaust from engine, look for bulge",
       "2. Remove heat shield if present (10mm bolts)",
       "3. Soak flange nuts with PB Blaster (wait 10 min)",
       "4. Support exhaust before removing bolts",
@@ -289,14 +403,20 @@
       "6. If bolts are seized, use Sawzall to cut pipe",
       "7. Converter drops free"
     ],
-    "test_at_yard": "Cannot test at yard. Visual — look for intact honeycomb (shine flashlight through). OEM stamp = higher value. Aftermarket cats have minimal value.",
+    "test_at_yard": "Cannot test at yard. Visual \u2014 look for intact honeycomb (shine flashlight through). OEM stamp = higher value. Aftermarket cats have minimal value.",
     "value_factors": "Vehicle make (Toyota/Honda/Ford trucks = high), converter type (foreign = premium), precious metal prices (Rhodium up 73% in 2025)",
     "warning": "Some yards remove cats before cars enter lot. Check before targeting specific vehicle."
   },
   "A/C compressor": {
-    "location": "Front of engine, driven by serpentine belt — cylindrical unit with clutch plate",
+    "location": "Front of engine, driven by serpentine belt \u2014 cylindrical unit with clutch plate",
     "access": "Remove belt, disconnect refrigerant lines, remove 4 mounting bolts",
-    "tools": ["15mm socket", "A/C line disconnect tool (or wrench)", "PB Blaster", "Rags", "Note: EPA requires refrigerant recovery — but at junkyard, lines are already empty"],
+    "tools": [
+      "15mm socket",
+      "A/C line disconnect tool (or wrench)",
+      "PB Blaster",
+      "Rags",
+      "Note: EPA requires refrigerant recovery \u2014 but at junkyard, lines are already empty"
+    ],
     "time": "15-30 min",
     "confidence": "high",
     "notes": "At junkyard, refrigerant is usually already escaped. If lines are intact, assume pressure escaped. Clutch plate should spin freely by hand. Hybrid A/C compressors (electric, not belt-driven) = much higher value.",
@@ -305,15 +425,20 @@
       "2. Disconnect refrigerant lines (expect residual pressure)",
       "3. Disconnect electrical connector",
       "4. Remove 4 mounting bolts (13mm or 14mm)",
-      "5. Compressor lifts out — heavy"
+      "5. Compressor lifts out \u2014 heavy"
     ],
-    "test_at_yard": "Spin clutch plate by hand — should rotate smoothly. Check for seized clutch (won't spin).",
+    "test_at_yard": "Spin clutch plate by hand \u2014 should rotate smoothly. Check for seized clutch (won't spin).",
     "common_failures": "Seized clutch, internal failure (won't compress), leaking shaft seal"
   },
   "power steering pump": {
-    "location": "Front of engine, driven by serpentine belt — small pump with fluid reservoir",
+    "location": "Front of engine, driven by serpentine belt \u2014 small pump with fluid reservoir",
     "access": "Remove belt, disconnect pressure lines, remove 3 mounting bolts",
-    "tools": ["15mm socket", "Line wrench (18mm or 19mm)", "Drain pan", "Rags"],
+    "tools": [
+      "15mm socket",
+      "Line wrench (18mm or 19mm)",
+      "Drain pan",
+      "Rags"
+    ],
     "time": "10-20 min",
     "confidence": "high",
     "notes": "Electric power steering (2010+) = module on rack or column, no pump. These modules are valuable. Hydraulic pumps = moderate value. Look for rack-mounted motor on newer cars.",
@@ -324,17 +449,341 @@
       "4. Remove 2-3 mounting bolts",
       "5. Pump lifts out"
     ],
-    "test_at_yard": "Spin pulley by hand — should turn smoothly. Check for leaks around shaft seal.",
+    "test_at_yard": "Spin pulley by hand \u2014 should turn smoothly. Check for leaks around shaft seal.",
     "note_electric": "Electric steering modules: located on rack or steering column. Look for module with cooling fins and multiple connectors."
   },
   "wheels": {
-    "location": "On vehicle — remove lug nuts",
+    "location": "On vehicle \u2014 remove lug nuts",
     "access": "Remove lug nuts (17mm, 19mm, or 21mm socket), wheel lifts off",
-    "tools": ["Lug wrench or 1/2 drive socket", "17mm/19mm/21mm socket"],
+    "tools": [
+      "Lug wrench or 1/2 drive socket",
+      "17mm/19mm/21mm socket"
+    ],
     "time": "2-5 min per wheel",
     "confidence": "high",
     "notes": "Alloy wheels worth more than steel. Check for curb rash, cracks, bends. OEM wheels from performance models (M-Sport, AMG, S-Line) command premium. Full sets worth more than singles. Matching center caps = bonus.",
-    "test_at_yard": "Visual — curb rash reduces value. Check for cracks in spokes. Spin wheel on ground — should roll true (not wobble).",
-    "premium_brands": ["BBS", "OZ Racing", "Enkei", "Volk", "HRE", "Forgeline"]
+    "test_at_yard": "Visual \u2014 curb rash reduces value. Check for cracks in spokes. Spin wheel on ground \u2014 should roll true (not wobble).",
+    "premium_brands": [
+      "BBS",
+      "OZ Racing",
+      "Enkei",
+      "Volk",
+      "HRE",
+      "Forgeline"
+    ]
+  },
+  "ABS DSC module": {
+    "location": "Engine bay, mounted to brake master cylinder / ABS pump assembly",
+    "access": "Remove plastic cover, disconnect brake lines (mark with tape), unbolt module from pump",
+    "tools": [
+      "10mm socket",
+      "Brake line wrench (flare nut)",
+      "Rags/catch pan",
+      "Pen + tape"
+    ],
+    "time": "10-20 min",
+    "confidence": "high",
+    "notes": "BMW-specific naming. Same physical location as ABS module but may include DSC controller. Look for module with DSC label.",
+    "removal_steps": [
+      "1. Locate ABS/DSC module on master cylinder assembly",
+      "2. Remove plastic cover/heat shield",
+      "3. Mark brake lines before disconnecting",
+      "4. Remove module bolts (10mm)",
+      "5. Carefully disconnect harness connectors"
+    ],
+    "test_at_yard": "Visual inspection for corrosion. Check part number label. Cannot test without matched vehicle.",
+    "factory_upgrade_potential": "Low"
+  },
+  "BOSE amplifier": {
+    "location": "Trunk/hatch area, under cargo floor or behind interior panel",
+    "access": "Remove cargo trim panel or lift floor panel (snap clips)",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
+    "time": "5-10 min",
+    "confidence": "medium",
+    "notes": "Often mounted to trunk side panel or under spare tire well. Look for BOSE-branded silver box with cooling fins. Verify part number before pulling.",
+    "removal_steps": [
+      "1. Remove trunk/cargo trim panels",
+      "2. Locate BOSE amp (silver box with fins)",
+      "3. Remove mounting screws",
+      "4. Disconnect harness connectors"
+    ],
+    "test_at_yard": "Visual only \u2014 check for water damage if in trunk well. Corrosion = skip.",
+    "factory_upgrade_potential": "Medium \u2014 Bose amps fit multiple GM/Cadillac models"
+  },
+  "ECU DME": {
+    "location": "Engine bay passenger side firewall OR under hood on passenger side",
+    "access": "Remove plastic cover (clips), unbolt module",
+    "tools": [
+      "10mm socket",
+      "Trim tool",
+      "Flashlight"
+    ],
+    "time": "5-15 min",
+    "confidence": "high",
+    "notes": "BMW-specific term (Digital Motor Electronics). Same location as ECU. Often mounted in a black plastic box with cooling fins. Part number on label is critical for matching.",
+    "removal_steps": [
+      "1. Locate DME box on passenger side firewall",
+      "2. Remove plastic cover/lid",
+      "3. Unbolt module bracket",
+      "4. Disconnect large harness connector",
+      "5. Note part number for compatibility"
+    ],
+    "test_at_yard": "Visual inspection only. Check for corrosion on connector pins. Match part number exactly.",
+    "factory_upgrade_potential": "Low \u2014 VIN-specific, requires coding"
+  },
+  "ECU PCM": {
+    "location": "Engine bay firewall OR behind glove box OR under passenger kick panel",
+    "access": "Remove plastic cover OR remove glove box (2 screws) OR remove kick panel",
+    "tools": [
+      "10mm socket",
+      "Trim tool",
+      "Flashlight"
+    ],
+    "time": "5-15 min",
+    "confidence": "medium",
+    "notes": "GM/Chrysler/Dodge term (Powertrain Control Module). Same as ECU. Location varies: GM = engine bay; Chrysler = behind glove box or under hood. Check eBay photos for your specific year.",
+    "removal_steps": [
+      "1. Locate PCM (check engine bay first)",
+      "2. Remove mounting bracket screws",
+      "3. Disconnect harness connectors",
+      "4. Note part number for compatibility"
+    ],
+    "test_at_yard": "Visual inspection only. Check for corrosion. Match part number.",
+    "factory_upgrade_potential": "Low \u2014 VIN-specific"
+  },
+  "MMI amp": {
+    "location": "Trunk/hatch area, under cargo floor or behind left trunk panel",
+    "access": "Remove trunk trim panel (snap clips)",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
+    "time": "5-10 min",
+    "confidence": "medium",
+    "notes": "Audi-specific (Multi Media Interface). Usually mounted in trunk left side or under spare tire well. Look for silver/black amp box with Audi part number.",
+    "removal_steps": [
+      "1. Remove trunk left side trim panel",
+      "2. Locate MMI amplifier",
+      "3. Remove mounting screws",
+      "4. Disconnect harness connectors"
+    ],
+    "test_at_yard": "Visual only. Check for water damage.",
+    "factory_upgrade_potential": "Low \u2014 model-specific"
+  },
+  "Mark Levinson amp": {
+    "location": "Trunk/hatch area, under cargo floor or behind right trunk panel",
+    "access": "Remove trunk trim panel (snap clips)",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
+    "time": "5-10 min",
+    "confidence": "medium",
+    "notes": "Lexus/Toyota premium audio. Often mounted under cargo floor or behind right trunk panel. Look for Mark Levinson branded amp or part numbers starting with 86280.",
+    "removal_steps": [
+      "1. Remove trunk right side trim panel",
+      "2. Locate amplifier",
+      "3. Remove mounting screws",
+      "4. Disconnect harness connectors"
+    ],
+    "test_at_yard": "Visual only. Premium amps command higher prices.",
+    "factory_upgrade_potential": "Low"
+  },
+  "SRS airbag module": {
+    "location": "Under center console OR under passenger seat OR behind glove box",
+    "access": "Remove console trim (snap clips) OR slide seat fully back OR remove glove box",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "10mm socket",
+      "Flashlight"
+    ],
+    "time": "10-20 min",
+    "confidence": "medium",
+    "notes": "Airbag control module. Location varies: Honda = under center console; Toyota = under passenger seat; GM = behind glove box. Often yellow connector. Handle with care.",
+    "removal_steps": [
+      "1. Locate module (check console, seat, glove box)",
+      "2. Remove surrounding trim/panels",
+      "3. Unbolt module bracket",
+      "4. Disconnect harness (often yellow connector)",
+      "5. Handle carefully \u2014 do not drop"
+    ],
+    "test_at_yard": "Visual only. Check part number. Some modules store crash data and need resetting.",
+    "factory_upgrade_potential": "Low"
+  },
+  "body control module": {
+    "location": "Under driver dash, left of steering column OR behind glove box",
+    "access": "Remove lower dash panel (snap clips + screws) OR remove glove box",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
+    "time": "10-20 min",
+    "confidence": "medium",
+    "notes": "Same as BCM. Controls windows, locks, lights, wipers. Often mounted to fuse panel area. May be integrated with fuse box.",
+    "removal_steps": [
+      "1. Remove lower driver dash panel",
+      "2. Locate BCM (often black box with multiple connectors)",
+      "3. Disconnect battery first (recommended)",
+      "4. Remove mounting screws",
+      "5. Disconnect harness connectors one at a time"
+    ],
+    "test_at_yard": "Visual only. Check for corrosion. Match part number.",
+    "factory_upgrade_potential": "Low \u2014 VIN-specific"
+  },
+  "headlight assembly": {
+    "location": "Front of vehicle, behind grille",
+    "access": "Open hood, remove bolts from top of assembly, pull forward",
+    "tools": [
+      "10mm socket",
+      "Phillips screwdriver",
+      "Flathead screwdriver"
+    ],
+    "time": "5-15 min",
+    "confidence": "high",
+    "notes": "Halogen units are cheap. HID/Xenon and LED assemblies are high-value. Check for adaptive/auto-leveling features. Look for damage to lens or tabs.",
+    "removal_steps": [
+      "1. Open hood",
+      "2. Remove top mounting bolts (10mm)",
+      "3. Pull assembly forward",
+      "4. Disconnect harness connector",
+      "5. Check for hidden lower bolts on some models"
+    ],
+    "test_at_yard": "Check lens for cracks. Verify mounting tabs intact. HID ballasts may be separate part.",
+    "factory_upgrade_potential": "Medium \u2014 HID/LED upgrades popular"
+  },
+  "ignition coil": {
+    "location": "On top of engine, one per cylinder (coil-on-plug)",
+    "access": "Remove engine cover (snap clips), pull coil straight up",
+    "tools": [
+      "None \u2014 pull by hand",
+      "8mm socket (some models)",
+      "Dielectric grease"
+    ],
+    "time": "2-5 min per coil",
+    "confidence": "high",
+    "notes": "Individual coils are low margin. Complete set of 4-8 coils is better. Check for oil contamination (indicates valve cover leak).",
+    "removal_steps": [
+      "1. Remove engine cover",
+      "2. Disconnect coil connector",
+      "3. Remove bolt if present (8mm)",
+      "4. Pull coil straight up \u2014 do NOT twist",
+      "5. Check boot for oil contamination"
+    ],
+    "test_at_yard": "Check for cracks in coil body. Oil in boot = skip. Verify part number matches.",
+    "factory_upgrade_potential": "Low"
+  },
+  "navigation radio": {
+    "location": "Center dash, behind touchscreen/climate controls",
+    "access": "Remove dash trim (snap clips), remove 4 screws, slide unit out",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flashlight"
+    ],
+    "time": "10-20 min",
+    "confidence": "medium",
+    "notes": "Same as radio/navigation. Premium units with NAV and touchscreen are high-value. Check for anti-theft codes. Part number usually on side or back of unit.",
+    "removal_steps": [
+      "1. Remove center dash trim panel",
+      "2. Remove mounting screws",
+      "3. Slide unit out partially",
+      "4. Disconnect antenna, harness, GPS connectors",
+      "5. Note part number on label"
+    ],
+    "test_at_yard": "Visual only. Check screen for cracks. Premium NAV units worth more.",
+    "factory_upgrade_potential": "Medium"
+  },
+  "oxygen sensor": {
+    "location": "Exhaust manifold/pipe, before and after catalytic converter",
+    "access": "From under vehicle or hood. May need socket with slot for wire.",
+    "tools": [
+      "O2 sensor socket (22mm with slot)",
+      "Ratchet",
+      "PB Blaster",
+      "Wire cutters (if clipped)"
+    ],
+    "time": "5-15 min",
+    "confidence": "high",
+    "notes": "Upstream (pre-cat) sensors are more valuable. OEM Bosch, Denso, NTK command premium. Aftermarket generics are low margin.",
+    "removal_steps": [
+      "1. Locate sensor on exhaust pipe",
+      "2. Spray PB Blaster if rusty",
+      "3. Use O2 sensor socket to remove",
+      "4. Cut wire if needed (yard doesn't care)",
+      "5. Check for Bosch/Denso/NTK branding"
+    ],
+    "test_at_yard": "Check branding. OEM sensors worth 3-5x aftermarket. Look for part number stamping.",
+    "factory_upgrade_potential": "Low"
+  },
+  "starter": {
+    "location": "Lower engine block, where transmission meets engine",
+    "access": "From under vehicle. Remove lower splash shield if present.",
+    "tools": [
+      "14mm socket",
+      "Ratchet with extension",
+      "Jack stands",
+      "Flashlight"
+    ],
+    "time": "15-30 min",
+    "confidence": "high",
+    "notes": "Heavy and awkward. May require removing exhaust crossover pipe on some V6/V8 engines. Check for solenoid damage.",
+    "removal_steps": [
+      "1. Jack up vehicle and secure on stands",
+      "2. Locate starter at bell housing",
+      "3. Remove mounting bolts (14mm, usually 2)",
+      "4. Disconnect battery cable and solenoid wire",
+      "5. Maneuver starter out (may require patience)"
+    ],
+    "test_at_yard": "Check gear teeth for wear. Spin test if battery available. Heavy = higher shipping cost.",
+    "factory_upgrade_potential": "Low"
+  },
+  "taillight assembly": {
+    "location": "Rear of vehicle, inside trunk/hatch area",
+    "access": "Open trunk, remove interior trim panel (snap clips), remove nuts/bolts",
+    "tools": [
+      "10mm socket",
+      "Trim removal tool",
+      "Phillips screwdriver"
+    ],
+    "time": "5-10 min",
+    "confidence": "high",
+    "notes": "LED and smoked/tinted assemblies command premium. Check for cracks in lens. Verify all mounting tabs intact.",
+    "removal_steps": [
+      "1. Open trunk/hatch",
+      "2. Remove interior trim panel behind light",
+      "3. Remove mounting nuts (10mm)",
+      "4. Pull assembly out from outside",
+      "5. Disconnect harness connector"
+    ],
+    "test_at_yard": "Check lens for cracks. Verify tabs. LED units worth more than incandescent.",
+    "factory_upgrade_potential": "Medium"
+  },
+  "window switch": {
+    "location": "Driver door panel OR center console",
+    "access": "Remove door panel (snap clips + screws behind trim) OR pry up console switch",
+    "tools": [
+      "Trim removal tool",
+      "Phillips screwdriver",
+      "Flathead screwdriver"
+    ],
+    "time": "5-10 min",
+    "confidence": "high",
+    "notes": "Master switch (driver side, all windows) is highest value. Individual door switches are lower margin. Check for broken tabs on connector.",
+    "removal_steps": [
+      "1. Remove door panel or pry switch from console",
+      "2. Disconnect harness connector",
+      "3. Check for broken tabs",
+      "4. Note part number if visible"
+    ],
+    "test_at_yard": "Visual only. Check for cracked plastic. Master switch = higher value.",
+    "factory_upgrade_potential": "Low"
   }
 }
