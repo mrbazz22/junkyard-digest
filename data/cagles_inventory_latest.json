@@ -1,14 +1,6 @@
 {
   "vehicles": [
     {
-      "year": "Year",
-      "make": "Make",
-      "model": "Model",
-      "yard_row": "Yard Row",
-      "arrival_date": "Arrival Date",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2006",
       "make": "AUDI",
       "model": "A4",
@@ -25,139 +17,51 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2011",
+      "year": "2008",
       "make": "CADILLAC",
       "model": "SRX",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2003",
+      "year": "1999",
       "make": "CADILLAC",
-      "model": "CTS",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "model": "DEVILLE",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "1992",
-      "make": "CADILLAC",
-      "model": "FLEETWOOD",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2015",
-      "make": "CHEVROLET",
-      "model": "SONIC",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2014",
+      "year": "2006",
       "make": "CHEVROLET",
       "model": "EQUINOX",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2012",
-      "make": "CHEVROLET",
-      "model": "TRAVERSE",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2000",
-      "make": "CHEVROLET",
-      "model": "SILVERADO",
-      "yard_row": "8",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2013",
-      "make": "CHEVROLET",
-      "model": "CAMARO",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2003",
-      "make": "CHEVROLET",
-      "model": "CAVALIER",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2012",
-      "make": "CHEVROLET",
-      "model": "CRUZE",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2015",
-      "make": "CHEVROLET",
-      "model": "SONIC",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2008",
       "make": "CHEVROLET",
-      "model": "EQUINOX",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "model": "MALIBU",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2014",
+      "year": "2006",
       "make": "CHEVROLET",
-      "model": "IMPALA LIMITED",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "model": "TRAILBLAZER",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2003",
+      "year": "1994",
       "make": "CHEVROLET",
-      "model": "SILVERADO",
-      "yard_row": "2",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2015",
-      "make": "CHEVROLET",
-      "model": "CRUZE",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2000",
-      "make": "CHEVROLET",
-      "model": "SILVERADO",
-      "yard_row": "8",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2008",
-      "make": "CHRYSLER",
-      "model": "TOWN & COUNTRY",
-      "yard_row": "62",
-      "arrival_date": "06/16/2026",
+      "model": "S10",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -177,11 +81,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2011",
-      "make": "DODGE",
-      "model": "CALIBER",
-      "yard_row": "58",
-      "arrival_date": "06/05/2026",
+      "year": "2008",
+      "make": "CHRYSLER",
+      "model": "TOWN & COUNTRY",
+      "yard_row": "62",
+      "arrival_date": "06/16/2026",
       "yard": "Cagle's"
     },
     {
@@ -209,27 +113,19 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2008",
-      "make": "FORD",
-      "model": "FOCUS",
-      "yard_row": "17",
-      "arrival_date": "06/16/2026",
+      "year": "2007",
+      "make": "DODGE",
+      "model": "CALIBER",
+      "yard_row": "62",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "1992",
-      "make": "FORD",
-      "model": "RANGER",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2003",
-      "make": "FORD",
-      "model": "EXPEDITION",
-      "yard_row": "1",
-      "arrival_date": "06/16/2026",
+      "year": "2013",
+      "make": "FIAT",
+      "model": "500",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -241,51 +137,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "1992",
-      "make": "FORD",
-      "model": "TAURUS",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2011",
-      "make": "FORD",
-      "model": "FIESTA",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2013",
-      "make": "FORD",
-      "model": "F-150",
-      "yard_row": "8",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "1998",
       "make": "FORD",
       "model": "EXPEDITION",
       "yard_row": "8",
       "arrival_date": "06/16/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2005",
-      "make": "FORD",
-      "model": "FOCUS",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2013",
-      "make": "FORD",
-      "model": "FOCUS",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
       "yard": "Cagle's"
     },
     {
@@ -297,43 +153,43 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2000",
+      "year": "2003",
       "make": "FORD",
-      "model": "MUSTANG",
+      "model": "EXPEDITION",
+      "yard_row": "1",
+      "arrival_date": "06/16/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2008",
+      "make": "FORD",
+      "model": "FOCUS",
       "yard_row": "17",
-      "arrival_date": "06/09/2026",
+      "arrival_date": "06/16/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "1995",
-      "make": "FORD",
-      "model": "F-150",
-      "yard_row": "8",
-      "arrival_date": "06/09/2026",
+      "year": "1993",
+      "make": "GMC",
+      "model": "SUBURBAN",
+      "yard_row": "1",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2014",
-      "make": "FORD",
-      "model": "ESCAPE",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
+      "year": "1999",
+      "make": "GMC",
+      "model": "JIMMY",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2004",
+      "year": "2012",
       "make": "HONDA",
-      "model": "PILOT",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2017",
-      "make": "HONDA",
-      "model": "ACCORD",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "CIVIC",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -342,6 +198,22 @@
       "model": "CIVIC",
       "yard_row": "35",
       "arrival_date": "06/16/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2001",
+      "make": "HONDA",
+      "model": "CR-V",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2010",
+      "make": "HYUNDAI",
+      "model": "SONATA",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -361,19 +233,19 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2005",
+      "year": "2009",
       "make": "HYUNDAI",
-      "model": "TUCSON",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "ACCENT",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2003",
-      "make": "INFINITI",
-      "model": "QX4",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "year": "2018",
+      "make": "HYUNDAI",
+      "model": "ACCENT",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -385,9 +257,9 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2012",
+      "year": "2007",
       "make": "JEEP",
-      "model": "LIBERTY",
+      "model": "PATRIOT",
       "yard_row": "62",
       "arrival_date": "06/16/2026",
       "yard": "Cagle's"
@@ -401,17 +273,9 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2014",
+      "year": "2012",
       "make": "JEEP",
-      "model": "COMPASS",
-      "yard_row": "58",
-      "arrival_date": "06/05/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "JEEP",
-      "model": "PATRIOT",
+      "model": "LIBERTY",
       "yard_row": "62",
       "arrival_date": "06/16/2026",
       "yard": "Cagle's"
@@ -425,6 +289,22 @@
       "yard": "Cagle's"
     },
     {
+      "year": "2007",
+      "make": "KIA",
+      "model": "RONDO",
+      "yard_row": "35",
+      "arrival_date": "06/16/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2013",
+      "make": "KIA",
+      "model": "SOUL",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
       "year": "2014",
       "make": "KIA",
       "model": "SEDONA",
@@ -433,25 +313,9 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2017",
-      "make": "KIA",
-      "model": "FORTE",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2013",
       "make": "KIA",
       "model": "SOUL",
-      "yard_row": "35",
-      "arrival_date": "06/16/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "KIA",
-      "model": "RONDO",
       "yard_row": "35",
       "arrival_date": "06/16/2026",
       "yard": "Cagle's"
@@ -465,19 +329,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2004",
-      "make": "LINCOLN",
-      "model": "AVIATOR",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2000",
-      "make": "LINCOLN",
-      "model": "TOWN CAR",
-      "yard_row": "17",
-      "arrival_date": "06/09/2026",
+      "year": "2006",
+      "make": "MAZDA",
+      "model": "MAZDA3",
+      "yard_row": "35",
+      "arrival_date": "06/16/2026",
       "yard": "Cagle's"
     },
     {
@@ -489,11 +345,19 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2006",
+      "year": "2010",
       "make": "MAZDA",
-      "model": "MAZDA3",
-      "yard_row": "35",
-      "arrival_date": "06/16/2026",
+      "model": "CX-9",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2013",
+      "make": "MERCEDES-BENZ",
+      "model": "C250",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -505,19 +369,27 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2016",
-      "make": "NISSAN",
-      "model": "PATHFINDER",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "year": "2003",
+      "make": "MITSUBISHI",
+      "model": "FUSO FE639",
+      "yard_row": "7",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2017",
+      "year": "2006",
+      "make": "MITSUBISHI",
+      "model": "ENDEAVOR",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2009",
       "make": "NISSAN",
-      "model": "ROGUE",
-      "yard_row": "35",
-      "arrival_date": "06/16/2026",
+      "model": "ARMADA",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -529,51 +401,67 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2005",
+      "year": "2012",
       "make": "NISSAN",
-      "model": "TITAN",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "ALTIMA",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2018",
+      "year": "2011",
       "make": "NISSAN",
       "model": "SENTRA",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2017",
       "make": "NISSAN",
-      "model": "VERSA NOTE",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "ROGUE",
+      "yard_row": "35",
+      "arrival_date": "06/16/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2004",
-      "make": "NISSAN",
-      "model": "XTERRA",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "PONTIAC",
-      "model": "G5",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "year": "1991",
+      "make": "OLDSMOBILE",
+      "model": "NINETY EIGHT",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2008",
       "make": "SATURN",
-      "model": "VUE",
-      "yard_row": "49",
-      "arrival_date": "06/09/2026",
+      "model": "AURA",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2007",
+      "make": "SATURN",
+      "model": "ION",
+      "yard_row": "48",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2008",
+      "make": "SCION",
+      "model": "TC",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2006",
+      "make": "SCION",
+      "model": "TC",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -585,19 +473,19 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2004",
+      "year": "2001",
       "make": "TOYOTA",
-      "model": "CAMRY",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "SEQUOIA",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2009",
+      "year": "2012",
       "make": "TOYOTA",
-      "model": "MATRIX",
-      "yard_row": "28",
-      "arrival_date": "06/09/2026",
+      "model": "PRIUS",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     },
     {
@@ -609,11 +497,27 @@
       "yard": "Cagle's"
     },
     {
+      "year": "2007",
+      "make": "VOLVO",
+      "model": "S40",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
+      "yard": "Cagle's"
+    },
+    {
       "year": "2005",
       "make": "VOLVO",
       "model": "XC90",
       "yard_row": "35",
       "arrival_date": "06/16/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2007",
+      "make": "VOLVO",
+      "model": "XC90",
+      "yard_row": "42",
+      "arrival_date": "06/23/2026",
       "yard": "Cagle's"
     }
   ]
