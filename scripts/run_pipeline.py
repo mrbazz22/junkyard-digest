@@ -174,6 +174,9 @@ def transform_research_output():
     results = []
     for r in raw:
         v = r.get("vehicle", r)  # fall back to flat if already flat
+        # Skip header rows that slipped through
+        if v.get("year", "").lower() == "year" or v.get("make", "").lower() == "make":
+            continue
         results.append({
             "year": v.get("year", ""),
             "make": v.get("make", ""),

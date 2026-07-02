@@ -106,6 +106,18 @@
     }
     .search-input::placeholder { color: var(--text-muted); }
 
+    .sort-select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .sort-select:focus { border-color: var(--accent); }
+
     /* Vehicle List */
     .vehicle-list { padding: 0.5rem; }
 
@@ -485,6 +497,14 @@
     <button class="filter-btn" data-filter="new" onclick="setFilter('new')">New Only</button>
     <button class="filter-btn" data-filter="hv" onclick="setFilter('hv')">High-Value</button>
     <button class="filter-btn" data-filter="profitable" onclick="setFilter('profitable')">$50+</button>
+    <select class="sort-select" id="sort-select" onchange="setSort(this.value)" title="Sort vehicles">
+      <option value="arrival_desc">📅 Newest arrivals</option>
+      <option value="arrival_asc">📅 Oldest arrivals</option>
+      <option value="margin_desc">💰 Best margin</option>
+      <option value="margin_asc">💰 Lowest margin</option>
+      <option value="make_asc">🔤 Make (A–Z)</option>
+      <option value="year_desc">📆 Year (newest)</option>
+    </select>
   </div>
 
   <div class="vehicle-list" id="vehicle-list">
@@ -524,7 +544,18 @@
     let allVehicles = [];
     let partLocations = {};
     let currentFilter = 'all';
+    let currentSort = 'arrival_desc';
     let expandedCard = null;
+
+    // Parse MM/DD/YYYY arrival_date string into a sortable timestamp.
+    // Returns Infinity when missing/invalid so they sort to the end.
+    function arrivalTs(v) {
+      try {
+        const m = (v.arrival_date || '').match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (!m) return Infinity;
+        return new Date(`${m[3]}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}`).getTime();
+      } catch (e) { return Infinity; }
+    }
 
     async function loadData() {
       try {
@@ -570,6 +601,11 @@
       renderVehicles();
     }
 
+    function setSort(sort) {
+      currentSort = sort;
+      renderVehicles();
+    }
+
     function getFilteredVehicles() {
       let filtered = [...allVehicles];
       const search = document.getElementById('search-input').value.toLowerCase();
@@ -591,6 +627,34 @@
           break;
         case 'profitable':
           filtered = filtered.filter(v => v.best_margin >= 50);
+          break;
+      }
+
+      // Sort (stable; default = newest arrivals first)
+      switch (currentSort) {
+        case 'arrival_asc':
+          filtered.sort((a, b) => arrivalTs(a) - arrivalTs(b));
+          break;
+        case 'arrival_desc':
+          filtered.sort((a, b) => arrivalTs(b) - arrivalTs(a));
+          break;
+        case 'margin_desc':
+          filtered.sort((a, b) => (b.best_margin || 0) - (a.best_margin || 0));
+          break;
+        case 'margin_asc':
+          filtered.sort((a, b) => (a.best_margin || 0) - (b.best_margin || 0));
+          break;
+        case 'make_asc':
+          filtered.sort((a, b) => {
+            const m = (a.make || '').localeCompare(b.make || '');
+            return m !== 0 ? m : (a.model || '').localeCompare(b.model || '');
+          });
+          break;
+        case 'year_desc':
+          filtered.sort((a, b) => {
+            const y = (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
+            return y !== 0 ? y : (b.best_margin || 0) - (a.best_margin || 0);
+          });
           break;
       }
 
@@ -618,7 +682,7 @@
                 <div class="badges">
                   ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
-                  ${v.days_in_yard >= 13 ? '<span class="badge badge-last">LAST</span>' : ''}
+                  ${(() => { const d = (() => { try { const a = v.arrival_date; if (!a) return 0; const m = a.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if (!m) return 0; const dt = new Date(`${m[3]}-${m[1].padStart(2,'0')}-${m[2].padStart(2,'0')}`); return Math.floor((Date.now() - dt.getTime())/86400000); } catch(e) { return 0; } })(); return d >= 13 ? '<span class="badge badge-last">LAST</span>' : ''; })()}
                 </div>
               </div>
               <div class="vehicle-meta">
@@ -675,7 +739,7 @@
 
       return Object.entries(parts).map(([name, data]) => {
         const margin = data.est_margin || 0;
-        const avg = data.average || 0;
+        const avg = (data.active && data.active.avg) || data.average || 0;
         const hasData = avg > 0;
         const hasLocation = !!partLocations[name];
 

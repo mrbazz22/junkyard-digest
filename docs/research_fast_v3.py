@@ -77,6 +77,8 @@ def scrape_cagles():
             if len(cells) >= 5:
                 clean = [re.sub(r'<[^>]+>', '', c).strip() for c in cells]
                 clean = [re.sub(r'\s+', ' ', c).strip() for c in clean]
+                if clean[0].lower() == "year":
+                    continue
                 vehicles.append({"year": clean[0], "make": clean[1], "model": clean[2], "yard_row": clean[3], "arrival_date": clean[4], "yard": "Cagle's"})
         return vehicles
     except Exception as e:
