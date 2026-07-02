@@ -49,7 +49,7 @@
     /* Stats */
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 0.5rem;
       padding: 0.75rem;
       background: var(--bg);
@@ -163,6 +163,7 @@
     .badge-new { background: var(--green); color: white; }
     .badge-hv { background: var(--accent-dark); color: white; }
     .badge-last { background: var(--red); color: white; }
+    .badge-stale { background: var(--text-muted); color: white; }
     .vehicle-meta {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -478,8 +479,12 @@
       <div class="label">Vehicles</div>
     </div>
     <div class="stat-chip">
-      <div class="value" id="stat-new">—</div>
-      <div class="label">New</div>
+      <div class="value" id="stat-active" style="color:var(--green)">—</div>
+      <div class="label">Active</div>
+    </div>
+    <div class="stat-chip">
+      <div class="value" id="stat-stale" style="color:var(--text-muted)">—</div>
+      <div class="label">⏰ Last Seen</div>
     </div>
     <div class="stat-chip">
       <div class="value" id="stat-avg">—</div>
@@ -577,7 +582,8 @@
 
         document.getElementById('update-time').textContent = 'Updated: ' + data.date;
         document.getElementById('stat-total').textContent = data.stats.total;
-        document.getElementById('stat-new').textContent = data.stats.new;
+        document.getElementById('stat-active').textContent = data.stats.active || (data.stats.total - (data.stats.stale || 0));
+        document.getElementById('stat-stale').textContent = data.stats.stale || 0;
         document.getElementById('stat-avg').textContent = '$' + Math.round(data.stats.avg_margin);
         document.getElementById('stat-best').textContent = '$' + Math.round(data.stats.best_margin);
 
@@ -680,13 +686,13 @@
                 <span class="year-make">${v.year} ${v.make}</span>
                 <span class="model">${v.model}</span>
                 <div class="badges">
-                  ${v.is_new ? '<span class="badge badge-new">New</span>' : ''}
+                  ${v.is_stale ? '<span class="badge badge-stale">⏰ LAST SEEN</span>' : ''}
+                  ${!v.is_stale && v.is_new ? '<span class="badge badge-new">New</span>' : ''}
                   ${v.is_hv ? '<span class="badge badge-hv">HV</span>' : ''}
-                  ${(() => { const d = (() => { try { const a = v.arrival_date; if (!a) return 0; const m = a.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if (!m) return 0; const dt = new Date(`${m[3]}-${m[1].padStart(2,'0')}-${m[2].padStart(2,'0')}`); return Math.floor((Date.now() - dt.getTime())/86400000); } catch(e) { return 0; } })(); return d >= 13 ? '<span class="badge badge-last">LAST</span>' : ''; })()}
                 </div>
               </div>
               <div class="vehicle-meta">
-                Row <span class="row">${v.yard_row}</span> · Arrived ${v.arrival_date}
+                Row <span class="row">${v.yard_row}</span>${v.is_stale ? ' · <span style="color:var(--text-muted)">⏰ LAST SEEN ' + (v.last_seen_date || '?') + '</span>' : ' · Arrived ' + v.arrival_date}
                 · ${Object.keys(v.parts).filter(p => v.parts[p].est_margin > 0).length} parts with data
               </div>
             </div>

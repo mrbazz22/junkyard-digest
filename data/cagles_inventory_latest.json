@@ -1,14 +1,6 @@
 {
   "vehicles": [
     {
-      "year": "Year",
-      "make": "Make",
-      "model": "Model",
-      "yard_row": "Yard Row",
-      "arrival_date": "Arrival Date",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2008",
       "make": "CADILLAC",
       "model": "SRX",

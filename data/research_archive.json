@@ -1,5 +1,5 @@
-[
-  {
+{
+  "2007|VOLVO|S40|42|06/23/2026": {
     "vehicle": {
       "year": "2007",
       "make": "VOLVO",
@@ -247,7 +247,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2002|BMW|330I|35|06/16/2026": {
     "vehicle": {
       "year": "2002",
       "make": "BMW",
@@ -484,7 +484,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2013|MERCEDES-BENZ|C250|42|06/23/2026": {
     "vehicle": {
       "year": "2013",
       "make": "MERCEDES-BENZ",
@@ -732,7 +732,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2008|CADILLAC|SRX|48|06/23/2026": {
     "vehicle": {
       "year": "2008",
       "make": "CADILLAC",
@@ -980,7 +980,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "1999|CADILLAC|DEVILLE|48|06/23/2026": {
     "vehicle": {
       "year": "1999",
       "make": "CADILLAC",
@@ -1162,7 +1162,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2005|VOLVO|XC90|35|06/16/2026": {
     "vehicle": {
       "year": "2005",
       "make": "VOLVO",
@@ -1399,7 +1399,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2007|VOLVO|XC90|42|06/23/2026": {
     "vehicle": {
       "year": "2007",
       "make": "VOLVO",
@@ -1647,7 +1647,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|AUDI|A4|35|06/16/2026": {
     "vehicle": {
       "year": "2006",
       "make": "AUDI",
@@ -1895,7 +1895,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2003|INFINITI|G35|35|06/16/2026": {
     "vehicle": {
       "year": "2003",
       "make": "INFINITI",
@@ -2143,7 +2143,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2006|CHEVROLET|EQUINOX|48|06/23/2026": {
     "vehicle": {
       "year": "2006",
       "make": "CHEVROLET",
@@ -2380,7 +2380,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2008|CHEVROLET|MALIBU|48|06/23/2026": {
     "vehicle": {
       "year": "2008",
       "make": "CHEVROLET",
@@ -2617,7 +2617,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|CHEVROLET|TRAILBLAZER|48|06/23/2026": {
     "vehicle": {
       "year": "2006",
       "make": "CHEVROLET",
@@ -2854,7 +2854,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "1994|CHEVROLET|S10|48|06/23/2026": {
     "vehicle": {
       "year": "1994",
       "make": "CHEVROLET",
@@ -3091,7 +3091,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "1999|FORD|F-150|2|06/16/2026": {
     "vehicle": {
       "year": "1999",
       "make": "FORD",
@@ -3295,7 +3295,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "1998|FORD|EXPEDITION|8|06/16/2026": {
     "vehicle": {
       "year": "1998",
       "make": "FORD",
@@ -3499,7 +3499,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2000|FORD|E-350|8|06/16/2026": {
     "vehicle": {
       "year": "2000",
       "make": "FORD",
@@ -3692,7 +3692,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2003|FORD|EXPEDITION|1|06/16/2026": {
     "vehicle": {
       "year": "2003",
       "make": "FORD",
@@ -3929,7 +3929,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2008|FORD|FOCUS|17|06/16/2026": {
     "vehicle": {
       "year": "2008",
       "make": "FORD",
@@ -4155,7 +4155,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "1993|GMC|SUBURBAN|1|06/23/2026": {
     "vehicle": {
       "year": "1993",
       "make": "GMC",
@@ -4293,7 +4293,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "1999|GMC|JIMMY|48|06/23/2026": {
     "vehicle": {
       "year": "1999",
       "make": "GMC",
@@ -4486,7 +4486,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2012|HONDA|CIVIC|42|06/23/2026": {
     "vehicle": {
       "year": "2012",
       "make": "HONDA",
@@ -4723,7 +4723,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|HONDA|CIVIC|35|06/16/2026": {
     "vehicle": {
       "year": "2006",
       "make": "HONDA",
@@ -4960,7 +4960,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2001|HONDA|CR-V|42|06/23/2026": {
     "vehicle": {
       "year": "2001",
       "make": "HONDA",
@@ -5131,7 +5131,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2007|JEEP|PATRIOT|62|06/16/2026": {
     "vehicle": {
       "year": "2007",
       "make": "JEEP",
@@ -5324,7 +5324,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2015|JEEP|COMPASS|62|06/16/2026": {
     "vehicle": {
       "year": "2015",
       "make": "JEEP",
@@ -5550,7 +5550,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2012|JEEP|LIBERTY|62|06/16/2026": {
     "vehicle": {
       "year": "2012",
       "make": "JEEP",
@@ -5754,7 +5754,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2001|TOYOTA|SEQUOIA|42|06/23/2026": {
     "vehicle": {
       "year": "2001",
       "make": "TOYOTA",
@@ -5980,7 +5980,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2012|TOYOTA|PRIUS|42|06/23/2026": {
     "vehicle": {
       "year": "2012",
       "make": "TOYOTA",
@@ -6239,7 +6239,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|MAZDA|MAZDA3|35|06/16/2026": {
     "vehicle": {
       "year": "2006",
       "make": "MAZDA",
@@ -6454,7 +6454,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2007|MAZDA|MAZDA6|35|06/16/2026": {
     "vehicle": {
       "year": "2007",
       "make": "MAZDA",
@@ -6680,7 +6680,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2010|MAZDA|CX-9|42|06/23/2026": {
     "vehicle": {
       "year": "2010",
       "make": "MAZDA",
@@ -6928,7 +6928,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2009|NISSAN|ARMADA|42|06/23/2026": {
     "vehicle": {
       "year": "2009",
       "make": "NISSAN",
@@ -7143,7 +7143,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2011|NISSAN|ALTIMA|35|06/16/2026": {
     "vehicle": {
       "year": "2011",
       "make": "NISSAN",
@@ -7402,7 +7402,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2012|NISSAN|ALTIMA|42|06/23/2026": {
     "vehicle": {
       "year": "2012",
       "make": "NISSAN",
@@ -7661,7 +7661,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2011|NISSAN|SENTRA|42|06/23/2026": {
     "vehicle": {
       "year": "2011",
       "make": "NISSAN",
@@ -7898,7 +7898,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2017|NISSAN|ROGUE|35|06/16/2026": {
     "vehicle": {
       "year": "2017",
       "make": "NISSAN",
@@ -8146,7 +8146,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2008|SUBARU|OUTBACK|35|06/16/2026": {
     "vehicle": {
       "year": "2008",
       "make": "SUBARU",
@@ -8372,7 +8372,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2010|HYUNDAI|SONATA|42|06/23/2026": {
     "vehicle": {
       "year": "2010",
       "make": "HYUNDAI",
@@ -8620,7 +8620,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2012|HYUNDAI|ACCENT|35|06/16/2026": {
     "vehicle": {
       "year": "2012",
       "make": "HYUNDAI",
@@ -8824,7 +8824,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2007|HYUNDAI|TUCSON|35|06/16/2026": {
     "vehicle": {
       "year": "2007",
       "make": "HYUNDAI",
@@ -9006,7 +9006,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2009|HYUNDAI|ACCENT|42|06/23/2026": {
     "vehicle": {
       "year": "2009",
       "make": "HYUNDAI",
@@ -9166,7 +9166,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2018|HYUNDAI|ACCENT|42|06/23/2026": {
     "vehicle": {
       "year": "2018",
       "make": "HYUNDAI",
@@ -9370,7 +9370,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2007|KIA|RONDO|35|06/16/2026": {
     "vehicle": {
       "year": "2007",
       "make": "KIA",
@@ -9563,7 +9563,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2013|KIA|SOUL|42|06/23/2026": {
     "vehicle": {
       "year": "2013",
       "make": "KIA",
@@ -9800,7 +9800,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2014|KIA|SEDONA|35|06/16/2026": {
     "vehicle": {
       "year": "2014",
       "make": "KIA",
@@ -10015,7 +10015,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2013|KIA|SOUL|35|06/16/2026": {
     "vehicle": {
       "year": "2013",
       "make": "KIA",
@@ -10252,7 +10252,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2007|CHRYSLER|300|62|06/16/2026": {
     "vehicle": {
       "year": "2007",
       "make": "CHRYSLER",
@@ -10511,7 +10511,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2008|CHRYSLER|PT CRUISER|62|06/16/2026": {
     "vehicle": {
       "year": "2008",
       "make": "CHRYSLER",
@@ -10726,7 +10726,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2008|CHRYSLER|TOWN & COUNTRY|62|06/16/2026": {
     "vehicle": {
       "year": "2008",
       "make": "CHRYSLER",
@@ -10963,7 +10963,7 @@
     "is_stale": true,
     "last_seen_date": "2026-06-24"
   },
-  {
+  "2007|DODGE|CALIBER|62|06/23/2026": {
     "vehicle": {
       "year": "2007",
       "make": "DODGE",
@@ -11167,7 +11167,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2013|FIAT|500|42|06/23/2026": {
     "vehicle": {
       "year": "2013",
       "make": "FIAT",
@@ -11415,7 +11415,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2003|MITSUBISHI|FUSO FE639|7|06/23/2026": {
     "vehicle": {
       "year": "2003",
       "make": "MITSUBISHI",
@@ -11465,7 +11465,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|MITSUBISHI|ENDEAVOR|42|06/23/2026": {
     "vehicle": {
       "year": "2006",
       "make": "MITSUBISHI",
@@ -11625,7 +11625,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "1991|OLDSMOBILE|NINETY EIGHT|48|06/23/2026": {
     "vehicle": {
       "year": "1991",
       "make": "OLDSMOBILE",
@@ -11741,7 +11741,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2007|SATURN|ION|48|06/23/2026": {
     "vehicle": {
       "year": "2007",
       "make": "SATURN",
@@ -11956,7 +11956,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2008|SATURN|AURA|48|06/23/2026": {
     "vehicle": {
       "year": "2008",
       "make": "SATURN",
@@ -12204,7 +12204,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2008|SCION|TC|42|06/23/2026": {
     "vehicle": {
       "year": "2008",
       "make": "SCION",
@@ -12430,7 +12430,7 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   },
-  {
+  "2006|SCION|TC|42|06/23/2026": {
     "vehicle": {
       "year": "2006",
       "make": "SCION",
@@ -12645,4 +12645,4 @@
     "is_stale": false,
     "last_seen_date": "2026-07-02"
   }
-]
+}

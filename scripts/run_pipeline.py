@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-JUNKYARD DIGEST PIPELINE — orchestrator (FORMAT-SPEC v1.0)
+JUNKYARD DIGEST PIPELINE - orchestrator (FORMAT-SPEC v1.0)
 ========================================================
 Runs the full daily flow:
   1. Scrape Cagle's inventory
@@ -32,7 +32,7 @@ from datetime import datetime
 REPO = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO / "data"
 DOCS_DIR = REPO / "docs"
-RESEARCH_SCRIPT = DOCS_DIR / "research_fast_v3.py"
+RESEARCH_SCRIPT = DOCS_DIR / "research_fast_v4.py"
 
 # --- format spec version (FORMAT-SPEC.md) ---
 SPEC_VERSION = "v1.0"
@@ -44,8 +44,8 @@ CLIENT_ID = EBAY_CRED["production"]["app_id"]
 CLIENT_SECRET = os.getenv("EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert_id"]
 
 # --- thresholds (from FORMAT-SPEC §3) ---
-HV_THRESHOLD = 500         # best_margin ≥ $500 → HV badge
-LAST_THRESHOLD_DAYS = 13   # days_in_yard ≥ 13 → LAST badge
+HV_THRESHOLD = 500           # best_margin ≥ $500 → HV badge
+STALE_THRESHOLD_DAYS = 28  # days since last_seen_date → ⏰ LAST SEEN badge
 SHOW_THRESHOLD = 50        # best_margin ≥ $50 → "$50+" filter
 MAX_VEHICLES = 50
 
@@ -97,9 +97,9 @@ def fail(msg):
 
 
 def scrape_cagles():
-    """[1/5] Quick scrape test — saves to data/cagles_inventory_latest.json"""
+    """[1/5] Quick scrape test - saves to data/cagles_inventory_latest.json"""
     import requests
-    step("[1/5] Scraping Cagle's inventory…")
+    step("[1/5] Scraping Cagle's inventory...")
     try:
         r = requests.get("https://caglesupullit.com/inventory.aspx", timeout=20)
         r.raise_for_status()
@@ -132,11 +132,11 @@ def scrape_cagles():
 
 def run_research():
     """[2/5] Run research_fast_v3.py with env vars set (long-running)"""
-    step("[2/5] Running eBay research (~36 min for 50 vehicles × 22 parts)…")
+    step("[2/5] Running eBay research (~36 min for 50 vehicles × 22 parts)...")
     if not CLIENT_SECRET:
         print("ERROR: EBAY_CLIENT_SECRET not set", file=sys.stderr)
         sys.exit(1)
-    # Re-validate syntax of the long-running script (defense in depth — catches
+    # Re-validate syntax of the long-running script (defense in depth - catches
     # anything that may have changed between main() preflight and now).
     if not preflight_syntax_check([str(RESEARCH_SCRIPT)]):
         fail("Research script has a syntax error. Refusing to launch.")
@@ -157,8 +157,8 @@ def run_research():
 
 
 def transform_research_output():
-    """[3/5] Convert research_output_latest.json (array) → research_data.json (dict w/ stats)"""
-    step("[3/5] Transforming research output (FORMAT-SPEC §4 schema)…")
+    """[3/5] Convert research_output_latest.json (v4 archive array) → research_data.json (dict w/ stats)"""
+    step("[3/5] Transforming research output (FORMAT-SPEC §4 schema, v4 archive)...")
     src = DATA_DIR / "research_output_latest.json"
     if not src.exists():
         fail(f"Missing {src}")
@@ -169,12 +169,11 @@ def transform_research_output():
         fail("Research output is empty")
         return False
 
-    # Research script outputs nested: [{vehicle:{...}, parts:{...}, best_margin, total_margin, parts_with_data}, ...]
-    # Flatten to the SPA schema: {year, make, model, yard_row, arrival_date, yard, best_margin, total_margin, parts, is_new, is_hv}
+    # v4 archive output: [{vehicle:{...}, parts:{...}, best_margin, total_margin, parts_with_data, is_stale, last_seen_date}, ...]
+    # Flatten to the SPA schema: {year, make, model, yard_row, arrival_date, yard, best_margin, total_margin, parts, is_new, is_hv, is_stale, last_seen_date, days_stale}
     results = []
     for r in raw:
-        v = r.get("vehicle", r)  # fall back to flat if already flat
-        # Skip header rows that slipped through
+        v = r.get("vehicle", r)
         if v.get("year", "").lower() == "year" or v.get("make", "").lower() == "make":
             continue
         results.append({
@@ -188,9 +187,11 @@ def transform_research_output():
             "total_margin": r.get("total_margin", 0),
             "parts_with_data": r.get("parts_with_data", len(r.get("parts", {}))),
             "parts": r.get("parts", {}),
+            "is_stale": r.get("is_stale", False),
+            "last_seen_date": r.get("last_seen_date", ""),
         })
 
-    # enrich with is_new, is_hv flags (FORMAT-SPEC §3)
+    # enrich with is_new, is_hv flags
     ledger_path = DATA_DIR / "research_ledger.json"
     ledger = {}
     if ledger_path.exists():
@@ -203,13 +204,25 @@ def transform_research_output():
     def vid(v):
         return f"{v['year']}|{v['make']}|{v['model']}|{v.get('yard_row','')}|{v.get('arrival_date','')}"
 
+    today = datetime.now()
     for r in results:
         r["is_new"] = vid(r) not in ledger
         r["is_hv"] = r.get("best_margin", 0) >= HV_THRESHOLD
+        # Calculate days stale
+        if r.get("is_stale"):
+            try:
+                last_seen = datetime.strptime(r.get("last_seen_date", "1970-01-01"), "%Y-%m-%d")
+                r["days_stale"] = (today - last_seen).days
+            except:
+                r["days_stale"] = 0
+        else:
+            r["days_stale"] = 0
 
     margins = [r.get("best_margin", 0) for r in results]
     new_count = sum(1 for r in results if r.get("is_new"))
     hv_count = sum(1 for r in results if r.get("is_hv"))
+    stale_count = sum(1 for r in results if r.get("is_stale"))
+    active_count = len(results) - stale_count
     total_parts = sum(len(r.get("parts", {})) for r in results)
 
     payload = {
@@ -217,6 +230,8 @@ def transform_research_output():
         "yard": "Cagle's",
         "stats": {
             "total": len(results),
+            "active": active_count,
+            "stale": stale_count,
             "new": new_count,
             "hv": hv_count,
             "avg_margin": round(sum(margins) / len(margins), 2) if margins else 0,
@@ -228,13 +243,13 @@ def transform_research_output():
     for out_path in [REPO / "research_data.json", DOCS_DIR / "research_data.json"]:
         with open(out_path, "w") as f:
             json.dump(payload, f, indent=2)
-    ok(f"{len(results)} vehicles (new={new_count}, hv={hv_count}, best=${max(margins):.0f})")
+    ok(f"{len(results)} vehicles (active={active_count}, stale={stale_count}, new={new_count}, hv={hv_count}, best=${max(margins):.0f})")
     return True
 
 
 def build_markdown_digest():
     """[4/5] Build docs/digest_latest.md per FORMAT-SPEC §6"""
-    step(f"[4/5] Building markdown digest (FORMAT-SPEC §6, {SPEC_VERSION})…")
+    step(f"[4/5] Building markdown digest (FORMAT-SPEC §6, {SPEC_VERSION})...")
     src = DOCS_DIR / "research_data.json"
     if not src.exists():
         fail(f"Missing {src}")
@@ -244,34 +259,36 @@ def build_markdown_digest():
 
     today = datetime.now()
     md = []
-    md.append(f"# 🚗 Junkyard Digest — Cagle's U Pull It")
+    md.append(f"# 🚗 Junkyard Digest - Cagle's U Pull It")
     md.append(f"**Date:** {today.strftime('%A, %B %d, %Y')}")
     md.append(f"**Yard data from:** {data['date']}")
-    md.append(f"**Total vehicles:** {data['stats']['total']} · **New arrivals:** {data['stats']['new']} · **High-value (HV):** {data['stats']['hv']}")
+    md.append(f"**Total vehicles:** {data['stats']['total']} · **Active:** {data['stats'].get('active', data['stats']['total'])} · **Stale (⏰):** {data['stats'].get('stale', 0)} · **New arrivals:** {data['stats']['new']} · **High-value (HV):** {data['stats']['hv']}")
     md.append(f"**Avg best margin:** ${data['stats']['avg_margin']:.0f} · **Top margin:** ${data['stats']['best_margin']:.0f}")
     md.append(f"**Total parts researched:** {data['stats']['total_parts']:,}")
     md.append("")
     md.append("---")
     md.append("")
 
-    # §6.2 — Top 10 — Best Margin
-    top = sorted(data['vehicles'], key=lambda v: v.get('best_margin', 0), reverse=True)
-    md.append("## 🏆 Top 10 — Best Margin")
+    # §6.2 - Top 10 - Best Margin (active first, then stale, both with row numbers)
+    top = sorted(data['vehicles'], key=lambda v: (not v.get('is_stale'), v.get('best_margin', 0)), reverse=True)
+    md.append("## 🏆 Top 10 - Best Margin")
     md.append("")
-    md.append("| # | Vehicle | Row | Best Margin | Parts w/ Data |")
-    md.append("|---|---------|-----|-------------|---------------|")
+    md.append("| # | Vehicle | Row | Best Margin | Parts w/ Data | Status |")
+    md.append("|---|---------|-----|-------------|---------------|--------|")
     for i, v in enumerate(top[:10], 1):
         parts_with = sum(1 for p, d in v['parts'].items() if d.get('est_margin', 0) > 0)
         total_parts = len(v['parts'])
         new_badge = "🆕 " if v.get('is_new') else ""
         hv_badge = " 💰" if v.get('is_hv') else ""
-        md.append(f"| {i} | {new_badge}{v['year']} {v['make']} {v['model']}{hv_badge} | {v['yard_row']} | **${v['best_margin']:.0f}** | {parts_with}/{total_parts} |")
+        stale_badge = " ⏰ LAST SEEN" if v.get('is_stale') else ""
+        row_display = v['yard_row'] if v['yard_row'] else "-"
+        md.append(f"| {i} | {new_badge}{v['year']} {v['make']} {v['model']}{hv_badge}{stale_badge} | {row_display} | **${v['best_margin']:.0f}** | {parts_with}/{total_parts} | {'STALE' if v.get('is_stale') else 'ACTIVE'} |")
     md.append("")
     md.append("---")
     md.append("")
 
-    # §6.3 — New Arrivals
-    new = [v for v in data['vehicles'] if v.get('is_new')]
+    # §6.3 - New Arrivals (only from ACTIVE vehicles)
+    new = [v for v in data['vehicles'] if v.get('is_new') and not v.get('is_stale')]
     md.append(f"## 🆕 New Arrivals ({len(new)})")
     if new:
         md.append("")
@@ -284,27 +301,18 @@ def build_markdown_digest():
         md.append("_No new arrivals in this run._")
     md.append("")
 
-    # §6.4 — Leaving Soon
-    last_vehicles = []
-    for v in data['vehicles']:
-        try:
-            m = re.match(r'(\d{1,2})/(\d{1,2})/(\d{4})', v.get('arrival_date', ''))
-            if m:
-                d = datetime(int(m.group(3)), int(m.group(1)), int(m.group(2)))
-                days = (today - d).days
-                if days >= LAST_THRESHOLD_DAYS:
-                    last_vehicles.append((v, days))
-        except:
-            pass
-    last_vehicles.sort(key=lambda x: -x[1])
-
-    md.append(f"## ⏰ Leaving Soon ({LAST_THRESHOLD_DAYS}+ days, {len(last_vehicles)} vehicles)")
+    # §6.4 — Stale Vehicles (⏰ LAST SEEN — not on lot today but within 28-day window)
+    stale = [v for v in data['vehicles'] if v.get('is_stale')]
+    md.append(f"## ⏰ Last Seen on Lot ({len(stale)} vehicle{'s' if len(stale) != 1 else ''})")
     md.append("")
-    if last_vehicles:
-        md.append("| Vehicle | Row | Days | Arrived | Best |")
-        md.append("|---------|-----|------|---------|------|")
-        for v, days in last_vehicles[:15]:
-            md.append(f"| {v['year']} {v['make']} {v['model']} | {v['yard_row']} | {days}d | {v['arrival_date']} | ${v['best_margin']:.0f} |")
+    if stale:
+        md.append("| Vehicle | Row | Last Seen | Days Ago | Best |")
+        md.append("|---------|-----|-----------|----------|------|")
+        for v in sorted(stale, key=lambda v: v.get('days_stale', 0), reverse=True):
+            row_display = v['yard_row'] if v['yard_row'] else "—"
+            md.append(f"| {v['year']} {v['make']} {v['model']} | {row_display} | {v.get('last_seen_date', '?')} | {v.get('days_stale', '?')}d | ${v['best_margin']:.0f} |")
+    else:
+        md.append("_No stale vehicles in archive._")
     md.append("")
     md.append("---")
     md.append("")
@@ -321,7 +329,7 @@ def build_markdown_digest():
 
 def publish(dry_run=False):
     """[5/5] Copy fresh assets into docs/, commit, push (FORMAT-SPEC §8 invariants)"""
-    step(f"[5/5] Publishing to GitHub Pages (FORMAT-SPEC {SPEC_VERSION})…")
+    step(f"[5/5] Publishing to GitHub Pages (FORMAT-SPEC {SPEC_VERSION})...")
 
     # Invariant: docs/index.html == docs/app.html
     src_app = DOCS_DIR / "app.html"
@@ -358,7 +366,7 @@ def publish(dry_run=False):
             ok("Nothing new to commit")
             return True
 
-    msg = f"Digest: {datetime.now().strftime('%Y-%m-%d %H:%M')} — auto-publish"
+    msg = f"Digest: {datetime.now().strftime('%Y-%m-%d %H:%M')} - auto-publish"
     if not msg.startswith("Digest: "):
         fail(f"Invariant violation: commit message must start with 'Digest: '")
         return False
