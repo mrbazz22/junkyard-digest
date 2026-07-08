@@ -1,9 +1,9 @@
 # 🚗 Junkyard Digest - Cagle's U Pull It
-**Date:** Thursday, July 02, 2026
-**Yard data from:** 2026-07-02
-**Total vehicles:** 58 · **Active:** 32 · **Stale (⏰):** 26 · **New arrivals:** 9 · **High-value (HV):** 13
-**Avg best margin:** $376 · **Top margin:** $1620
-**Total parts researched:** 1,060
+**Date:** Wednesday, July 08, 2026
+**Yard data from:** 2026-07-08
+**Total vehicles:** 93 · **Active:** 35 · **Stale (⏰):** 58 · **New arrivals:** 9 · **High-value (HV):** 26
+**Avg best margin:** $507 · **Top margin:** $5600
+**Total parts researched:** 1,711
 
 ---
 
@@ -11,16 +11,16 @@
 
 | # | Vehicle | Row | Best Margin | Parts w/ Data | Status |
 |---|---------|-----|-------------|---------------|--------|
-| 1 | 2010 HYUNDAI SONATA 💰 | 42 | **$1187** | 19/21 | ACTIVE |
-| 2 | 2003 MITSUBISHI FUSO FE639 💰 | 7 | **$1142** | 3/3 | ACTIVE |
-| 3 | 1991 OLDSMOBILE NINETY EIGHT 💰 | 48 | **$1071** | 7/9 | ACTIVE |
-| 4 | 2006 SCION TC 💰 | 42 | **$648** | 15/18 | ACTIVE |
-| 5 | 2010 MAZDA CX-9 💰 | 42 | **$580** | 20/21 | ACTIVE |
-| 6 | 2008 SCION TC 💰 | 42 | **$558** | 16/19 | ACTIVE |
-| 7 | 1993 GMC SUBURBAN 💰 | 1 | **$543** | 10/11 | ACTIVE |
-| 8 | 2007 SATURN ION 💰 | 48 | **$541** | 16/18 | ACTIVE |
-| 9 | 2011 NISSAN SENTRA 💰 | 42 | **$528** | 19/20 | ACTIVE |
-| 10 | 2001 TOYOTA SEQUOIA | 42 | **$489** | 16/19 | ACTIVE |
+| 1 | 2010 FORD MUSTANG 💰 | 17 | **$5600** | 21/21 | ACTIVE |
+| 2 | 2010 CADILLAC CTS 💰 | 48 | **$2471** | 20/21 | ACTIVE |
+| 3 | 2003 FORD EXPLORER 💰 | 12 | **$1646** | 17/17 | ACTIVE |
+| 4 | 2014 FORD ESCAPE 💰 | 12 | **$1507** | 18/21 | ACTIVE |
+| 5 | 2006 KIA SORENTO 💰 | 35 | **$1339** | 19/20 | ACTIVE |
+| 6 | 2003 FORD EXPEDITION 💰 | 10 | **$1289** | 18/20 | ACTIVE |
+| 7 | 2007 FORD RANGER 💰 | 12 | **$1149** | 20/20 | ACTIVE |
+| 8 | 2011 KIA SORENTO 💰 | 35 | **$803** | 19/20 | ACTIVE |
+| 9 | 2001 CHEVROLET SUBURBAN 💰 | 10 | **$702** | 19/19 | ACTIVE |
+| 10 | 2012 KIA OPTIMA 💰 | 35 | **$563** | 19/21 | ACTIVE |
 
 ---
 
@@ -28,39 +28,71 @@
 
 _No new arrivals in this run._
 
-## ⏰ Last Seen on Lot (26 vehicles)
+## ⏰ Last Seen on Lot (58 vehicles)
 
 | Vehicle | Row | Last Seen | Days Ago | Best |
 |---------|-----|-----------|----------|------|
-| 2002 BMW 330I | 35 | 2026-06-24 | 8d | $123 |
-| 2005 VOLVO XC90 | 35 | 2026-06-24 | 8d | $73 |
-| 2006 AUDI A4 | 35 | 2026-06-24 | 8d | $600 |
-| 2003 INFINITI G35 | 35 | 2026-06-24 | 8d | $358 |
-| 1999 FORD F-150 | 2 | 2026-06-24 | 8d | $81 |
-| 1998 FORD EXPEDITION | 8 | 2026-06-24 | 8d | $158 |
-| 2000 FORD E-350 | 8 | 2026-06-24 | 8d | $150 |
-| 2003 FORD EXPEDITION | 1 | 2026-06-24 | 8d | $942 |
-| 2008 FORD FOCUS | 17 | 2026-06-24 | 8d | $373 |
-| 2006 HONDA CIVIC | 35 | 2026-06-24 | 8d | $657 |
-| 2007 JEEP PATRIOT | 62 | 2026-06-24 | 8d | $131 |
-| 2015 JEEP COMPASS | 62 | 2026-06-24 | 8d | $396 |
-| 2012 JEEP LIBERTY | 62 | 2026-06-24 | 8d | $351 |
-| 2006 MAZDA MAZDA3 | 35 | 2026-06-24 | 8d | $134 |
-| 2007 MAZDA MAZDA6 | 35 | 2026-06-24 | 8d | $128 |
-| 2011 NISSAN ALTIMA | 35 | 2026-06-24 | 8d | $302 |
-| 2017 NISSAN ROGUE | 35 | 2026-06-24 | 8d | $299 |
-| 2008 SUBARU OUTBACK | 35 | 2026-06-24 | 8d | $328 |
-| 2012 HYUNDAI ACCENT | 35 | 2026-06-24 | 8d | $185 |
-| 2007 HYUNDAI TUCSON | 35 | 2026-06-24 | 8d | $265 |
-| 2007 KIA RONDO | 35 | 2026-06-24 | 8d | $207 |
-| 2014 KIA SEDONA | 35 | 2026-06-24 | 8d | $150 |
-| 2013 KIA SOUL | 35 | 2026-06-24 | 8d | $195 |
-| 2007 CHRYSLER 300 | 62 | 2026-06-24 | 8d | $1620 |
-| 2008 CHRYSLER PT CRUISER | 62 | 2026-06-24 | 8d | $334 |
-| 2008 CHRYSLER TOWN & COUNTRY | 62 | 2026-06-24 | 8d | $122 |
+| 2002 BMW 330I | 35 | 2026-06-24 | 14d | $123 |
+| 2005 VOLVO XC90 | 35 | 2026-06-24 | 14d | $73 |
+| 2006 AUDI A4 | 35 | 2026-06-24 | 14d | $600 |
+| 2003 INFINITI G35 | 35 | 2026-06-24 | 14d | $358 |
+| 1999 FORD F-150 | 2 | 2026-06-24 | 14d | $81 |
+| 1998 FORD EXPEDITION | 8 | 2026-06-24 | 14d | $158 |
+| 2000 FORD E-350 | 8 | 2026-06-24 | 14d | $150 |
+| 2003 FORD EXPEDITION | 1 | 2026-06-24 | 14d | $942 |
+| 2008 FORD FOCUS | 17 | 2026-06-24 | 14d | $373 |
+| 2006 HONDA CIVIC | 35 | 2026-06-24 | 14d | $657 |
+| 2007 JEEP PATRIOT | 62 | 2026-06-24 | 14d | $131 |
+| 2015 JEEP COMPASS | 62 | 2026-06-24 | 14d | $396 |
+| 2012 JEEP LIBERTY | 62 | 2026-06-24 | 14d | $351 |
+| 2006 MAZDA MAZDA3 | 35 | 2026-06-24 | 14d | $134 |
+| 2007 MAZDA MAZDA6 | 35 | 2026-06-24 | 14d | $128 |
+| 2011 NISSAN ALTIMA | 35 | 2026-06-24 | 14d | $302 |
+| 2017 NISSAN ROGUE | 35 | 2026-06-24 | 14d | $299 |
+| 2008 SUBARU OUTBACK | 35 | 2026-06-24 | 14d | $328 |
+| 2012 HYUNDAI ACCENT | 35 | 2026-06-24 | 14d | $185 |
+| 2007 HYUNDAI TUCSON | 35 | 2026-06-24 | 14d | $265 |
+| 2007 KIA RONDO | 35 | 2026-06-24 | 14d | $207 |
+| 2014 KIA SEDONA | 35 | 2026-06-24 | 14d | $150 |
+| 2013 KIA SOUL | 35 | 2026-06-24 | 14d | $195 |
+| 2007 CHRYSLER 300 | 62 | 2026-06-24 | 14d | $1620 |
+| 2008 CHRYSLER PT CRUISER | 62 | 2026-06-24 | 14d | $334 |
+| 2008 CHRYSLER TOWN & COUNTRY | 62 | 2026-06-24 | 14d | $122 |
+| 2007 VOLVO S40 | 42 | 2026-07-02 | 6d | $479 |
+| 2013 MERCEDES-BENZ C250 | 42 | 2026-07-02 | 6d | $237 |
+| 2008 CADILLAC SRX | 48 | 2026-07-02 | 6d | $373 |
+| 1999 CADILLAC DEVILLE | 48 | 2026-07-02 | 6d | $124 |
+| 2007 VOLVO XC90 | 42 | 2026-07-02 | 6d | $163 |
+| 2006 CHEVROLET EQUINOX | 48 | 2026-07-02 | 6d | $77 |
+| 2008 CHEVROLET MALIBU | 48 | 2026-07-02 | 6d | $296 |
+| 2006 CHEVROLET TRAILBLAZER | 48 | 2026-07-02 | 6d | $276 |
+| 1994 CHEVROLET S10 | 48 | 2026-07-02 | 6d | $390 |
+| 1993 GMC SUBURBAN | 1 | 2026-07-02 | 6d | $543 |
+| 1999 GMC JIMMY | 48 | 2026-07-02 | 6d | $123 |
+| 2012 HONDA CIVIC | 42 | 2026-07-02 | 6d | $296 |
+| 2001 HONDA CR-V | 42 | 2026-07-02 | 6d | $429 |
+| 2001 TOYOTA SEQUOIA | 42 | 2026-07-02 | 6d | $489 |
+| 2012 TOYOTA PRIUS | 42 | 2026-07-02 | 6d | $343 |
+| 2010 MAZDA CX-9 | 42 | 2026-07-02 | 6d | $580 |
+| 2009 NISSAN ARMADA | 42 | 2026-07-02 | 6d | $186 |
+| 2012 NISSAN ALTIMA | 42 | 2026-07-02 | 6d | $289 |
+| 2011 NISSAN SENTRA | 42 | 2026-07-02 | 6d | $528 |
+| 2010 HYUNDAI SONATA | 42 | 2026-07-02 | 6d | $1187 |
+| 2009 HYUNDAI ACCENT | 42 | 2026-07-02 | 6d | $82 |
+| 2018 HYUNDAI ACCENT | 42 | 2026-07-02 | 6d | $480 |
+| 2013 KIA SOUL | 42 | 2026-07-02 | 6d | $208 |
+| 2007 DODGE CALIBER | 62 | 2026-07-02 | 6d | $135 |
+| 2013 FIAT 500 | 42 | 2026-07-02 | 6d | $256 |
+| 2003 MITSUBISHI FUSO FE639 | 7 | 2026-07-02 | 6d | $1142 |
+| 2006 MITSUBISHI ENDEAVOR | 42 | 2026-07-02 | 6d | $290 |
+| 1991 OLDSMOBILE NINETY EIGHT | 48 | 2026-07-02 | 6d | $1071 |
+| 2007 SATURN ION | 48 | 2026-07-02 | 6d | $541 |
+| 2008 SATURN AURA | 48 | 2026-07-02 | 6d | $306 |
+| 2008 SCION TC | 42 | 2026-07-02 | 6d | $558 |
+| 2006 SCION TC | 42 | 2026-07-02 | 6d | $648 |
 
 ---
 
 **Live app:** https://mrbazz22.github.io/junkyard-digest/
 
-_Generated by junkyard-digest pipeline v1.0 (2026-07-02 08:38)_
+_Generated by junkyard-digest pipeline v1.0 (2026-07-08 04:41)_
