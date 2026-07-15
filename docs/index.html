@@ -566,7 +566,7 @@
       try {
         // Load both data files in parallel
         const [vehicleResp, locationResp] = await Promise.all([
-          fetch("research_data.json?t=' + Date.now()),
+          fetch('research_data.json?t=' + Date.now()),
           fetch('part_locations.json?t=' + Date.now()).catch(() => null)
         ]);
 
