@@ -388,7 +388,10 @@ def main():
     parser.add_argument("--skip-research", action="store_true")
     parser.add_argument("--publish-only", action="store_true",
                         help="Just rebuild docs/ from existing data + push")
-    parser.add_argument("--no-push", action="store_true")
+    # Push defaults ON. Use --no-push to opt out (e.g. for local dry runs).
+    # Cron relies on this default so the pipeline finishes without an LLM orchestrating.
+    parser.add_argument("--no-push", action="store_true",
+                        help="Skip the git commit + push step (default: push is enabled)")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--version", action="version", version=f"junkyard-digest {SPEC_VERSION}")
     args = parser.parse_args()
