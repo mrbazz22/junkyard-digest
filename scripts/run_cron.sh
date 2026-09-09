@@ -10,10 +10,16 @@ set -e
 REPO="/Users/administrator/.openclaw/workspace/junkyard-digest"
 EBAY_CRED="$HOME/.openclaw/ebay_credentials.json"
 
+# Use the system Python explicitly. The launchd plist PATH puts /opt/homebrew/bin
+# first, which resolves python3 to Homebrew Python 3.14 — and that build has NO
+# `requests` module, so the pipeline died with ModuleNotFoundError (2026-09-09).
+# /usr/bin/python3 (3.9.6) has requests + everything the pipeline needs.
+PY=/usr/bin/python3
+
 cd "$REPO"
 
 # Load eBay client secret from JSON credentials file
-export EBAY_CLIENT_SECRET="$(python3 -c "import json; print(json.load(open('$EBAY_CRED'))['production']['cert_id'])")"
+export EBAY_CLIENT_SECRET="$($PY -c "import json; print(json.load(open('$EBAY_CRED'))['production']['cert_id'])")"
 
 if [ -z "$EBAY_CLIENT_SECRET" ]; then
   echo "❌ EBAY_CLIENT_SECRET not set (check $EBAY_CRED)"
@@ -24,6 +30,6 @@ echo "🚗 Junkyard digest cron — $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "   Repo: $REPO"
 
 # Run the full pipeline (push defaults ON since 2026-09-02)
-python3 -u scripts/run_pipeline.py
+"$PY" -u scripts/run_pipeline.py
 
 echo "✅ Pipeline finished — $(date -u +%Y-%m-%dT%H:%M:%SZ)"
