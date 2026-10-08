@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-FAST JUNKYARD RESEARCH v4 — Accumulating Archive + 28-Day Retention
+FAST JUNKYARD RESEARCH v4 — Accumulating Archive + 56-Day Retention
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Changes from v3:
   • RESEARCH_ARCHIVE_FILE persists across runs (never deleted)
   • Fresh scrape merges into archive: new/up-to-date vehicles replace stale entries
-  • Vehicles not seen in current scrape are kept for 28 days, tagged `is_stale: true`
+  • Vehicles not seen in current scrape are kept for 56 days, tagged `is_stale: true`
   • `last_seen_date` tracks most recent scrape where vehicle appeared
   • Digest sees both active + stale vehicles; stale get ⏰ LAST SEEN badge
 """
@@ -23,7 +23,7 @@ CLIENT_SECRET = os.getenv("EBAY_CLIENT_SECRET", "")
 OAUTH_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 BROWSE_API = "https://api.ebay.com/buy/browse/v1"
 
-STALE_DAYS = 28       # retention window for vehicles not in current scrape
+STALE_DAYS = 56       # retention window for vehicles not in current scrape
 _last_call = 0
 
 # ── Rate limiting ───────────────────────────────────────────────────────────
@@ -288,7 +288,7 @@ def select_vehicles(vehicles, ledger, max_vehicles=50):
 
 def main():
     print("=" * 60)
-    print("FAST JUNKYARD RESEARCH v4 — Accumulating Archive + 28-Day Retention")
+    print("FAST JUNKYARD RESEARCH v4 — Accumulating Archive + 56-Day Retention")
     print("=" * 60)
 
     if not CLIENT_SECRET:

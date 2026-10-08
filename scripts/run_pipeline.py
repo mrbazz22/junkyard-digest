@@ -45,7 +45,7 @@ CLIENT_SECRET = os.getenv("EBAY_CLIENT_SECRET") or EBAY_CRED["production"]["cert
 
 # --- thresholds (from FORMAT-SPEC §3) ---
 HV_THRESHOLD = 500           # best_margin ≥ $500 → HV badge
-STALE_THRESHOLD_DAYS = 28  # days since last_seen_date → ⏰ LAST SEEN badge
+STALE_THRESHOLD_DAYS = 56  # days since last_seen_date → ⏰ LAST SEEN badge
 SHOW_THRESHOLD = 50        # best_margin ≥ $50 → "$50+" filter
 MAX_VEHICLES = 50
 
@@ -301,7 +301,7 @@ def build_markdown_digest():
         md.append("_No new arrivals in this run._")
     md.append("")
 
-    # §6.4 — Stale Vehicles (⏰ LAST SEEN — not on lot today but within 28-day window)
+    # §6.4 — Stale Vehicles (⏰ LAST SEEN — not on lot today but within 56-day window)
     stale = [v for v in data['vehicles'] if v.get('is_stale')]
     md.append(f"## ⏰ Last Seen on Lot ({len(stale)} vehicle{'s' if len(stale) != 1 else ''})")
     md.append("")
