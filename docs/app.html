@@ -235,6 +235,90 @@
       margin-top: 0.2rem;
       opacity: 0.7;
     }
+    /* Sell-through proxy indicators */
+    .sell-through {
+      position: absolute;
+      top: 0.3rem;
+      right: 0.3rem;
+      font-size: 0.75rem;
+    }
+    .sell-low { color: var(--red); }
+    .sell-medium { color: var(--accent); }
+    .sell-high { color: var(--text-muted); }
+
+    /* Route optimizer */
+    .route-panel {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border-top: 3px solid var(--accent);
+      border-radius: 16px 16px 0 0;
+      padding: 1rem;
+      z-index: 600;
+      max-height: 70vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease-out;
+    }
+    .route-panel.active { display: block; }
+    .route-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .route-header h3 { color: var(--accent); font-size: 1.1rem; }
+    .route-close {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    .route-vehicle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .route-num {
+      background: var(--accent);
+      color: #0f172a;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .route-info { flex: 1; }
+    .route-vehicle-title { font-weight: 600; font-size: 0.9rem; }
+    .route-vehicle-meta { font-size: 0.75rem; color: var(--text-muted); }
+    .route-margin { font-weight: 700; color: var(--green); font-size: 0.9rem; }
+    .route-toggle-btn {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      z-index: 500;
+      box-shadow: 0 4px 12px rgba(251,191,36,0.3);
+      cursor: pointer;
+    }
 
     .detail-summary {
       margin-top: 0.6rem;
@@ -729,58 +813,76 @@
         'instrument cluster': 'Instrument Cluster',
         'ECU': 'ECU / Computer',
         'ABS module': 'ABS Module',
-        'throttle body': 'Throttle Body',
+        'starter motor': 'Starter Motor',
         'amplifier': 'Amplifier',
         'BCM': 'BCM',
         'TCM': 'TCM',
         'HID ballast': 'HID Ballast',
-        'climate control': 'Climate Control',
+        'blower motor': 'Blower Motor',
         'fuel pump': 'Fuel Pump',
         'turbocharger': 'Turbo',
         'seat control': 'Seat Control',
         'alternator': 'Alternator',
         'MAF sensor': 'MAF Sensor',
-        'radio nav': 'Radio / Nav'
+        'radio nav': 'Radio / Nav',
+        'catalytic converter': 'Catalytic Converter',
+        'A/C compressor': 'A/C Compressor',
+        'power steering pump': 'PS Pump',
+        'wheels alloy set': 'Wheels (set)',
+        'window regulator': 'Window Regulator',
+        'ignition coil': 'Ignition Coil',
+        'backup camera': 'Backup Camera'
       };
 
       return Object.entries(parts).map(([name, data]) => {
         const margin = data.est_margin || 0;
         const avg = (data.active && data.active.avg) || data.average || 0;
+        const count = (data.active && data.active.count) || 0;
         const hasData = avg > 0;
         const hasLocation = !!partLocations[name];
+        // Sell-through proxy: <5 listings = rare (fast mover), 5-15 = normal, >15 = saturated
+        const sellThrough = count > 15 ? 'high' : count >= 5 ? 'medium' : count > 0 ? 'low' : 'none';
 
         return `
-          <div class="part-item ${hasData ? 'has-margin' : ''}" 
-               onclick="event.stopPropagation(); showPartDetail('${name}', '${year}', '${make}', '${model}', ${margin}, ${avg})">
+          <div class="part-item ${hasData ? 'has-margin' : ''}"
+               onclick="event.stopPropagation(); showPartDetail('${name}', '${year}', '${make}', '${model}', ${margin}, ${avg}, ${count})">
             <span class="part-name">${partNames[name] || name}</span>
             <span class="part-value ${margin > 0 ? 'positive' : margin < 0 ? 'negative' : ''}">
               ${margin > 0 ? '+$' + Math.round(margin) : margin < 0 ? '-$' + Math.abs(Math.round(margin)) : '—'}
             </span>
             ${avg > 0 ? `<span class="part-price">list $${Math.round(avg)}</span>` : ''}
+            ${count > 0 ? `<span class="sell-through sell-${sellThrough}">${sellThrough === 'low' ? '🔥' : sellThrough === 'medium' ? '●' : sellThrough === 'high' ? '○' : ''}</span>` : ''}
             ${hasLocation ? '<span class="part-tap-hint">📍 Tap for details</span>' : ''}
           </div>
         `;
       }).join('');
     }
 
-    function showPartDetail(partName, year, make, model, margin, avgPrice) {
+    function showPartDetail(partName, year, make, model, margin, avgPrice, count) {
       const loc = partLocations[partName];
       const displayName = {
         'instrument cluster': 'Instrument Cluster',
         'ECU': 'ECU / Computer',
         'ABS module': 'ABS Module',
-        'throttle body': 'Throttle Body',
+        'starter motor': 'Starter Motor',
         'amplifier': 'Amplifier',
         'BCM': 'BCM',
         'TCM': 'TCM',
         'HID ballast': 'HID Ballast',
-        'climate control': 'Climate Control',
+        'blower motor': 'Blower Motor',
         'fuel pump': 'Fuel Pump',
         'turbocharger': 'Turbocharger',
         'seat control': 'Seat Control',
         'alternator': 'Alternator',
         'MAF sensor': 'MAF Sensor',
-        'radio nav': 'Radio / Nav'
+        'radio nav': 'Radio / Nav',
+        'catalytic converter': 'Catalytic Converter',
+        'A/C compressor': 'A/C Compressor',
+        'power steering pump': 'Power Steering Pump',
+        'wheels alloy set': 'Alloy Wheels (set of 4)',
+        'window regulator': 'Window Regulator',
+        'ignition coil': 'Ignition Coil',
+        'backup camera': 'Backup Camera'
       }[partName] || partName;
 
       document.getElementById('modal-title').textContent = displayName;
@@ -789,12 +891,14 @@
       let content = '';
 
       // Margin info
+      const sellLabel = count > 0 ? (count > 15 ? '○ saturated' : count >= 5 ? '● normal' : '🔥 fast mover') : '';
       content += `
         <div class="info-section">
           <div class="info-label">💰 Research Data</div>
           <div class="info-value">
             ${margin > 0 ? `<span style="color:var(--green);font-weight:700">+$${Math.round(margin)}</span> margin` : 'No margin data'}
             ${avgPrice > 0 ? ` · eBay avg $${Math.round(avgPrice)}` : ''}
+            ${count > 0 ? ` · ${count} listings · <span style="color:${count < 5 ? 'var(--red)' : count < 15 ? 'var(--accent)' : 'var(--text-muted)'}">${sellLabel}</span>` : ''}
           </div>
         </div>
       `;
@@ -961,11 +1065,67 @@
 
     // Close modal on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') { closeModal(); closeRoute(); }
     });
+
+    // Route optimizer
+    function openRoute() {
+      const filtered = getFilteredVehicles().filter(v => !v.is_stale);
+      if (filtered.length === 0) return;
+
+      // Sort by row number numerically, then by best margin desc within same row
+      filtered.sort((a, b) => {
+        const rowA = parseInt(a.yard_row) || 999;
+        const rowB = parseInt(b.yard_row) || 999;
+        if (rowA !== rowB) return rowA - rowB;
+        return (b.best_margin || 0) - (a.best_margin || 0);
+      });
+
+      const totalMargin = filtered.reduce((sum, v) => sum + (v.total_margin || 0), 0);
+      const totalBest = filtered.reduce((sum, v) => sum + (v.best_margin || 0), 0);
+      const estMin = Math.round(filtered.length * 4); // ~4 min per vehicle incl walk
+
+      const listHtml = filtered.map((v, i) => `
+        <div class="route-vehicle">
+          <div class="route-num">${i + 1}</div>
+          <div class="route-info">
+            <div class="route-vehicle-title">${v.year} ${v.make} ${v.model}</div>
+            <div class="route-vehicle-meta">Row ${v.yard_row} · Arrived ${v.arrival_date} · ${Object.keys(v.parts).filter(p => v.parts[p].est_margin > 0).length} parts</div>
+          </div>
+          <div class="route-margin">+$${Math.round(v.best_margin)}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('route-summary').innerHTML = `
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem">
+          <div><strong>${filtered.length}</strong> vehicles</div>
+          <div><strong>$${Math.round(totalBest)}</strong> best total</div>
+          <div><strong>$${Math.round(totalMargin)}</strong> margin total</div>
+          <div><strong>~${estMin}</strong> min est</div>
+        </div>
+      `;
+      document.getElementById('route-list').innerHTML = listHtml;
+      document.getElementById('route-panel').classList.add('active');
+    }
+
+    function closeRoute() {
+      document.getElementById('route-panel').classList.remove('active');
+    }
 
     // Load data on start
     loadData();
   </script>
+
+  <!-- Route Optimizer Panel -->
+  <div class="route-panel" id="route-panel">
+    <div class="route-header">
+      <h3>🗺️ Yard Route</h3>
+      <button class="route-close" onclick="closeRoute()">Close</button>
+    </div>
+    <div id="route-summary" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem"></div>
+    <div id="route-list"></div>
+  </div>
+
+  <button class="route-toggle-btn" id="route-btn" onclick="openRoute()">🗺️ Route</button>
 </body>
 </html>

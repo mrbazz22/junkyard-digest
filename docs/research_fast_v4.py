@@ -100,17 +100,21 @@ def scrape_cagles():
         return []
 
 # ── Parts config ────────────────────────────────────────────────────────────
+# v4.1 — Updated 2026-10-07
+# • wheels alloy set: cost $60 → $240 (4 wheels @ $60/ea)
+# • Removed: fog lights, TPMS sensors, climate control, throttle body (low ROI)
+# • Added: starter motor, window regulator, ignition coil, blower motor
 
 PARTS = {
-    "instrument cluster":  {"cost": 25, "template": "{year} {make} {model} instrument cluster"},
+    "instrument cluster":   {"cost": 25, "template": "{year} {make} {model} instrument cluster"},
     "ECU":                  {"cost": 30, "template": "{year} {make} {model} ECU ECM computer"},
     "ABS module":           {"cost": 30, "template": "{year} {make} {model} ABS module"},
-    "throttle body":        {"cost": 20, "template": "{year} {make} {model} throttle body"},
+    "starter motor":        {"cost": 25, "template": "{year} {make} {model} starter motor"},
     "amplifier":            {"cost": 30, "template": "{year} {make} {model} amplifier amp"},
     "BCM":                  {"cost": 25, "template": "{year} {make} {model} BCM body control module"},
     "TCM":                  {"cost": 25, "template": "{year} {make} {model} TCM transmission control"},
     "HID ballast":          {"cost": 20, "template": "{year} {make} {model} HID ballast"},
-    "climate control":      {"cost": 25, "template": "{year} {make} {model} climate control HVAC"},
+    "blower motor":         {"cost": 25, "template": "{year} {make} {model} blower motor HVAC"},
     "fuel pump":            {"cost": 20, "template": "{year} {make} {model} fuel pump"},
     "turbocharger":         {"cost": 50, "template": "{year} {make} {model} turbocharger"},
     "seat control":         {"cost": 20, "template": "{year} {make} {model} seat control module"},
@@ -120,9 +124,9 @@ PARTS = {
     "catalytic converter":  {"cost": 50, "template": "{year} {make} {model} catalytic converter OEM"},
     "A/C compressor":       {"cost": 30, "template": "{year} {make} {model} A/C compressor"},
     "power steering pump":  {"cost": 25, "template": "{year} {make} {model} power steering pump"},
-    "wheels alloy set":     {"cost": 60, "template": "{year} {make} {model} OEM alloy wheels set of 4"},
-    "fog lights":           {"cost": 20, "template": "{year} {make} {model} fog light kit"},
-    "TPMS sensors":         {"cost": 20, "template": "{year} {make} {model} TPMS tire pressure sensors set"},
+    "wheels alloy set":     {"cost": 240, "template": "{year} {make} {model} OEM alloy wheels set of 4"},
+    "window regulator":     {"cost": 20, "template": "{year} {make} {model} window regulator"},
+    "ignition coil":        {"cost": 15, "template": "{year} {make} {model} ignition coil"},
     "backup camera":        {"cost": 15, "template": "{year} {make} {model} backup camera OEM"},
 }
 

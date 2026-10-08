@@ -863,296 +863,6 @@
       "margin": 72.0
     }
   },
-  "throttle body": {
-    "2007 VOLVO S40": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 16.49
-    },
-    "2002 BMW 330I": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 16.34
-    },
-    "2013 MERCEDES-BENZ C250": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 15.25
-    },
-    "2008 CADILLAC SRX": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 5.28
-    },
-    "1999 CADILLAC DEVILLE": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 21.92
-    },
-    "2005 VOLVO XC90": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 31.41
-    },
-    "2007 VOLVO XC90": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 40.41
-    },
-    "2006 AUDI A4": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 12.3
-    },
-    "2003 INFINITI G35": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 0.82
-    },
-    "2006 CHEVROLET EQUINOX": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 17.28
-    },
-    "2008 CHEVROLET MALIBU": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -0.69
-    },
-    "2006 CHEVROLET TRAILBLAZER": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 6.57
-    },
-    "1994 CHEVROLET S10": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 116.43
-    },
-    "1999 FORD F-150": {
-      "yard_row": "2",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 68.48
-    },
-    "1998 FORD EXPEDITION": {
-      "yard_row": "8",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 30.25
-    },
-    "2000 FORD E-350": {
-      "yard_row": "8",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 24.84
-    },
-    "2003 FORD EXPEDITION": {
-      "yard_row": "1",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.4
-    },
-    "2008 FORD FOCUS": {
-      "yard_row": "17",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 1.38
-    },
-    "1993 GMC SUBURBAN": {
-      "yard_row": "1",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 126.25
-    },
-    "1999 GMC JIMMY": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 20.1
-    },
-    "2012 HONDA CIVIC": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 7.38
-    },
-    "2006 HONDA CIVIC": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 3.68
-    },
-    "2001 HONDA CR-V": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 56.58
-    },
-    "2007 JEEP PATRIOT": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -3.0
-    },
-    "2015 JEEP COMPASS": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -3.16
-    },
-    "2012 JEEP LIBERTY": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 4.99
-    },
-    "2001 TOYOTA SEQUOIA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 123.14
-    },
-    "2012 TOYOTA PRIUS": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 5.9
-    },
-    "2006 MAZDA MAZDA3": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 6.42
-    },
-    "2007 MAZDA MAZDA6": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 14.34
-    },
-    "2010 MAZDA CX-9": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 13.67
-    },
-    "2009 NISSAN ARMADA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 17.5
-    },
-    "2011 NISSAN ALTIMA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 10.8
-    },
-    "2012 NISSAN ALTIMA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 4.16
-    },
-    "2011 NISSAN SENTRA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -0.12
-    },
-    "2017 NISSAN ROGUE": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 9.01
-    },
-    "2008 SUBARU OUTBACK": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 30.31
-    },
-    "2010 HYUNDAI SONATA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 0.43
-    },
-    "2012 HYUNDAI ACCENT": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -0.93
-    },
-    "2007 HYUNDAI TUCSON": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 2.6
-    },
-    "2009 HYUNDAI ACCENT": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 0.53
-    },
-    "2018 HYUNDAI ACCENT": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 0.46
-    },
-    "2007 KIA RONDO": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 10.1
-    },
-    "2013 KIA SOUL": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -0.48
-    },
-    "2014 KIA SEDONA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 4.34
-    },
-    "2007 CHRYSLER 300": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 3.13
-    },
-    "2008 CHRYSLER PT CRUISER": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 11.19
-    },
-    "2008 CHRYSLER TOWN & COUNTRY": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 3.5
-    }
-  },
   "amplifier": {
     "2007 VOLVO S40": {
       "yard_row": "42",
@@ -2131,296 +1841,6 @@
       "yard": "Cagle's",
       "price": 0,
       "margin": 50.58
-    }
-  },
-  "climate control": {
-    "2007 VOLVO S40": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 54.84
-    },
-    "2002 BMW 330I": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 21.16
-    },
-    "2013 MERCEDES-BENZ C250": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 34.8
-    },
-    "2008 CADILLAC SRX": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -10.25
-    },
-    "1999 CADILLAC DEVILLE": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -4.3
-    },
-    "2005 VOLVO XC90": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 38.17
-    },
-    "2007 VOLVO XC90": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 332.98
-    },
-    "2006 AUDI A4": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 5.67
-    },
-    "2003 INFINITI G35": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 27.17
-    },
-    "2006 CHEVROLET EQUINOX": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 35.56
-    },
-    "2008 CHEVROLET MALIBU": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 11.64
-    },
-    "2006 CHEVROLET TRAILBLAZER": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 42.99
-    },
-    "1994 CHEVROLET S10": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 35.34
-    },
-    "1999 FORD F-150": {
-      "yard_row": "2",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 5.84
-    },
-    "1998 FORD EXPEDITION": {
-      "yard_row": "8",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 9.72
-    },
-    "2000 FORD E-350": {
-      "yard_row": "8",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 26.81
-    },
-    "2003 FORD EXPEDITION": {
-      "yard_row": "1",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 7.33
-    },
-    "2008 FORD FOCUS": {
-      "yard_row": "17",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 1.51
-    },
-    "1993 GMC SUBURBAN": {
-      "yard_row": "1",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 100.98
-    },
-    "1999 GMC JIMMY": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 1.08
-    },
-    "2012 HONDA CIVIC": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 31.25
-    },
-    "2006 HONDA CIVIC": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 51.47
-    },
-    "2001 HONDA CR-V": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 13.19
-    },
-    "2007 JEEP PATRIOT": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -1.33
-    },
-    "2015 JEEP COMPASS": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 4.73
-    },
-    "2012 JEEP LIBERTY": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 15.32
-    },
-    "2001 TOYOTA SEQUOIA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 108.63
-    },
-    "2012 TOYOTA PRIUS": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 34.63
-    },
-    "2006 MAZDA MAZDA3": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 23.45
-    },
-    "2007 MAZDA MAZDA6": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 1.55
-    },
-    "2010 MAZDA CX-9": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -12.94
-    },
-    "2009 NISSAN ARMADA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 60.3
-    },
-    "2011 NISSAN ALTIMA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 5.03
-    },
-    "2012 NISSAN ALTIMA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 4.41
-    },
-    "2011 NISSAN SENTRA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 1.53
-    },
-    "2017 NISSAN ROGUE": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -7.25
-    },
-    "2008 SUBARU OUTBACK": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 11.95
-    },
-    "2010 HYUNDAI SONATA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 3.19
-    },
-    "2012 HYUNDAI ACCENT": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 46.27
-    },
-    "2007 HYUNDAI TUCSON": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 59.1
-    },
-    "2009 HYUNDAI ACCENT": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 28.25
-    },
-    "2018 HYUNDAI ACCENT": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 46.26
-    },
-    "2007 KIA RONDO": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 27.85
-    },
-    "2013 KIA SOUL": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 25.77
-    },
-    "2014 KIA SEDONA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 47.03
-    },
-    "2007 CHRYSLER 300": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 34.06
-    },
-    "2008 CHRYSLER PT CRUISER": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 20.31
-    },
-    "2008 CHRYSLER TOWN & COUNTRY": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -9.16
     }
   },
   "fuel pump": {
@@ -4835,190 +4255,6 @@
       "margin": 333.98
     }
   },
-  "fog lights": {
-    "2007 VOLVO S40": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 72.1
-    },
-    "2003 FORD EXPEDITION": {
-      "yard_row": "1",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -4.05
-    },
-    "2012 HONDA CIVIC": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 44.26
-    },
-    "2006 HONDA CIVIC": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 44.26
-    },
-    "2001 HONDA CR-V": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 159.1
-    },
-    "2012 TOYOTA PRIUS": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 189.52
-    },
-    "2011 NISSAN ALTIMA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 124.3
-    },
-    "2012 NISSAN ALTIMA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 124.3
-    },
-    "2007 CHRYSLER 300": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 69.31
-    }
-  },
-  "TPMS sensors": {
-    "2007 VOLVO S40": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 37.29
-    },
-    "2013 MERCEDES-BENZ C250": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 62.57
-    },
-    "2008 CADILLAC SRX": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 16.31
-    },
-    "2006 AUDI A4": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 18.16
-    },
-    "2003 INFINITI G35": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.16
-    },
-    "2008 CHEVROLET MALIBU": {
-      "yard_row": "48",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 11.08
-    },
-    "2007 JEEP PATRIOT": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -2.18
-    },
-    "2012 TOYOTA PRIUS": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.89
-    },
-    "2010 MAZDA CX-9": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 37.29
-    },
-    "2009 NISSAN ARMADA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.16
-    },
-    "2011 NISSAN ALTIMA": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.16
-    },
-    "2012 NISSAN ALTIMA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 14.29
-    },
-    "2011 NISSAN SENTRA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 19.16
-    },
-    "2017 NISSAN ROGUE": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 53.83
-    },
-    "2010 HYUNDAI SONATA": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 2.49
-    },
-    "2012 HYUNDAI ACCENT": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 2.49
-    },
-    "2018 HYUNDAI ACCENT": {
-      "yard_row": "42",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 47.62
-    },
-    "2013 KIA SOUL": {
-      "yard_row": "35",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": 2.49
-    },
-    "2007 CHRYSLER 300": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -2.18
-    },
-    "2008 CHRYSLER PT CRUISER": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -2.18
-    },
-    "2008 CHRYSLER TOWN & COUNTRY": {
-      "yard_row": "62",
-      "yard": "Cagle's",
-      "price": 0,
-      "margin": -1.86
-    }
-  },
   "catalytic converter": {
     "2002 BMW 330I": {
       "yard_row": "35",
@@ -5442,5 +4678,90 @@
       "price": 0,
       "margin": 57.99
     }
+  },
+  "starter motor": {
+    "location": "Front of engine, lower half",
+    "access": "From above or below depending on vehicle",
+    "tools": [
+      "Socket set",
+      "Ratchet",
+      "Extensions",
+      "Flashlight"
+    ],
+    "time": "15-30 min",
+    "confidence": "high",
+    "removal_steps": [
+      "Disconnect battery negative terminal",
+      "Remove electrical connections from starter",
+      "Remove mounting bolts (usually 2-3)",
+      "Drop starter down and out",
+      "Reverse for install"
+    ],
+    "test_at_yard": "Bring a multimeter. Check for continuity across solenoid terminals. Spin test if you bring a battery.",
+    "notes": "Starters on transverse engines (FWD) are often buried. Check YouTube for your specific year/make before committing."
+  },
+  "window regulator": {
+    "location": "Inside door panel",
+    "access": "Remove door panel (clip fasteners)",
+    "tools": [
+      "Trim removal tools",
+      "Socket set",
+      "Screwdriver",
+      "Flashlight"
+    ],
+    "time": "20-40 min",
+    "confidence": "medium",
+    "removal_steps": [
+      "Remove door panel carefully (plastic clips break)",
+      "Remove vapor barrier (re-tape after)",
+      "Support glass with suction cup or tape",
+      "Disconnect wiring harness",
+      "Remove mounting bolts",
+      "Slide regulator out through access holes"
+    ],
+    "test_at_yard": "Bring a 12V battery. Connect directly to motor terminals. Motor should spin smoothly in both directions.",
+    "notes": "Regulators on luxury brands (BMW, Mercedes) are cable-type and fragile. Handle carefully. Check for broken cables before pulling."
+  },
+  "ignition coil": {
+    "location": "Top of engine, one per spark plug (coil-on-plug) or on valve cover (coil pack)",
+    "access": "From above",
+    "tools": [
+      "Socket set",
+      "Screwdriver",
+      "Dielectric grease"
+    ],
+    "time": "5-15 min",
+    "confidence": "high",
+    "removal_steps": [
+      "Disconnect battery",
+      "Remove engine cover if present",
+      "Disconnect coil electrical connector",
+      "Remove mounting bolt (usually 1 per coil)",
+      "Pull coil straight up",
+      "Check for oil in spark plug well (bad valve cover gasket)"
+    ],
+    "test_at_yard": "Bring a multimeter. Primary winding: 0.4-2.0 ohms. Secondary: 5k-20k ohms. Out of range = bad.",
+    "notes": "Always replace in sets if one is bad. Misfire codes (P030x) point to specific cylinders. Coil packs (older vehicles) are cheaper but harder to test individually."
+  },
+  "blower motor": {
+    "location": "Behind glove box or under dash on passenger side",
+    "access": "Remove glove box or lower dash panel",
+    "tools": [
+      "Screwdriver",
+      "Socket set",
+      "Trim tools",
+      "Flashlight"
+    ],
+    "time": "20-45 min",
+    "confidence": "medium",
+    "removal_steps": [
+      "Remove glove box (squeeze sides inward)",
+      "Disconnect blower motor wiring",
+      "Remove mounting screws (usually 3-4)",
+      "Pull motor straight out",
+      "Check cabin filter while in there"
+    ],
+    "test_at_yard": "Bring 12V battery + alligator clips. Connect to motor terminals. Should spin freely with no grinding noise.",
+    "notes": "If motor spins but no air flows, the problem is likely the blend door actuator or clogged cabin filter, not the motor. Check HVAC fuse before pulling motor."
   }
 }

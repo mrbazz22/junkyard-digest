@@ -1,4 +1,4 @@
-# Junkyard Digest — Format Specification v1.0 (LOCKED)
+# Junkyard Digest — Format Specification v1.1 (LOCKED)
 
 > This document defines the **canonical format** for every daily "toke" of the Junkyard Digest pipeline.
 > Once approved, **all future runs MUST produce output matching this spec exactly**.
@@ -46,12 +46,12 @@ Every researched vehicle appends `vehicle_id(v) → ISO timestamp` to `data/rese
 | instrument cluster | $25 |
 | ECU | $30 |
 | ABS module | $30 |
-| throttle body | $20 |
+| starter motor | $25 |
 | amplifier | $30 |
 | BCM | $25 |
 | TCM | $25 |
 | HID ballast | $20 |
-| climate control | $25 |
+| blower motor | $25 |
 | fuel pump | $20 |
 | turbocharger | $50 |
 | seat control | $20 |
@@ -59,21 +59,31 @@ Every researched vehicle appends `vehicle_id(v) → ISO timestamp` to `data/rese
 | MAF sensor | $15 |
 | radio nav | $25 |
 
-### Expanded (7 — added in v3)
+### Expanded (7 — added in v3, revised v1.1)
 | Part | Yard cost |
 |------|-----------|
 | catalytic converter | $50 |
 | A/C compressor | $30 |
 | power steering pump | $25 |
-| wheels alloy set | $60 |
-| fog lights | $20 |
-| TPMS sensors | $20 |
+| wheels alloy set | $240 |
+| window regulator | $20 |
+| ignition coil | $15 |
 | backup camera | $15 |
+
+**Removed in v1.1** (low ROI): throttle body, climate control, fog lights, TPMS sensors
 
 **Total = 22 parts per vehicle.**
 
 ### Part location catalog (`part_locations.json`)
-19 parts have full removal guides (location, access steps, tools, time, confidence, notes, factory upgrade note). 3 newer additions (wheels, fog lights, TPMS, backup camera) show as part cards but tap-to-detail disabled.
+All 22 parts have removal guides (location, access steps, tools, time, confidence, notes). New parts (starter motor, window regulator, ignition coil, blower motor) have generic guides. Per-vehicle data fills in as vehicles are researched.
+
+### Sell-through proxy
+Each part now carries a `count` field (number of active eBay listings returned). This feeds a sell-through indicator in the app:
+- **🔥 Low listings (<5)** = fast mover, less competition
+- **● Medium (5-15)** = normal market
+- **○ High (>15)** = saturated, slower sell
+
+This is not true sell-through rate (eBay doesn't expose that), but serves as a useful proxy for demand vs supply.
 
 ---
 

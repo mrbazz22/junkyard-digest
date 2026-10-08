@@ -35,7 +35,7 @@ DOCS_DIR = REPO / "docs"
 RESEARCH_SCRIPT = DOCS_DIR / "research_fast_v4.py"
 
 # --- format spec version (FORMAT-SPEC.md) ---
-SPEC_VERSION = "v1.0"
+SPEC_VERSION = "v1.1"
 
 # --- eBay credentials ---
 EBAY_CRED_PATH = Path.home() / ".openclaw" / "ebay_credentials.json"
