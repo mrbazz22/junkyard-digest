@@ -25,27 +25,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2014",
-      "make": "AUDI",
-      "model": "A6",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2013",
       "make": "BMW",
       "model": "320",
       "yard_row": "31",
       "arrival_date": "10/20/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2010",
-      "make": "BMW",
-      "model": "535",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
       "yard": "Cagle's"
     },
     {
@@ -65,35 +49,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2011",
-      "make": "CHEVROLET",
-      "model": "MALIBU",
-      "yard_row": "49",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "1999",
-      "make": "CHEVROLET",
-      "model": "S10",
-      "yard_row": "49",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2013",
       "make": "CHRYSLER",
       "model": "300",
       "yard_row": "62",
       "arrival_date": "10/20/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "DODGE",
-      "model": "GRAND CARAVAN",
-      "yard_row": "62",
-      "arrival_date": "10/13/2026",
       "yard": "Cagle's"
     },
     {
@@ -105,35 +65,83 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2013",
+      "year": "2008",
       "make": "FORD",
-      "model": "ESCAPE",
-      "yard_row": "18",
-      "arrival_date": "10/13/2026",
+      "model": "ESCAPE HYBRID",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2010",
+      "make": "FORD",
+      "model": "ESCAPE HYBRID",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2015",
       "make": "FORD",
       "model": "ESCAPE",
-      "yard_row": "18",
-      "arrival_date": "10/13/2026",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2014",
+      "year": "1997",
       "make": "FORD",
-      "model": "TRANSIT CONNECT",
-      "yard_row": "18",
-      "arrival_date": "10/13/2026",
+      "model": "RANGER",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2006",
+      "year": "2008",
       "make": "FORD",
-      "model": "FIVE HUNDRED",
-      "yard_row": "18",
-      "arrival_date": "10/13/2026",
+      "model": "EDGE",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2000",
+      "make": "FORD",
+      "model": "CROWN VICTORIA",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2018",
+      "make": "FORD",
+      "model": "FIESTA",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2008",
+      "make": "FORD",
+      "model": "TAURUS",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "1991",
+      "make": "FORD",
+      "model": "RANGER",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2011",
+      "make": "HONDA",
+      "model": "PILOT",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
@@ -145,23 +153,15 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2012",
+      "year": "2005",
       "make": "HONDA",
-      "model": "ODYSSEY",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "model": "PILOT",
+      "yard_row": "31",
+      "arrival_date": "10/20/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2006",
-      "make": "HONDA",
-      "model": "ELEMENT",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2005",
       "make": "HONDA",
       "model": "PILOT",
       "yard_row": "31",
@@ -177,22 +177,6 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2006",
-      "make": "HONDA",
-      "model": "PILOT",
-      "yard_row": "31",
-      "arrival_date": "10/20/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2008",
-      "make": "HYUNDAI",
-      "model": "ELANTRA",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2005",
       "make": "HYUNDAI",
       "model": "SANTA FE",
@@ -201,19 +185,19 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2012",
-      "make": "INFINITI",
-      "model": "M35H",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "year": "2005",
+      "make": "HYUNDAI",
+      "model": "SANTA FE",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2006",
-      "make": "JEEP",
-      "model": "LIBERTY",
-      "yard_row": "62",
-      "arrival_date": "10/13/2026",
+      "year": "1999",
+      "make": "ISUZU",
+      "model": "TROOPER",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
@@ -225,51 +209,11 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2007",
-      "make": "KIA",
-      "model": "SORENTO",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2006",
-      "make": "KIA",
-      "model": "SORENTO",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2005",
-      "make": "KIA",
-      "model": "OPTIMA",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
       "year": "2015",
       "make": "KIA",
       "model": "FORTE",
       "yard_row": "31",
       "arrival_date": "10/20/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2012",
-      "make": "KIA",
-      "model": "SPORTAGE",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2018",
-      "make": "KIA",
-      "model": "SPORTAGE",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
       "yard": "Cagle's"
     },
     {
@@ -281,6 +225,22 @@
       "yard": "Cagle's"
     },
     {
+      "year": "2013",
+      "make": "KIA",
+      "model": "SOUL",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2008",
+      "make": "KIA",
+      "model": "OPTIMA",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
       "year": "2018",
       "make": "LEXUS",
       "model": "ES 350",
@@ -289,43 +249,43 @@
       "yard": "Cagle's"
     },
     {
-      "year": "1998",
+      "year": "2006",
+      "make": "LEXUS",
+      "model": "ES 330",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2007",
       "make": "MERCEDES-BENZ",
-      "model": "ML 320",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "model": "S550",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2013",
-      "make": "NISSAN",
-      "model": "SENTRA",
-      "yard_row": "31",
-      "arrival_date": "10/20/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2008",
-      "make": "NISSAN",
-      "model": "ALTIMA",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "year": "2006",
+      "make": "MERCURY",
+      "model": "MARINER",
+      "yard_row": "20",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
       "year": "2015",
       "make": "NISSAN",
       "model": "ALTIMA",
-      "yard_row": "31",
-      "arrival_date": "10/20/2026",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2018",
+      "year": "2012",
       "make": "NISSAN",
-      "model": "ALTIMA",
-      "yard_row": "31",
-      "arrival_date": "10/20/2026",
+      "model": "VERSA",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     },
     {
@@ -345,45 +305,45 @@
       "yard": "Cagle's"
     },
     {
-      "year": "2009",
-      "make": "SCION",
-      "model": "XB",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "year": "2015",
+      "make": "NISSAN",
+      "model": "ALTIMA",
+      "yard_row": "31",
+      "arrival_date": "10/20/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2000",
-      "make": "TOYOTA",
-      "model": "AVALON",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "year": "2013",
+      "make": "NISSAN",
+      "model": "SENTRA",
+      "yard_row": "31",
+      "arrival_date": "10/20/2026",
       "yard": "Cagle's"
     },
     {
-      "year": "2001",
+      "year": "2006",
+      "make": "NISSAN",
+      "model": "MURANO",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2018",
+      "make": "NISSAN",
+      "model": "ALTIMA",
+      "yard_row": "31",
+      "arrival_date": "10/20/2026",
+      "yard": "Cagle's"
+    },
+    {
+      "year": "2012",
       "make": "VOLKSWAGEN",
-      "model": "PASSAT",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "VOLKSWAGEN",
-      "model": "PASSAT",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
-      "yard": "Cagle's"
-    },
-    {
-      "year": "2007",
-      "make": "VOLKSWAGEN",
-      "model": "EOS",
-      "yard_row": "43",
-      "arrival_date": "10/13/2026",
+      "model": "ROUTAN",
+      "yard_row": "29",
+      "arrival_date": "10/27/2026",
       "yard": "Cagle's"
     }
   ],
-  "scraped_at": "2026-10-21T04:15:01.619345"
+  "scraped_at": "2026-10-28T04:15:02.935343"
 }
